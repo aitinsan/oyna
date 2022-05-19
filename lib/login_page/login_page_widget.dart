@@ -3,8 +3,9 @@ import '../components/filled_button_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../profile_page/profile_page_widget.dart';
+import '../home_page/home_page_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -262,49 +263,79 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFF6F6F5),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 5,
-                              color: Color(0x3314181B),
-                              offset: Offset(0, 2),
-                            )
-                          ],
-                          shape: BoxShape.circle,
-                        ),
-                        alignment: AlignmentDirectional(0, 0),
-                        child: FaIcon(
-                          FontAwesomeIcons.google,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24,
+                      child: InkWell(
+                        onTap: () async {
+                          final user = await signInWithGoogle(context);
+                          if (user == null) {
+                            return;
+                          }
+                          await Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePageWidget(),
+                            ),
+                            (r) => false,
+                          );
+                        },
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFF6F6F5),
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 5,
+                                color: Color(0x3314181B),
+                                offset: Offset(0, 2),
+                              )
+                            ],
+                            shape: BoxShape.circle,
+                          ),
+                          alignment: AlignmentDirectional(0, 0),
+                          child: FaIcon(
+                            FontAwesomeIcons.google,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24,
+                          ),
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFF6F6F5),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 5,
-                              color: Color(0x3314181B),
-                              offset: Offset(0, 2),
-                            )
-                          ],
-                          shape: BoxShape.circle,
-                        ),
-                        alignment: AlignmentDirectional(0, 0),
-                        child: FaIcon(
-                          FontAwesomeIcons.apple,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24,
+                      child: InkWell(
+                        onTap: () async {
+                          final user = await signInWithApple(context);
+                          if (user == null) {
+                            return;
+                          }
+                          await Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePageWidget(),
+                            ),
+                            (r) => false,
+                          );
+                        },
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFF6F6F5),
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 5,
+                                color: Color(0x3314181B),
+                                offset: Offset(0, 2),
+                              )
+                            ],
+                            shape: BoxShape.circle,
+                          ),
+                          alignment: AlignmentDirectional(0, 0),
+                          child: FaIcon(
+                            FontAwesomeIcons.apple,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24,
+                          ),
                         ),
                       ),
                     ),
@@ -328,13 +359,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   await Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ProfilePageWidget(),
+                      builder: (context) => HomePageWidget(),
                     ),
                     (r) => false,
                   );
                 },
                 child: FilledButtonWidget(
-                  text: 'Зарегистрироваться',
+                  text: 'Войти',
                 ),
               ),
             ),

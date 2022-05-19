@@ -8,6 +8,7 @@ import 'auth/auth_util.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'index.dart';
 
 void main() async {
@@ -84,14 +85,15 @@ class _MyAppState extends State<MyApp> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: CircularProgressIndicator(
+                child: SpinKitCircle(
                   color: FlutterFlowTheme.of(context).primaryColor,
+                  size: 50,
                 ),
               ),
             )
           : currentUser.loggedIn
-              ? ProfilePageWidget()
-              : HomePageWidget(),
+              ? HomePageWidget()
+              : IntroPageWidget(),
     );
   }
 }

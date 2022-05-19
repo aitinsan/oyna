@@ -2,6 +2,7 @@ import '../components/outlined_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -80,14 +81,24 @@ class _SelectLanguagePageWidgetState extends State<SelectLanguagePageWidget> {
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 8),
-                      child: OutlinedButtonWidget(
-                        text: 'Русский',
+                      child: InkWell(
+                        onTap: () async {
+                          setAppLanguage(context, 'ru');
+                        },
+                        child: OutlinedButtonWidget(
+                          text: 'Русский',
+                        ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 24),
-                      child: OutlinedButtonWidget(
-                        text: 'Казахский',
+                      child: InkWell(
+                        onTap: () async {
+                          setAppLanguage(context, 'kk');
+                        },
+                        child: OutlinedButtonWidget(
+                          text: 'Казахский',
+                        ),
                       ),
                     ),
                   ],

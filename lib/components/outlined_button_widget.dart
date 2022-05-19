@@ -1,7 +1,7 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OutlinedButtonWidget extends StatefulWidget {
@@ -19,27 +19,28 @@ class OutlinedButtonWidget extends StatefulWidget {
 class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
   @override
   Widget build(BuildContext context) {
-    return FFButtonWidget(
-      onPressed: () {
-        print('Button pressed ...');
-      },
-      text: widget.text,
-      options: FFButtonOptions(
-        width: double.infinity,
-        height: 50,
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
         color: Colors.transparent,
-        textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-              fontFamily: 'Lexend Deca',
-              color: FlutterFlowTheme.of(context).primaryColor,
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
-        elevation: 2,
-        borderSide: BorderSide(
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
           color: FlutterFlowTheme.of(context).primaryColor,
-          width: 1,
+          width: 2,
         ),
-        borderRadius: 14,
+      ),
+      child: Align(
+        alignment: AlignmentDirectional(0, 0),
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
+          child: Text(
+            widget.text,
+            style: FlutterFlowTheme.of(context).bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                ),
+          ),
+        ),
       ),
     );
   }

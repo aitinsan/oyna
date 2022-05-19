@@ -1,10 +1,12 @@
 import '../auth/auth_util.dart';
 import '../components/filled_button_widget.dart';
 import '../components/logo_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../intro_page/intro_page_widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfilePageWidget extends StatefulWidget {
@@ -49,22 +51,30 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30,
-                      borderWidth: 1,
-                      buttonSize: 50,
-                      icon: Icon(
-                        Icons.arrow_back_rounded,
-                        color: FlutterFlowTheme.of(context).primaryBtnText,
-                        size: 30,
-                      ),
-                      onPressed: () async {
-                        Navigator.pop(context);
-                      },
-                    ),
                     LogoWidget(),
+                    InkWell(
+                      onTap: () async {
+                        await signOut();
+                        await Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => IntroPageWidget(),
+                          ),
+                          (r) => false,
+                        );
+                      },
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'v9nk140r' /* Выйти */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: FlutterFlowTheme.of(context).alternate,
+                            ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -101,8 +111,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child: Image.network(
-                          currentUserPhoto,
+                        child: CachedNetworkImage(
+                          imageUrl: currentUserPhoto,
                           fit: BoxFit.fitWidth,
                         ),
                       ),
