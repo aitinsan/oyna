@@ -1,24 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:oyna/auth/firebase_user_provider.dart';
-import 'package:oyna/edit_profile/edit_profile_widget.dart';
+import 'package:oyna/day_page/day.page.dart';
+import 'package:oyna/model/day.dart';
+import 'package:oyna/profile_page/profile_page_widget.dart';
 
 import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../day_page/day_page_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../profile_page/profile_page_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key key}) : super(key: key);
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -44,16 +41,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                           child: AuthUserStreamWidget(
                             child: Container(
-                              width: 46,
-                              height: 46,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              child: currentUserPhoto!=''? Image.network(
-                                currentUserPhoto,
-                              ): Image.asset('assets/images/altynsaryn.png')
-                            ),
+                                width: 46,
+                                height: 46,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: currentUserPhoto != ''
+                                    ? Image.network(
+                                        currentUserPhoto,
+                                      )
+                                    : Image.asset(
+                                        'assets/images/altynsaryn.png')),
                           ),
                         ),
                         Padding(
@@ -133,7 +132,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               await Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => EditProfileWidget(),
+                                  builder: (context) => ProfilePageWidget(),
                                 ),
                               );
                             },
@@ -151,65 +150,45 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ],
               ),
               Expanded(
-                child: StreamBuilder<List<DayRecord>>(
-                  stream: queryDayRecord(),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: SpinKitCircle(
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                            size: 50,
+                child: ListView.builder(
+                  reverse: true,
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.vertical,
+                  itemCount: days.length,
+                  itemBuilder: (context, listViewIndex) {
+                    Day listViewDayRecord = days[listViewIndex];
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DayPage(
+                                  day: listViewDayRecord,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Image.asset(
+                            'assets/images/IMG_0024_11.png',
+                            width: 80,
+                            height: 120,
+                            fit: BoxFit.contain,
                           ),
                         ),
-                      );
-                    }
-                    List<DayRecord> listViewDayRecordList = snapshot.data;
-                    return ListView.builder(
-                      reverse: true,
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      itemCount: listViewDayRecordList.length,
-                      itemBuilder: (context, listViewIndex) {
-                        final listViewDayRecord =
-                            listViewDayRecordList[listViewIndex];
-                        return Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DayPageWidget(
-                                      day: listViewDayRecord.progressDay,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: Image.asset(
-                                'assets/images/IMG_0024_11.png',
-                                width: 80,
-                                height: 120,
-                                fit: BoxFit.contain,
+                        Text(
+                          'День ' + listViewDayRecord.day.toString(),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Poppins',
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
                               ),
-                            ),
-                            Text(
-                              'День ' + listViewDayRecord.progressDay.toString(),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
-                                  ),
-                            ),
-                          ],
-                        );
-                      },
+                        ),
+                      ],
                     );
                   },
                 ),

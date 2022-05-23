@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 class FilledButtonWidget extends StatefulWidget {
   const FilledButtonWidget({
     Key key,
-    this.text,
+    @required this.text,
   }) : super(key: key);
 
   final String text;

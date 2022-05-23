@@ -1,0 +1,369 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:mime/mime.dart';
+import 'package:oyna/auth/auth_util.dart';
+import 'package:oyna/backend/schema/user_record.dart';
+import 'package:oyna/components/filled_button_widget.dart';
+import 'package:oyna/components/text_field_widget.dart';
+import 'package:oyna/flutter_flow/flutter_flow_theme.dart';
+import 'package:oyna/home_page/home.page.dart';
+import 'package:oyna/index.dart';
+import 'package:progress_indicators/progress_indicators.dart';
+import 'package:uuid/uuid.dart';
+
+import '../flutter_flow/internationalization.dart';
+
+enum Step {
+  empty,
+  texting,
+  nickname,
+  gender,
+  age,
+  goal,
+  ready,
+}
+
+class ChatPage extends StatefulWidget {
+  const ChatPage({Key key}) : super(key: key);
+
+  @override
+  _ChatPageState createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  List<types.Message> _messages = [];
+  final _user = const types.User(id: 'user');
+  Step _step = Step.empty;
+  TextEditingController nameController;
+  TextEditingController ageController;
+  final _bot = const types.User(
+    id: 'bot',
+    firstName: 'Ыбырай А.',
+    imageUrl:
+        'https://adebiportal.kz/images/w350-cct-si/upload/iblock/212/212544514e836a345e141cbbe7ffd70a.jpg',
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController(text: currentUserDisplayName);
+    ageController =
+        TextEditingController(text: currentUserDocument?.age.toString());
+    _addBotMessage(
+        'Добро пожаловать,Иван. Данный бот поможет вам со всеми вопросами');
+    _addBotMessage(
+        'Сегодня не часто встретишь путешественников. Возможно, ты один из тех храбрецов?');
+    _addBotMessage(
+        'Прошу прощения! Считаю невоспитанностью с моей стороны постоянно называть вас Путешественником.  Как вас зовут?');
+    setState(() {
+      _step = Step.nickname;
+    });
+    _loadMessages();
+  }
+
+  void _addBotMessage(String message) {
+    _step = Step.texting;
+    Timer(Duration(milliseconds: 1000), () {
+      setState(() {
+        _messages.insert(
+          0,
+          types.TextMessage(
+            id: const Uuid().v4(),
+            author: _bot,
+            text: message,
+            createdAt: DateTime.now().millisecondsSinceEpoch,
+          ),
+        );
+      });
+    });
+  }
+
+  void _addMessage(types.Message message) {
+    setState(() {
+      _messages.insert(0, message);
+    });
+  }
+
+  Widget _bottomWidget() {
+    switch (_step) {
+      case Step.texting:
+        return Row(
+          children: [
+            Text(
+              'Ыбырай А печатает',
+              style: TextStyle(color: Colors.white),
+            ),
+            JumpingText(
+              '...',
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        );
+        break;
+      case Step.nickname:
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Row(
+            children: [
+              Expanded(
+                // flex: 3,
+                child: TextFieldWidget(
+                  controller: nameController,
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await currentUserReference.update(createUserRecordData(
+                    description: currentUserDocument.description,
+                    age: currentUserDocument.age,
+                    displayName: nameController.text,
+                    gender: currentUserDocument.gender,
+                    photoUrl: currentUserDocument.photoUrl,
+                  ));
+                  setState(() {
+                    _addBotMessage(
+                        'Ваше имя звучит красиво. Вы Господин или Госпожа? Введите ваш пол');
+                    _step = Step.gender;
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Center(
+                    child: Icon(
+                      Icons.send,
+                      size: 30,
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+        break;
+      case Step.gender:
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Row(
+            children: [
+              Flexible(
+                child: InkWell(
+                  onTap: () async {
+                    await currentUserReference.update(createUserRecordData(
+                      description: currentUserDocument.description,
+                      age: currentUserDocument.age,
+                      displayName: currentUserDocument.displayName,
+                      gender: 'Господин',
+                      photoUrl: currentUserDocument.photoUrl,
+                    ));
+                    setState(() {
+                      _addBotMessage('Как прекрасно! Сколько вам лет ?');
+                      _step = Step.age;
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: FilledButtonWidget(text: 'Господин'),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Flexible(
+                child: InkWell(
+                  onTap: () async {
+                    await currentUserReference.update(createUserRecordData(
+                      description: currentUserDocument.description,
+                      age: currentUserDocument.age,
+                      displayName: currentUserDocument.displayName,
+                      gender: 'Госпожа',
+                      photoUrl: currentUserDocument.photoUrl,
+                    ));
+                    setState(() {
+                      _addBotMessage('Как прекрасно! Сколько вам лет ?');
+                      _step = Step.age;
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child: Center(
+                      child: FilledButtonWidget(text: 'Госпожа'),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+        break;
+      case Step.age:
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Row(
+            children: [
+              Expanded(
+                // flex: 3,
+                child: TextFieldWidget(
+                  controller: ageController,
+                  isNum: true,
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await currentUserReference.update(createUserRecordData(
+                    description: currentUserDocument.description,
+                    age: int.parse(ageController.text),
+                    displayName: currentUserDocument.displayName,
+                    gender: currentUserDocument.gender,
+                    photoUrl: currentUserDocument.photoUrl,
+                  ));
+                  setState(() {
+                    _addBotMessage(
+                        'Прежде чем отправиться в путешествие я хочу узнать о цели вашего путешествия.');
+                    _step = Step.goal;
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Center(
+                    child: Icon(
+                      Icons.send,
+                      size: 30,
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+        break;
+      case Step.goal:
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Column(
+            children: [
+              InkWell(
+                onTap: () async {
+                  await currentUserReference.update(createUserRecordData(
+                    description: 'Я хочу полностью овладеть казахским языком.',
+                    age: currentUserDocument.age,
+                    displayName: currentUserDocument.displayName,
+                    gender: currentUserDocument.gender,
+                    photoUrl: currentUserDocument.photoUrl,
+                  ));
+                  setState(() {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HomePage()));
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: FilledButtonWidget(
+                      text: 'Я хочу полностью овладеть казахским языком.'),
+                ),
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              InkWell(
+                onTap: () async {
+                  await currentUserReference.update(createUserRecordData(
+                    description:
+                        'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.',
+                    age: currentUserDocument.age,
+                    displayName: currentUserDocument.displayName,
+                    gender: currentUserDocument.gender,
+                    photoUrl: currentUserDocument.photoUrl,
+                  ));
+                  setState(() {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HomePage()));
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Center(
+                    child: FilledButtonWidget(
+                        text:
+                            'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.'),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+        break;
+      case Step.ready:
+        break;
+      case Step.empty:
+        return SizedBox.shrink();
+        break;
+      default:
+        return SizedBox.shrink();
+    }
+  }
+
+  void _loadMessages() async {
+    final response = await rootBundle.loadString('assets/messages.json');
+    final messages = (jsonDecode(response) as List)
+        .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
+        .toList();
+
+    setState(() {
+      _messages = messages;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        title: Row(
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(
+                'https://adebiportal.kz/images/w350-cct-si/upload/iblock/212/212544514e836a345e141cbbe7ffd70a.jpg',
+              ),
+            ),
+            SizedBox(
+              width: 16,
+            ),
+            Text(
+              'Ыбырай Алтынсарин',
+              style: TextStyle(color: Colors.black),
+            ),
+          ],
+        ),
+      ),
+      body: AuthUserStreamWidget(
+        child: Chat(
+          theme: DarkChatTheme(),
+          messages: _messages,
+          // onMessageTap: _handleMessageTap,
+          // onPreviewDataFetched: _handlePreviewDataFetched,
+          onSendPressed: (p) {},
+          showUserAvatars: true,
+          user: _user,
+          showUserNames: true,
+          customBottomWidget: _bottomWidget(),
+        ),
+      ),
+    );
+  }
+}

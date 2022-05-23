@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:oyna/chat_page/chat_page_widget.dart';
+import 'package:oyna/home_page/home.page.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
@@ -64,6 +66,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     return MaterialApp(
       title: 'Oyna',
       localizationsDelegates: [
@@ -75,7 +78,9 @@ class _MyAppState extends State<MyApp> {
       locale: _locale,
       supportedLocales: const [
         Locale('ru', ''),
-        Locale('kk', ''),
+
+        // const Locale.fromSubtags(languageCode: 'kk')
+        // Locale('kk', ''),
       ],
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
@@ -92,7 +97,7 @@ class _MyAppState extends State<MyApp> {
               ),
             )
           : currentUser.loggedIn
-              ? HomePageWidget()
+              ? HomePage()
               : IntroPageWidget(),
     );
   }

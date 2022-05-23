@@ -25,6 +25,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   TextEditingController ageController;
   TextEditingController descriptionController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  SelectedMedia selectedPhoto;
 
   @override
   void initState() {
@@ -40,6 +41,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -81,7 +83,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
         elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -89,93 +91,96 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Stack(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Stack(
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.05, 0.1),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                              child: AuthUserStreamWidget(
-                                child: InkWell(
-                                  onTap: () async {
-                                    final selectedMedia =
-                                        await selectMediaWithSourceBottomSheet(
-                                      context: context,
-                                      allowPhoto: true,
-                                    );
-                                    if (selectedMedia != null &&
-                                        selectedMedia.every((m) =>
-                                            validateFileFormat(
-                                                m.storagePath, context))) {
-                                      showUploadMessage(
-                                        context,
-                                        'Uploading file...',
-                                        showLoading: true,
-                                      );
-                                      final downloadUrls = (await Future.wait(
-                                              selectedMedia.map((m) async =>
-                                                  await uploadData(
-                                                      m.storagePath, m.bytes))))
-                                          .where((u) => u != null)
-                                          .toList();
-                                      ScaffoldMessenger.of(context)
-                                          .hideCurrentSnackBar();
-                                      if (downloadUrls != null &&
-                                          downloadUrls.length ==
-                                              selectedMedia.length) {
-                                        setState(() => uploadedFileUrl =
-                                            downloadUrls.first);
-                                        showUploadMessage(
-                                          context,
-                                          'Success!',
-                                        );
-                                      } else {
-                                        showUploadMessage(
-                                          context,
-                                          'Failed to upload media',
-                                        );
-                                        return;
-                                      }
-                                    }
-                                  },
+                AuthUserStreamWidget(
+                  child: InkWell(
+                    onTap: () async {
+                      final selectedMedia =
+                          await selectMediaWithSourceBottomSheet(
+                        context: context,
+                        allowPhoto: true,
+                      );
+                      if (selectedMedia != null &&
+                          selectedMedia.every((m) =>
+                              validateFileFormat(m.storagePath, context))) {
+                        showUploadMessage(
+                          context,
+                          'Uploading file...',
+                          showLoading: true,
+                        );
+                        final downloadUrls = (await Future.wait(
+                                selectedMedia.map((m) async =>
+                                    await uploadData(m.storagePath, m.bytes))))
+                            .where((u) => u != null)
+                            .toList();
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                        if (downloadUrls != null &&
+                            downloadUrls.length == selectedMedia.length) {
+                          setState(() => uploadedFileUrl = downloadUrls.first);
+                          showUploadMessage(
+                            context,
+                            'Success!',
+                          );
+                        } else {
+                          showUploadMessage(
+                            context,
+                            'Failed to upload media',
+                          );
+                          return;
+                        }
+                      }
+                      setState(() {
+                        selectedPhoto = selectedMedia.first;
+                      });
+                    },
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Stack(
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.05, 0.1),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      2, 2, 2, 2),
                                   child: Container(
-                                    width: 90,
-                                    height: 90,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.network(
-                                      currentUserPhoto,
-                                      fit: BoxFit.fitWidth,
-                                    ),
-                                  ),
+                                      width: 90,
+                                      height: 90,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: selectedPhoto != null
+                                          ? Image.memory(selectedPhoto.bytes)
+                                          : currentUserPhoto != ''
+                                              ? Image.network(
+                                                  currentUserPhoto,
+                                                  fit: BoxFit.fitWidth,
+                                                )
+                                              : Image.asset(
+                                                  'assets/images/altynsaryn.png')),
                                 ),
                               ),
-                            ),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Icon(
+                                  Icons.add_circle,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryColor,
+                                  size: 24,
+                                ),
+                              ),
+                            ],
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Icon(
-                              Icons.add_circle,
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              size: 24,
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -184,7 +189,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               child: AuthUserStreamWidget(
                 child: TextFormField(
                   controller: nameController,
-                  readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: FFLocalizations.of(context).getText(
@@ -235,7 +239,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               child: AuthUserStreamWidget(
                 child: TextFormField(
                   controller: genderController,
-                  readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: FFLocalizations.of(context).getText(
@@ -286,7 +289,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               child: AuthUserStreamWidget(
                 child: TextFormField(
                   controller: ageController,
-                  readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: FFLocalizations.of(context).getText(
@@ -337,7 +339,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               child: AuthUserStreamWidget(
                 child: TextFormField(
                   controller: descriptionController,
-                  readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: FFLocalizations.of(context).getText(
@@ -388,33 +389,32 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 ),
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                      child: InkWell(
-                        onTap: () async {
-                          final userUpdateData = createUserRecordData(
-                            description: descriptionController.text,
-                            age: int.parse(ageController.text),
-                            displayName: nameController.text,
-                            photoUrl: uploadedFileUrl,
-                          );
-                          await currentUserReference.update(userUpdateData);
-                          Navigator.pop(context);
-                        },
-                        child: FilledButtonWidget(
-                          text: 'Изменить',
-                        ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                    child: InkWell(
+                      onTap: () async {
+                        final userUpdateData = createUserRecordData(
+                          description: descriptionController.text,
+                          age: int.parse(ageController.text),
+                          displayName: nameController.text,
+                          gender: genderController.text,
+                          photoUrl: uploadedFileUrl,
+                        );
+                        await currentUserReference.update(userUpdateData);
+                        Navigator.pop(context);
+                      },
+                      child: FilledButtonWidget(
+                        text: 'Изменить',
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

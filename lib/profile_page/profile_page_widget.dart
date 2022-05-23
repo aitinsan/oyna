@@ -1,3 +1,5 @@
+import 'package:oyna/edit_profile/edit_profile_widget.dart';
+
 import '../auth/auth_util.dart';
 import '../components/filled_button_widget.dart';
 import '../components/logo_widget.dart';
@@ -111,10 +113,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child: CachedNetworkImage(
+                        child: currentUserPhoto!=''? CachedNetworkImage(
                           imageUrl: currentUserPhoto,
                           fit: BoxFit.fitWidth,
-                        ),
+                        ): Image.asset('assets/images/altynsaryn.png')
                       ),
                     ),
                   ),
@@ -298,10 +300,22 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                      child: FilledButtonWidget(
-                        text: 'Изменить',
+                    InkWell(
+                      onTap:() async {
+                        await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => EditProfileWidget(
+                                      
+                                    ),
+                                  ),
+                                );
+                      },
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                        child: FilledButtonWidget(
+                          text: 'Изменить',
+                        ),
                       ),
                     ),
                   ],

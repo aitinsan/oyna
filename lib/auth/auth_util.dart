@@ -30,7 +30,7 @@ Future<User> signInOrCreateAccount(
   }
 }
 
-Future signOut() {
+Future<void> signOut() {
   _currentJwtToken = '';
   FirebaseAuth.instance.signOut();
 }
@@ -81,7 +81,7 @@ String get currentUserUid =>
     currentUserDocument?.uid ?? currentUser?.user?.uid ?? '';
 
 String get currentUserDisplayName =>
-    currentUserDocument?.displayName ?? currentUser?.user?.displayName ?? '';
+    currentUserDocument?.displayName ?? currentUser?.user?.displayName ?? 'Нет  имени';
 
 String get currentUserPhoto =>
     currentUserDocument?.photoUrl ?? currentUser?.user?.photoURL ?? '';
@@ -166,7 +166,7 @@ Future verifySmsCode({
   }
 }
 
-DocumentReference get currentUserReference => currentUser?.user != null
+DocumentReference？ get currentUserReference => currentUser?.user != null
     ? UserRecord.collection.doc(currentUser.user.uid)
     : null;
 
