@@ -1,7 +1,6 @@
 // ignore_for_file: overridden_fields, annotate_overrides
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -41,44 +40,42 @@ abstract class FlutterFlowTheme {
   Color? primaryBtnText;
   Color? lineColor;
 
-  TextStyle get title1 => GoogleFonts.getFont(
-        'Poppins',
-        color: primaryText,
+  TextStyle get title1 => TextStyle(        color: primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 24,
       );
-  TextStyle get title2 => GoogleFonts.getFont(
-        'Poppins',
+  TextStyle get title2 => TextStyle(  
+        
         color: secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22,
       );
-  TextStyle get title3 => GoogleFonts.getFont(
-        'Poppins',
+  TextStyle get title3 => TextStyle(  
+        
         color: primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 20,
       );
-  TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Poppins',
+  TextStyle get subtitle1 => TextStyle(  
+       
         color: primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 18,
       );
-  TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Poppins',
+  TextStyle get subtitle2 => TextStyle(  
+       
         color: secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16,
       );
-  TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Poppins',
+  TextStyle get bodyText1 => TextStyle(  
+        
         color: primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14,
       );
-  TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Poppins',
+  TextStyle get bodyText2 => TextStyle(  
+        
         color: secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14,
@@ -125,8 +122,8 @@ extension TextStyleHelper on TextStyle {
     double? lineHeight,
   }) =>
       useGoogleFonts
-          ? GoogleFonts.getFont(
-              fontFamily!,
+          ? TextStyle(  
+              
               color: color ?? this.color,
               fontSize: fontSize ?? this.fontSize,
               fontWeight: fontWeight ?? this.fontWeight,
@@ -135,7 +132,7 @@ extension TextStyleHelper on TextStyle {
               height: lineHeight,
             )
           : copyWith(
-              fontFamily: fontFamily,
+             
               color: color,
               fontSize: fontSize,
               fontWeight: fontWeight,

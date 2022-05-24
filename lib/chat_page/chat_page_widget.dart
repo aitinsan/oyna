@@ -70,7 +70,10 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _addBotMessage(String message) {
-    _step = Step.texting;
+    setState(() {
+      _step = Step.texting;
+    });
+
     Timer(Duration(milliseconds: 1000), () {
       setState(() {
         _messages.insert(
@@ -86,9 +89,17 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
-  void _addMessage(types.Message message) {
+  void _addMessage(String message) {
     setState(() {
-      _messages.insert(0, message);
+      _messages.insert(
+        0,
+        types.TextMessage(
+          id: const Uuid().v4(),
+          author: _user,
+          text: message,
+          createdAt: DateTime.now().millisecondsSinceEpoch,
+        ),
+      );
     });
   }
 
@@ -129,6 +140,7 @@ class _ChatPageState extends State<ChatPage> {
                     photoUrl: currentUserDocument!.photoUrl,
                   ));
                   setState(() {
+                    _addMessage(nameController!.text);
                     _addBotMessage(
                         'Ваше имя звучит красиво. Вы Господин или Госпожа? Введите ваш пол');
                     _step = Step.gender;
@@ -165,6 +177,7 @@ class _ChatPageState extends State<ChatPage> {
                       photoUrl: currentUserDocument!.photoUrl,
                     ));
                     setState(() {
+                      _addMessage('Господин');
                       _addBotMessage('Как прекрасно! Сколько вам лет ?');
                       _step = Step.age;
                     });
@@ -189,6 +202,7 @@ class _ChatPageState extends State<ChatPage> {
                       photoUrl: currentUserDocument!.photoUrl,
                     ));
                     setState(() {
+                      _addMessage('Госпожа');
                       _addBotMessage('Как прекрасно! Сколько вам лет ?');
                       _step = Step.age;
                     });
@@ -227,6 +241,7 @@ class _ChatPageState extends State<ChatPage> {
                     photoUrl: currentUserDocument!.photoUrl,
                   ));
                   setState(() {
+                    _addMessage(ageController!.text);
                     _addBotMessage(
                         'Прежде чем отправиться в путешествие я хочу узнать о цели вашего путешествия.');
                     _step = Step.goal;
@@ -262,6 +277,7 @@ class _ChatPageState extends State<ChatPage> {
                     photoUrl: currentUserDocument!.photoUrl,
                   ));
                   setState(() {
+                    _addMessage('Я хочу полностью овладеть казахским языком.');
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => HomePage()));
                   });
@@ -286,6 +302,8 @@ class _ChatPageState extends State<ChatPage> {
                     photoUrl: currentUserDocument!.photoUrl,
                   ));
                   setState(() {
+                    _addMessage(
+                        'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.');
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => HomePage()));
                   });

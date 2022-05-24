@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-class TeachingCard {
+class GrammarCard {
   String title;
   String text;
-  TeachingCard({
+  GrammarCard({
     required this.title,
     required this.text,
   });

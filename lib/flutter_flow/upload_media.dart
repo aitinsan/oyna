@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mime_type/mime_type.dart';
 
@@ -39,8 +38,7 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
             title: Text(
               label,
               textAlign: TextAlign.center,
-              style: GoogleFonts.getFont(
-                pickerFontFamily,
+              style: TextStyle(
                 color: textColor,
                 fontWeight: FontWeight.w600,
                 fontSize: 20,
@@ -66,8 +64,7 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
                 title: Text(
                   'Choose Source',
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.getFont(
-                    pickerFontFamily,
+                  style: TextStyle(
                     color: textColor.withOpacity(0.65),
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
