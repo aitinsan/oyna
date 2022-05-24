@@ -14,7 +14,7 @@ const allowedFormats = {'image/png', 'image/jpeg', 'video/mp4', 'image/gif'};
 class SelectedMedia {
   const SelectedMedia(this.storagePath, this.bytes);
   final String storagePath;
-  final Uint8List bytes;
+  final Uint8List? bytes;
 }
 
 enum MediaSource {
@@ -23,12 +23,12 @@ enum MediaSource {
   camera,
 }
 
-Future<List<SelectedMedia>> selectMediaWithSourceBottomSheet({
-  BuildContext context,
-  double maxWidth,
-  double maxHeight,
-  int imageQuality,
-  bool allowPhoto,
+Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
+  required BuildContext context,
+  double? maxWidth,
+  double? maxHeight,
+  int? imageQuality,
+  bool? allowPhoto,
   bool allowVideo = false,
   String pickerFontFamily = 'Roboto',
   Color textColor = const Color(0xFF111417),
@@ -78,7 +78,7 @@ Future<List<SelectedMedia>> selectMediaWithSourceBottomSheet({
               ),
             ),
             const Divider(),
-            if (allowPhoto && allowVideo) ...[
+            if (allowPhoto! && allowVideo) ...[
               createUploadMediaListTile(
                 'Gallery (Photo)',
                 MediaSource.photoGallery,
@@ -113,15 +113,15 @@ Future<List<SelectedMedia>> selectMediaWithSourceBottomSheet({
     maxHeight: maxHeight,
     imageQuality: imageQuality,
     isVideo: mediaSource == MediaSource.videoGallery ||
-        (mediaSource == MediaSource.camera && allowVideo && !allowPhoto),
+        (mediaSource == MediaSource.camera && allowVideo && !allowPhoto!),
     mediaSource: mediaSource,
   );
 }
 
-Future<List<SelectedMedia>> selectMedia({
-  double maxWidth,
-  double maxHeight,
-  int imageQuality,
+Future<List<SelectedMedia>?> selectMedia({
+  double? maxWidth,
+  double? maxHeight,
+  int? imageQuality,
   bool isVideo = false,
   MediaSource mediaSource = MediaSource.camera,
   bool multiImage = false,
@@ -157,11 +157,11 @@ Future<List<SelectedMedia>> selectMedia({
           source: source,
         );
   final pickedMedia = await pickedMediaFuture;
-  final mediaBytes = await pickedMedia?.readAsBytes();
+  final mediaBytes = (await pickedMedia?.readAsBytes())!;
   if (mediaBytes == null) {
     return null;
   }
-  final path = storagePath(currentUserUid, pickedMedia.name, isVideo);
+  final path = storagePath(currentUserUid, pickedMedia!.name, isVideo);
   return [SelectedMedia(path, mediaBytes)];
 }
 
@@ -177,7 +177,7 @@ bool validateFileFormat(String filePath, BuildContext context) {
   return false;
 }
 
-Future<SelectedMedia> selectFile({
+Future<SelectedMedia?> selectFile({
   List<String> allowedExtensions = const ['pdf'],
 }) async {
   final pickedFiles = await FilePicker.platform.pickFiles(
@@ -189,7 +189,7 @@ Future<SelectedMedia> selectFile({
   }
 
   final file = pickedFiles.files.first;
-  if (file?.bytes == null) {
+  if (file.bytes == null) {
     return null;
   }
   final path = storagePath(currentUserUid, file.name, false);

@@ -3,11 +3,11 @@ import 'package:rxdart/rxdart.dart';
 
 class OynaFirebaseUser {
   OynaFirebaseUser(this.user);
-  User user;
+  User? user;
   bool get loggedIn => user != null;
 }
 
-OynaFirebaseUser currentUser;
+OynaFirebaseUser? currentUser;
 bool get loggedIn => currentUser?.loggedIn ?? false;
 Stream<OynaFirebaseUser> oynaFirebaseUserStream() => FirebaseAuth.instance
     .authStateChanges()

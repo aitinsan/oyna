@@ -17,10 +17,10 @@ class _$OneOfFourRecordSerializer
   final String wireName = 'OneOfFourRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, OneOfFourRecord object,
+  Iterable<Object?> serialize(Serializers serializers, OneOfFourRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.type;
     if (value != null) {
       result
@@ -56,19 +56,19 @@ class _$OneOfFourRecordSerializer
 
   @override
   OneOfFourRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new OneOfFourRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'teaching_cards':
           result.teachingCards.replace(serializers.deserialize(value,
@@ -79,13 +79,13 @@ class _$OneOfFourRecordSerializer
           break;
         case 'day':
           result.day = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
                       DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              as DocumentReference<Object>?;
           break;
       }
     }
@@ -96,15 +96,15 @@ class _$OneOfFourRecordSerializer
 
 class _$OneOfFourRecord extends OneOfFourRecord {
   @override
-  final String type;
+  final String? type;
   @override
-  final BuiltList<DocumentReference<Object>> teachingCards;
+  final BuiltList<DocumentReference<Object>>? teachingCards;
   @override
-  final int day;
+  final int? day;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object>? reference;
 
-  factory _$OneOfFourRecord([void Function(OneOfFourRecordBuilder) updates]) =>
+  factory _$OneOfFourRecord([void Function(OneOfFourRecordBuilder)? updates]) =>
       (new OneOfFourRecordBuilder()..update(updates)).build();
 
   _$OneOfFourRecord._({this.type, this.teachingCards, this.day, this.reference})
@@ -148,25 +148,25 @@ class _$OneOfFourRecord extends OneOfFourRecord {
 
 class OneOfFourRecordBuilder
     implements Builder<OneOfFourRecord, OneOfFourRecordBuilder> {
-  _$OneOfFourRecord _$v;
+  _$OneOfFourRecord? _$v;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  ListBuilder<DocumentReference<Object>> _teachingCards;
+  ListBuilder<DocumentReference<Object>>? _teachingCards;
   ListBuilder<DocumentReference<Object>> get teachingCards =>
       _$this._teachingCards ??= new ListBuilder<DocumentReference<Object>>();
-  set teachingCards(ListBuilder<DocumentReference<Object>> teachingCards) =>
+  set teachingCards(ListBuilder<DocumentReference<Object>>? teachingCards) =>
       _$this._teachingCards = teachingCards;
 
-  int _day;
-  int get day => _$this._day;
-  set day(int day) => _$this._day = day;
+  int? _day;
+  int? get day => _$this._day;
+  set day(int? day) => _$this._day = day;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
+  DocumentReference<Object>? _reference;
+  DocumentReference<Object>? get reference => _$this._reference;
+  set reference(DocumentReference<Object>? reference) =>
       _$this._reference = reference;
 
   OneOfFourRecordBuilder() {
@@ -192,7 +192,7 @@ class OneOfFourRecordBuilder
   }
 
   @override
-  void update(void Function(OneOfFourRecordBuilder) updates) {
+  void update(void Function(OneOfFourRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -207,7 +207,7 @@ class OneOfFourRecordBuilder
               day: day,
               reference: reference);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'teachingCards';
         _teachingCards?.build();

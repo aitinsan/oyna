@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:oyna/auth/firebase_user_provider.dart';
 import 'package:oyna/day_page/day.page.dart';
@@ -9,7 +11,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -19,7 +21,27 @@ class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void didUpdateWidget(covariant HomePage oldWidget) {
+    setState(() {});
+    super.didUpdateWidget(oldWidget);
+    setState(() {});
+  }
+
+  @override
+  void didChangeDependencies() {
+    setState(() {});
+    super.didChangeDependencies();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    Timer.periodic(new Duration(seconds: 1), (Timer timer) async {
+      setState(() {
+        print('fdsaf');
+      });
+    });
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -39,21 +61,19 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
-                          child: AuthUserStreamWidget(
-                            child: Container(
-                                width: 46,
-                                height: 46,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
-                                child: currentUserPhoto != ''
-                                    ? Image.network(
-                                        currentUserPhoto,
-                                      )
-                                    : Image.asset(
-                                        'assets/images/altynsaryn.png')),
-                          ),
+                          child: Container(
+                              width: 46,
+                              height: 46,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: currentUserPhoto != ''
+                                  ? Image.network(
+                                      currentUserPhoto,
+                                    )
+                                  : Image.asset(
+                                      'assets/images/altynsaryn.png')),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
@@ -72,17 +92,16 @@ class _HomePageState extends State<HomePage> {
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                AuthUserStreamWidget(
-                                  child: Text(
-                                    currentUserDisplayName,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                  ),
+                                Text(
+                                  currentUserDocument?.displayName ??
+                                      'Нет имени',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -102,22 +121,15 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                       ),
                                     ),
-                                    AuthUserStreamWidget(
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          currentUserDocument?.points
-                                              .toString(),
-                                          '0',
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                      ),
+                                    Text(
+                                      '${currentUserDocument?.points ?? 0}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
                                     ),
                                   ],
                                 ),

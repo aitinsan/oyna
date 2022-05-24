@@ -1,19 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:oyna/model/day.dart';
 import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/test/test.page.dart';
 
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../test/test_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class DayPage extends StatefulWidget {
   const DayPage({
-    Key key,
-    @required this.day,
+    Key? key,
+    required this.day,
   }) : super(key: key);
 
   final Day day;
@@ -55,7 +51,11 @@ class _DayPageState extends State<DayPage> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                child: ListView.builder(
+                child: ListView.separated(
+                  separatorBuilder: ((context, index) => Image.asset(
+                        'assets/images/Line.png',
+                        height: 100,
+                      )),
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
                   itemCount: widget.day.oneOfFours.length,
@@ -86,8 +86,10 @@ class _DayPageState extends State<DayPage> {
                             child: Align(
                               alignment: AlignmentDirectional(0, 0),
                               child: Text(
-                                index.toString(),
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                (index + 1).toString(),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                           ),

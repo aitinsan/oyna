@@ -14,7 +14,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegistrationPageWidget extends StatefulWidget {
-  const RegistrationPageWidget({Key key}) : super(key: key);
+  const RegistrationPageWidget({Key? key}) : super(key: key);
 
   @override
   _RegistrationPageWidgetState createState() => _RegistrationPageWidgetState();
@@ -22,11 +22,11 @@ class RegistrationPageWidget extends StatefulWidget {
 
 class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController confirmPasswordController;
-  bool confirmPasswordVisibility;
-  TextEditingController emailAddressController;
-  TextEditingController passwordController;
-  bool passwordVisibility;
+  TextEditingController? confirmPasswordController;
+  late bool confirmPasswordVisibility;
+  TextEditingController? emailAddressController;
+  TextEditingController? passwordController;
+  late bool passwordVisibility;
 
   @override
   void initState() {
@@ -78,7 +78,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 50, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
+                          FFLocalizations.of(context)!.getText(
                             'i5mgwizw' /* Регистрация */,
                           ),
                           textAlign: TextAlign.center,
@@ -125,7 +125,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                   controller: emailAddressController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       'gt8pmd7n' /* Ваша почта */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -134,7 +134,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context).getText(
+                    hintText: FFLocalizations.of(context)!.getText(
                       'v147iidg' /* Введите вашу почту */,
                     ),
                     hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -191,7 +191,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                   controller: passwordController,
                   obscureText: !passwordVisibility,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       '9pvf096r' /* Пароль */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -200,7 +200,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context).getText(
+                    hintText: FFLocalizations.of(context)!.getText(
                       'cbrq3hsv' /* Введите ваш пароль */,
                     ),
                     hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -269,7 +269,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                   controller: confirmPasswordController,
                   obscureText: !confirmPasswordVisibility,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       'nwawtkhp' /* Повторите пароль */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -278,7 +278,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context).getText(
+                    hintText: FFLocalizations.of(context)!.getText(
                       'd5gv4hn2' /* Повторите ваш пароль */,
                     ),
                     hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -431,7 +431,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
+                  FFLocalizations.of(context)!.getText(
                     'bytcmwo3' /* Продолжая регистрацию, вы согл... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -445,8 +445,8 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 24),
               child: InkWell(
                 onTap: () async {
-                  if (passwordController.text !=
-                      confirmPasswordController.text) {
+                  if (passwordController!.text !=
+                      confirmPasswordController!.text) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
@@ -459,8 +459,8 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
 
                   final user = await createAccountWithEmail(
                     context,
-                    emailAddressController.text,
-                    passwordController.text,
+                    emailAddressController!.text,
+                    passwordController!.text,
                   );
                   if (user == null) {
                     return;

@@ -32,7 +32,7 @@ enum Step {
 }
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({Key key}) : super(key: key);
+  const ChatPage({Key? key}) : super(key: key);
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -42,8 +42,8 @@ class _ChatPageState extends State<ChatPage> {
   List<types.Message> _messages = [];
   final _user = const types.User(id: 'user');
   Step _step = Step.empty;
-  TextEditingController nameController;
-  TextEditingController ageController;
+  TextEditingController? nameController;
+  TextEditingController? ageController;
   final _bot = const types.User(
     id: 'bot',
     firstName: 'Ыбырай А.',
@@ -107,7 +107,7 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ],
         );
-        break;
+
       case Step.nickname:
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -121,12 +121,12 @@ class _ChatPageState extends State<ChatPage> {
               ),
               InkWell(
                 onTap: () async {
-                  await currentUserReference.update(createUserRecordData(
-                    description: currentUserDocument.description,
-                    age: currentUserDocument.age,
-                    displayName: nameController.text,
-                    gender: currentUserDocument.gender,
-                    photoUrl: currentUserDocument.photoUrl,
+                  await currentUserReference!.update(createUserRecordData(
+                    description: currentUserDocument!.description,
+                    age: currentUserDocument!.age,
+                    displayName: nameController!.text,
+                    gender: currentUserDocument!.gender,
+                    photoUrl: currentUserDocument!.photoUrl,
                   ));
                   setState(() {
                     _addBotMessage(
@@ -148,7 +148,7 @@ class _ChatPageState extends State<ChatPage> {
             ],
           ),
         );
-        break;
+
       case Step.gender:
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -157,12 +157,12 @@ class _ChatPageState extends State<ChatPage> {
               Flexible(
                 child: InkWell(
                   onTap: () async {
-                    await currentUserReference.update(createUserRecordData(
-                      description: currentUserDocument.description,
-                      age: currentUserDocument.age,
-                      displayName: currentUserDocument.displayName,
+                    await currentUserReference!.update(createUserRecordData(
+                      description: currentUserDocument!.description,
+                      age: currentUserDocument!.age,
+                      displayName: currentUserDocument!.displayName,
                       gender: 'Господин',
-                      photoUrl: currentUserDocument.photoUrl,
+                      photoUrl: currentUserDocument!.photoUrl,
                     ));
                     setState(() {
                       _addBotMessage('Как прекрасно! Сколько вам лет ?');
@@ -181,12 +181,12 @@ class _ChatPageState extends State<ChatPage> {
               Flexible(
                 child: InkWell(
                   onTap: () async {
-                    await currentUserReference.update(createUserRecordData(
-                      description: currentUserDocument.description,
-                      age: currentUserDocument.age,
-                      displayName: currentUserDocument.displayName,
+                    await currentUserReference!.update(createUserRecordData(
+                      description: currentUserDocument!.description,
+                      age: currentUserDocument!.age,
+                      displayName: currentUserDocument!.displayName,
                       gender: 'Госпожа',
-                      photoUrl: currentUserDocument.photoUrl,
+                      photoUrl: currentUserDocument!.photoUrl,
                     ));
                     setState(() {
                       _addBotMessage('Как прекрасно! Сколько вам лет ?');
@@ -204,7 +204,7 @@ class _ChatPageState extends State<ChatPage> {
             ],
           ),
         );
-        break;
+
       case Step.age:
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -219,12 +219,12 @@ class _ChatPageState extends State<ChatPage> {
               ),
               InkWell(
                 onTap: () async {
-                  await currentUserReference.update(createUserRecordData(
-                    description: currentUserDocument.description,
-                    age: int.parse(ageController.text),
-                    displayName: currentUserDocument.displayName,
-                    gender: currentUserDocument.gender,
-                    photoUrl: currentUserDocument.photoUrl,
+                  await currentUserReference!.update(createUserRecordData(
+                    description: currentUserDocument!.description,
+                    age: int.parse(ageController!.text),
+                    displayName: currentUserDocument!.displayName,
+                    gender: currentUserDocument!.gender,
+                    photoUrl: currentUserDocument!.photoUrl,
                   ));
                   setState(() {
                     _addBotMessage(
@@ -246,7 +246,7 @@ class _ChatPageState extends State<ChatPage> {
             ],
           ),
         );
-        break;
+
       case Step.goal:
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -254,18 +254,16 @@ class _ChatPageState extends State<ChatPage> {
             children: [
               InkWell(
                 onTap: () async {
-                  await currentUserReference.update(createUserRecordData(
+                  await currentUserReference!.update(createUserRecordData(
                     description: 'Я хочу полностью овладеть казахским языком.',
-                    age: currentUserDocument.age,
-                    displayName: currentUserDocument.displayName,
-                    gender: currentUserDocument.gender,
-                    photoUrl: currentUserDocument.photoUrl,
+                    age: currentUserDocument!.age,
+                    displayName: currentUserDocument!.displayName,
+                    gender: currentUserDocument!.gender,
+                    photoUrl: currentUserDocument!.photoUrl,
                   ));
                   setState(() {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => HomePage()));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
                   });
                 },
                 child: Padding(
@@ -279,19 +277,17 @@ class _ChatPageState extends State<ChatPage> {
               ),
               InkWell(
                 onTap: () async {
-                  await currentUserReference.update(createUserRecordData(
+                  await currentUserReference!.update(createUserRecordData(
                     description:
                         'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.',
-                    age: currentUserDocument.age,
-                    displayName: currentUserDocument.displayName,
-                    gender: currentUserDocument.gender,
-                    photoUrl: currentUserDocument.photoUrl,
+                    age: currentUserDocument!.age,
+                    displayName: currentUserDocument!.displayName,
+                    gender: currentUserDocument!.gender,
+                    photoUrl: currentUserDocument!.photoUrl,
                   ));
                   setState(() {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => HomePage()));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
                   });
                 },
                 child: Padding(
@@ -306,12 +302,10 @@ class _ChatPageState extends State<ChatPage> {
             ],
           ),
         );
-        break;
-      case Step.ready:
-        break;
+
       case Step.empty:
         return SizedBox.shrink();
-        break;
+
       default:
         return SizedBox.shrink();
     }

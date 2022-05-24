@@ -15,10 +15,10 @@ class _$UserRecordSerializer implements StructuredSerializer<UserRecord> {
   final String wireName = 'UserRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, UserRecord object,
+  Iterable<Object?> serialize(Serializers serializers, UserRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.gender;
     if (value != null) {
       result
@@ -99,61 +99,61 @@ class _$UserRecordSerializer implements StructuredSerializer<UserRecord> {
   }
 
   @override
-  UserRecord deserialize(Serializers serializers, Iterable<Object> serialized,
+  UserRecord deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new UserRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'gender':
           result.gender = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'email':
           result.email = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'age':
           result.age = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'display_name':
           result.displayName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'photo_url':
           result.photoUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'uid':
           result.uid = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'created_time':
           result.createdTime = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'phone_number':
           result.phoneNumber = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'points':
           result.points = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
                       DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              as DocumentReference<Object>?;
           break;
       }
     }
@@ -164,29 +164,29 @@ class _$UserRecordSerializer implements StructuredSerializer<UserRecord> {
 
 class _$UserRecord extends UserRecord {
   @override
-  final String gender;
+  final String? gender;
   @override
-  final String email;
+  final String? email;
   @override
-  final String description;
+  final String? description;
   @override
-  final int age;
+  final int? age;
   @override
-  final String displayName;
+  final String? displayName;
   @override
-  final String photoUrl;
+  final String? photoUrl;
   @override
-  final String uid;
+  final String? uid;
   @override
-  final DateTime createdTime;
+  final DateTime? createdTime;
   @override
-  final String phoneNumber;
+  final String? phoneNumber;
   @override
-  final int points;
+  final int? points;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object>? reference;
 
-  factory _$UserRecord([void Function(UserRecordBuilder) updates]) =>
+  factory _$UserRecord([void Function(UserRecordBuilder)? updates]) =>
       (new UserRecordBuilder()..update(updates)).build();
 
   _$UserRecord._(
@@ -270,51 +270,51 @@ class _$UserRecord extends UserRecord {
 }
 
 class UserRecordBuilder implements Builder<UserRecord, UserRecordBuilder> {
-  _$UserRecord _$v;
+  _$UserRecord? _$v;
 
-  String _gender;
-  String get gender => _$this._gender;
-  set gender(String gender) => _$this._gender = gender;
+  String? _gender;
+  String? get gender => _$this._gender;
+  set gender(String? gender) => _$this._gender = gender;
 
-  String _email;
-  String get email => _$this._email;
-  set email(String email) => _$this._email = email;
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
 
-  String _description;
-  String get description => _$this._description;
-  set description(String description) => _$this._description = description;
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
-  int _age;
-  int get age => _$this._age;
-  set age(int age) => _$this._age = age;
+  int? _age;
+  int? get age => _$this._age;
+  set age(int? age) => _$this._age = age;
 
-  String _displayName;
-  String get displayName => _$this._displayName;
-  set displayName(String displayName) => _$this._displayName = displayName;
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
 
-  String _photoUrl;
-  String get photoUrl => _$this._photoUrl;
-  set photoUrl(String photoUrl) => _$this._photoUrl = photoUrl;
+  String? _photoUrl;
+  String? get photoUrl => _$this._photoUrl;
+  set photoUrl(String? photoUrl) => _$this._photoUrl = photoUrl;
 
-  String _uid;
-  String get uid => _$this._uid;
-  set uid(String uid) => _$this._uid = uid;
+  String? _uid;
+  String? get uid => _$this._uid;
+  set uid(String? uid) => _$this._uid = uid;
 
-  DateTime _createdTime;
-  DateTime get createdTime => _$this._createdTime;
-  set createdTime(DateTime createdTime) => _$this._createdTime = createdTime;
+  DateTime? _createdTime;
+  DateTime? get createdTime => _$this._createdTime;
+  set createdTime(DateTime? createdTime) => _$this._createdTime = createdTime;
 
-  String _phoneNumber;
-  String get phoneNumber => _$this._phoneNumber;
-  set phoneNumber(String phoneNumber) => _$this._phoneNumber = phoneNumber;
+  String? _phoneNumber;
+  String? get phoneNumber => _$this._phoneNumber;
+  set phoneNumber(String? phoneNumber) => _$this._phoneNumber = phoneNumber;
 
-  int _points;
-  int get points => _$this._points;
-  set points(int points) => _$this._points = points;
+  int? _points;
+  int? get points => _$this._points;
+  set points(int? points) => _$this._points = points;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
+  DocumentReference<Object>? _reference;
+  DocumentReference<Object>? get reference => _$this._reference;
+  set reference(DocumentReference<Object>? reference) =>
       _$this._reference = reference;
 
   UserRecordBuilder() {
@@ -347,7 +347,7 @@ class UserRecordBuilder implements Builder<UserRecord, UserRecordBuilder> {
   }
 
   @override
-  void update(void Function(UserRecordBuilder) updates) {
+  void update(void Function(UserRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

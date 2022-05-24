@@ -8,11 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DayPageWidget extends StatefulWidget {
   const DayPageWidget({
-    Key key,
+    Key? key,
     this.day,
   }) : super(key: key);
 
-  final int day;
+  final int? day;
 
   @override
   _DayPageWidgetState createState() => _DayPageWidgetState();
@@ -51,7 +51,7 @@ class _DayPageWidgetState extends State<DayPageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                child: StreamBuilder<List<OneOfFourRecord>>(
+                child: StreamBuilder<List<OneOfFourRecord?>>(
                   stream: queryOneOfFourRecord(
                     queryBuilder: (oneOfFourRecord) =>
                         oneOfFourRecord.where('day', isEqualTo: widget.day),
@@ -70,15 +70,15 @@ class _DayPageWidgetState extends State<DayPageWidget> {
                         ),
                       );
                     }
-                    List<OneOfFourRecord> listViewOneOfFourRecordList =
-                        snapshot.data;
+                    List<OneOfFourRecord?> listViewOneOfFourRecordList =
+                        snapshot.data!;
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,
                       itemCount: listViewOneOfFourRecordList.length,
                       itemBuilder: (context, listViewIndex) {
                         final listViewOneOfFourRecord =
-                            listViewOneOfFourRecordList[listViewIndex];
+                            listViewOneOfFourRecordList[listViewIndex]!;
                         return InkWell(
                           onTap: () async {
                             await Navigator.push(
@@ -112,7 +112,7 @@ class _DayPageWidgetState extends State<DayPageWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                 child: Text(
-                                  listViewOneOfFourRecord.type,
+                                  listViewOneOfFourRecord.type!,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(

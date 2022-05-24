@@ -5,8 +5,8 @@ class QuestionCard {
   String topic;
   String text;
   QuestionCard({
-    @required this.title,
-    @required this.topic,
-    @required this.text,
+    required this.title,
+    required this.topic,
+    required this.text,
   });
 }

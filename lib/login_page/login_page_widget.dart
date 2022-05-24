@@ -13,7 +13,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPageWidget extends StatefulWidget {
-  const LoginPageWidget({Key key}) : super(key: key);
+  const LoginPageWidget({Key? key}) : super(key: key);
 
   @override
   _LoginPageWidgetState createState() => _LoginPageWidgetState();
@@ -21,9 +21,9 @@ class LoginPageWidget extends StatefulWidget {
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController emailAddressController;
-  TextEditingController passwordController;
-  bool passwordVisibility;
+  TextEditingController? emailAddressController;
+  TextEditingController? passwordController;
+  late bool passwordVisibility;
 
   @override
   void initState() {
@@ -73,7 +73,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 50, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
+                          FFLocalizations.of(context)!.getText(
                             'vcngz8mw' /* Вход */,
                           ),
                           textAlign: TextAlign.center,
@@ -120,7 +120,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   controller: emailAddressController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       'gu73g6ec' /* Ваша почта */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -129,7 +129,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context).getText(
+                    hintText: FFLocalizations.of(context)!.getText(
                       'mh6q6z43' /* Введите вашу почту */,
                     ),
                     hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -186,7 +186,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   controller: passwordController,
                   obscureText: !passwordVisibility,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       '9w2wzr7f' /* Пароль */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -195,7 +195,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context).getText(
+                    hintText: FFLocalizations.of(context)!.getText(
                       '4sfdfpnk' /* Введите ваш пароль */,
                     ),
                     hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
@@ -352,8 +352,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                 onTap: () async {
                   final user = await signInWithEmail(
                     context,
-                    emailAddressController.text,
-                    passwordController.text,
+                    emailAddressController!.text,
+                    passwordController!.text,
                   );
                   if (user == null) {
                     return;

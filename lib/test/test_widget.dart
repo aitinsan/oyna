@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class TestWidget extends StatefulWidget {
-  const TestWidget({Key key}) : super(key: key);
+  const TestWidget({Key? key}) : super(key: key);
 
   @override
   _TestWidgetState createState() => _TestWidgetState();
@@ -25,7 +25,7 @@ class _TestWidgetState extends State<TestWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: true,
         title: Text(
-          FFLocalizations.of(context).getText(
+          FFLocalizations.of(context)!.getText(
             'bquww988' /* Грамматика */,
           ),
           style: FlutterFlowTheme.of(context).title1.override(
@@ -77,7 +77,7 @@ class _TestWidgetState extends State<TestWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
+                            FFLocalizations.of(context)!.getText(
                               'rdjvydeh' /* 1/3 */,
                             ),
                             style:
@@ -107,7 +107,7 @@ class _TestWidgetState extends State<TestWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 100, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
+                          FFLocalizations.of(context)!.getText(
                             'kiwe27yi' /* Антоним */,
                           ),
                           style: FlutterFlowTheme.of(context).title1.override(
@@ -122,7 +122,7 @@ class _TestWidgetState extends State<TestWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
+                          FFLocalizations.of(context)!.getText(
                             'irma189e' /* Мағыналары бір-біріне қарама-қ... */,
                           ),
                           style:
@@ -150,7 +150,7 @@ class _TestWidgetState extends State<TestWidget> {
                       onPressed: () {
                         print('Button pressed ...');
                       },
-                      text: FFLocalizations.of(context).getText(
+                      text: FFLocalizations.of(context)!.getText(
                         'hv500nfb' /* Дальше */,
                       ),
                       options: FFButtonOptions(

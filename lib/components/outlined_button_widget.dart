@@ -6,11 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class OutlinedButtonWidget extends StatefulWidget {
   const OutlinedButtonWidget({
-    Key key,
+    Key? key,
     this.text,
   }) : super(key: key);
 
-  final String text;
+  final String? text;
 
   @override
   _OutlinedButtonWidgetState createState() => _OutlinedButtonWidgetState();
@@ -25,7 +25,7 @@ class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: FlutterFlowTheme.of(context).primaryColor,
+          color: FlutterFlowTheme.of(context).primaryColor!,
           width: 2,
         ),
       ),
@@ -34,7 +34,7 @@ class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
           child: Text(
-            widget.text,
+            widget.text!,
             style: FlutterFlowTheme.of(context).bodyText1.override(
                   fontFamily: 'Poppins',
                   color: FlutterFlowTheme.of(context).primaryColor,

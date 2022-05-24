@@ -7,8 +7,8 @@ import 'auth_util.dart';
 
 final _googleSignIn = GoogleSignIn();
 
-Future<User> signInWithGoogle(BuildContext context) async {
-  final signInFunc = () async {
+Future<User?> signInWithGoogle(BuildContext context) async {
+  final Future<UserCredential> Function() signInFunc = () async {
     if (kIsWeb) {
       GoogleAuthProvider googleProvider = GoogleAuthProvider();
       googleProvider
@@ -18,10 +18,10 @@ Future<User> signInWithGoogle(BuildContext context) async {
     }
 
     await signOutWithGoogle().catchError((_) => null);
-    final auth = await (await _googleSignIn.signIn())?.authentication;
-    if (auth == null) {
-      return null;
-    }
+    final auth = (await (await _googleSignIn.signIn())?.authentication)!;
+    // if (auth == null) {
+    //   return null;
+    // }
     final credential = GoogleAuthProvider.credential(
         idToken: auth.idToken, accessToken: auth.accessToken);
     return FirebaseAuth.instance.signInWithCredential(credential);

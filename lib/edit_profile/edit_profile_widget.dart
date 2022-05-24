@@ -7,12 +7,13 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/upload_media.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart' show IterableNullableExtension;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditProfileWidget extends StatefulWidget {
-  const EditProfileWidget({Key key}) : super(key: key);
+  const EditProfileWidget({Key? key}) : super(key: key);
 
   @override
   _EditProfileWidgetState createState() => _EditProfileWidgetState();
@@ -20,12 +21,12 @@ class EditProfileWidget extends StatefulWidget {
 
 class _EditProfileWidgetState extends State<EditProfileWidget> {
   String uploadedFileUrl = '';
-  TextEditingController nameController;
-  TextEditingController genderController;
-  TextEditingController ageController;
-  TextEditingController descriptionController;
+  TextEditingController? nameController;
+  TextEditingController? genderController;
+  TextEditingController? ageController;
+  TextEditingController? descriptionController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  SelectedMedia selectedPhoto;
+  SelectedMedia? selectedPhoto;
 
   @override
   void initState() {
@@ -109,8 +110,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         );
                         final downloadUrls = (await Future.wait(
                                 selectedMedia.map((m) async =>
-                                    await uploadData(m.storagePath, m.bytes))))
-                            .where((u) => u != null)
+                                    await uploadData(m.storagePath, m.bytes!))))
+                            .whereNotNull()
                             .toList();
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         if (downloadUrls != null &&
@@ -129,7 +130,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         }
                       }
                       setState(() {
-                        selectedPhoto = selectedMedia.first;
+                        selectedPhoto = selectedMedia!.first;
                       });
                     },
                     child: Stack(
@@ -156,7 +157,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         shape: BoxShape.circle,
                                       ),
                                       child: selectedPhoto != null
-                                          ? Image.memory(selectedPhoto.bytes)
+                                          ? Image.memory(selectedPhoto!.bytes!)
                                           : currentUserPhoto != ''
                                               ? Image.network(
                                                   currentUserPhoto,
@@ -191,7 +192,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   controller: nameController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       'm9dgsxpm' /* Никнейм */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -208,14 +209,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
@@ -241,7 +242,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   controller: genderController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       'j1icmog1' /* Пол */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -258,14 +259,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
@@ -291,7 +292,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   controller: ageController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       'c5isyybs' /* Возраст */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -308,14 +309,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
@@ -341,7 +342,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   controller: descriptionController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       'ja6sds65' /* Цель */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -350,7 +351,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context).getText(
+                    hintText: FFLocalizations.of(context)!.getText(
                       'o8z1eniv' /* Your bio */,
                     ),
                     hintStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -361,14 +362,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
@@ -400,13 +401,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     child: InkWell(
                       onTap: () async {
                         final userUpdateData = createUserRecordData(
-                          description: descriptionController.text,
-                          age: int.parse(ageController.text),
-                          displayName: nameController.text,
-                          gender: genderController.text,
+                          description: descriptionController!.text,
+                          age: int.parse(ageController!.text),
+                          displayName: nameController!.text,
+                          gender: genderController!.text,
                           photoUrl: uploadedFileUrl,
                         );
-                        await currentUserReference.update(userUpdateData);
+                        await currentUserReference!.update(userUpdateData);
                         Navigator.pop(context);
                       },
                       child: FilledButtonWidget(

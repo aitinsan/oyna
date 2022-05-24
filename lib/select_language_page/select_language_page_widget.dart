@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SelectLanguagePageWidget extends StatefulWidget {
-  const SelectLanguagePageWidget({Key key}) : super(key: key);
+  const SelectLanguagePageWidget({Key? key}) : super(key: key);
 
   @override
   _SelectLanguagePageWidgetState createState() =>
@@ -70,7 +70,7 @@ class _SelectLanguagePageWidgetState extends State<SelectLanguagePageWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 16),
                       child: Text(
-                        FFLocalizations.of(context).getText(
+                        FFLocalizations.of(context)!.getText(
                           'bjnx61x9' /* Выберите язык */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(

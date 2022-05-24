@@ -12,7 +12,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfilePageWidget extends StatefulWidget {
-  const ProfilePageWidget({Key key}) : super(key: key);
+  const ProfilePageWidget({Key? key}) : super(key: key);
 
   @override
   _ProfilePageWidgetState createState() => _ProfilePageWidgetState();
@@ -20,9 +20,9 @@ class ProfilePageWidget extends StatefulWidget {
 
 class _ProfilePageWidgetState extends State<ProfilePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController emailAddressController;
-  TextEditingController yourNameController;
-  TextEditingController myBioController;
+  TextEditingController? emailAddressController;
+  TextEditingController? yourNameController;
+  TextEditingController? myBioController;
 
   @override
   void initState() {
@@ -68,7 +68,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         );
                       },
                       child: Text(
-                        FFLocalizations.of(context).getText(
+                        FFLocalizations.of(context)!.getText(
                           'v9nk140r' /* Выйти */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -143,7 +143,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       '2bw0tn6z' /* Пол */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -160,14 +160,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
@@ -194,7 +194,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       '117oddez' /* Возраст */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -211,14 +211,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
@@ -245,7 +245,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
+                    labelText: FFLocalizations.of(context)!.getText(
                       '16vwx9lf' /* Цель */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -254,7 +254,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context).getText(
+                    hintText: FFLocalizations.of(context)!.getText(
                       'cr6woey8' /* Your bio */,
                     ),
                     hintStyle: FlutterFlowTheme.of(context).bodyText2.override(
@@ -265,14 +265,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),

@@ -10,7 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class IntroPageWidget extends StatefulWidget {
-  const IntroPageWidget({Key key}) : super(key: key);
+  const IntroPageWidget({Key? key}) : super(key: key);
 
   @override
   _IntroPageWidgetState createState() => _IntroPageWidgetState();
@@ -54,7 +54,7 @@ class _IntroPageWidgetState extends State<IntroPageWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 8),
                     child: Text(
-                      FFLocalizations.of(context).getText(
+                      FFLocalizations.of(context)!.getText(
                         'hlwzpjnh' /* Привет и добро пожаловать! */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -70,7 +70,7 @@ class _IntroPageWidgetState extends State<IntroPageWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 24),
                     child: Text(
-                      FFLocalizations.of(context).getText(
+                      FFLocalizations.of(context)!.getText(
                         'xnxtdv14' /* Научись говорить, писать и пон... */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(

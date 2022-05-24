@@ -1,5 +1,6 @@
 import 'package:built_value/serializer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart' show IterableNullableExtension;
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../flutter_flow/flutter_flow_util.dart';
@@ -21,25 +22,25 @@ export 'schema/teaching_cards_record.dart';
 export 'schema/one_of_four_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
-Stream<List<UserRecord>> queryUserRecord(
-        {Query Function(Query) queryBuilder,
+Stream<List<UserRecord?>> queryUserRecord(
+        {Query Function(Query)? queryBuilder,
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(UserRecord.collection, UserRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<List<UserRecord>> queryUserRecordOnce(
-        {Query Function(Query) queryBuilder,
+Future<List<UserRecord?>> queryUserRecordOnce(
+        {Query Function(Query)? queryBuilder,
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollectionOnce(UserRecord.collection, UserRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<FFFirestorePage<UserRecord>> queryUserRecordPage({
-  Query Function(Query) queryBuilder,
-  DocumentSnapshot nextPageMarker,
-  int pageSize,
-  bool isStream,
+Future<FFFirestorePage<UserRecord?>> queryUserRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
 }) =>
     queryCollectionPage(
       UserRecord.collection,
@@ -51,25 +52,25 @@ Future<FFFirestorePage<UserRecord>> queryUserRecordPage({
     );
 
 /// Functions to query DayRecords (as a Stream and as a Future).
-Stream<List<DayRecord>> queryDayRecord(
-        {Query Function(Query) queryBuilder,
+Stream<List<DayRecord?>> queryDayRecord(
+        {Query Function(Query)? queryBuilder,
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(DayRecord.collection, DayRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<List<DayRecord>> queryDayRecordOnce(
-        {Query Function(Query) queryBuilder,
+Future<List<DayRecord?>> queryDayRecordOnce(
+        {Query Function(Query)? queryBuilder,
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollectionOnce(DayRecord.collection, DayRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<FFFirestorePage<DayRecord>> queryDayRecordPage({
-  Query Function(Query) queryBuilder,
-  DocumentSnapshot nextPageMarker,
-  int pageSize,
-  bool isStream,
+Future<FFFirestorePage<DayRecord?>> queryDayRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
 }) =>
     queryCollectionPage(
       DayRecord.collection,
@@ -81,27 +82,27 @@ Future<FFFirestorePage<DayRecord>> queryDayRecordPage({
     );
 
 /// Functions to query TeachingCardsRecords (as a Stream and as a Future).
-Stream<List<TeachingCardsRecord>> queryTeachingCardsRecord(
-        {Query Function(Query) queryBuilder,
+Stream<List<TeachingCardsRecord?>> queryTeachingCardsRecord(
+        {Query Function(Query)? queryBuilder,
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(
         TeachingCardsRecord.collection, TeachingCardsRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<List<TeachingCardsRecord>> queryTeachingCardsRecordOnce(
-        {Query Function(Query) queryBuilder,
+Future<List<TeachingCardsRecord?>> queryTeachingCardsRecordOnce(
+        {Query Function(Query)? queryBuilder,
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollectionOnce(
         TeachingCardsRecord.collection, TeachingCardsRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<FFFirestorePage<TeachingCardsRecord>> queryTeachingCardsRecordPage({
-  Query Function(Query) queryBuilder,
-  DocumentSnapshot nextPageMarker,
-  int pageSize,
-  bool isStream,
+Future<FFFirestorePage<TeachingCardsRecord?>> queryTeachingCardsRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
 }) =>
     queryCollectionPage(
       TeachingCardsRecord.collection,
@@ -113,25 +114,25 @@ Future<FFFirestorePage<TeachingCardsRecord>> queryTeachingCardsRecordPage({
     );
 
 /// Functions to query OneOfFourRecords (as a Stream and as a Future).
-Stream<List<OneOfFourRecord>> queryOneOfFourRecord(
-        {Query Function(Query) queryBuilder,
+Stream<List<OneOfFourRecord?>> queryOneOfFourRecord(
+        {Query Function(Query)? queryBuilder,
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(OneOfFourRecord.collection, OneOfFourRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<List<OneOfFourRecord>> queryOneOfFourRecordOnce(
-        {Query Function(Query) queryBuilder,
+Future<List<OneOfFourRecord?>> queryOneOfFourRecordOnce(
+        {Query Function(Query)? queryBuilder,
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollectionOnce(OneOfFourRecord.collection, OneOfFourRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<FFFirestorePage<OneOfFourRecord>> queryOneOfFourRecordPage({
-  Query Function(Query) queryBuilder,
-  DocumentSnapshot nextPageMarker,
-  int pageSize,
-  bool isStream,
+Future<FFFirestorePage<OneOfFourRecord?>> queryOneOfFourRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
 }) =>
     queryCollectionPage(
       OneOfFourRecord.collection,
@@ -142,9 +143,9 @@ Future<FFFirestorePage<OneOfFourRecord>> queryOneOfFourRecordPage({
       isStream: isStream,
     );
 
-Stream<List<T>> queryCollection<T>(
+Stream<List<T?>> queryCollection<T>(
     CollectionReference collection, Serializer<T> serializer,
-    {Query Function(Query) queryBuilder,
+    {Query Function(Query)? queryBuilder,
     int limit = -1,
     bool singleRecord = false}) {
   final builder = queryBuilder ?? (q) => q;
@@ -159,13 +160,13 @@ Stream<List<T>> queryCollection<T>(
           (e) => print('Error serializing doc ${d.reference.path}:\n$e'),
         ),
       )
-      .where((d) => d != null)
+      .where((element) => element != null)
       .toList());
 }
 
-Future<List<T>> queryCollectionOnce<T>(
+Future<List<T?>> queryCollectionOnce<T>(
     CollectionReference collection, Serializer<T> serializer,
-    {Query Function(Query) queryBuilder,
+    {Query Function(Query)? queryBuilder,
     int limit = -1,
     bool singleRecord = false}) {
   final builder = queryBuilder ?? (q) => q;
@@ -180,32 +181,32 @@ Future<List<T>> queryCollectionOnce<T>(
           (e) => print('Error serializing doc ${d.reference.path}:\n$e'),
         ),
       )
-      .where((d) => d != null)
+      .where((element) => element != null)
       .toList());
 }
 
 class FFFirestorePage<T> {
   final List<T> data;
-  final Stream<List<T>> dataStream;
-  final QueryDocumentSnapshot nextPageMarker;
+  final Stream<List<T>>? dataStream;
+  final QueryDocumentSnapshot? nextPageMarker;
 
   FFFirestorePage(this.data, this.dataStream, this.nextPageMarker);
 }
 
-Future<FFFirestorePage<T>> queryCollectionPage<T>(
+Future<FFFirestorePage<T?>> queryCollectionPage<T>(
   CollectionReference collection,
   Serializer<T> serializer, {
-  Query Function(Query) queryBuilder,
-  DocumentSnapshot nextPageMarker,
-  int pageSize,
-  bool isStream,
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
 }) async {
   final builder = queryBuilder ?? (q) => q;
   var query = builder(collection).limit(pageSize);
   if (nextPageMarker != null) {
     query = query.startAfterDocument(nextPageMarker);
   }
-  Stream<QuerySnapshot> docSnapshotStream;
+  Stream<QuerySnapshot>? docSnapshotStream;
   QuerySnapshot docSnapshot;
   if (isStream) {
     docSnapshotStream = query.snapshots();
@@ -220,7 +221,7 @@ Future<FFFirestorePage<T>> queryCollectionPage<T>(
           (e) => print('Error serializing doc ${d.reference.path}:\n$e'),
         ),
       )
-      .where((d) => d != null)
+      .where((element) => element != null)
       .toList();
   final data = getDocs(docSnapshot);
   final dataStream = docSnapshotStream?.map(getDocs);

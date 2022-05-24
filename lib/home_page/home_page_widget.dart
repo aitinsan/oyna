@@ -12,7 +12,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key key}) : super(key: key);
+  const HomePageWidget({Key? key}) : super(key: key);
 
   @override
   _HomePageWidgetState createState() => _HomePageWidgetState();
@@ -44,16 +44,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                           child: AuthUserStreamWidget(
                             child: Container(
-                              width: 46,
-                              height: 46,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              child: currentUserPhoto!=''? Image.network(
-                                currentUserPhoto,
-                              ): Image.asset('assets/images/altynsaryn.png')
-                            ),
+                                width: 46,
+                                height: 46,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: currentUserPhoto != ''
+                                    ? Image.network(
+                                        currentUserPhoto,
+                                      )
+                                    : Image.asset(
+                                        'assets/images/altynsaryn.png')),
                           ),
                         ),
                         Padding(
@@ -105,11 +107,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                     AuthUserStreamWidget(
                                       child: Text(
-                                        valueOrDefault<String>(
-                                          currentUserDocument?.points
-                                              .toString(),
-                                          '0',
-                                        ),
+                                        '${currentUserDocument?.points ?? 0}',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -151,7 +149,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ],
               ),
               Expanded(
-                child: StreamBuilder<List<DayRecord>>(
+                child: StreamBuilder<List<DayRecord?>>(
                   stream: queryDayRecord(),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
@@ -167,7 +165,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       );
                     }
-                    List<DayRecord> listViewDayRecordList = snapshot.data;
+                    List<DayRecord?> listViewDayRecordList = snapshot.data!;
                     return ListView.builder(
                       reverse: true,
                       padding: EdgeInsets.zero,
@@ -175,7 +173,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       itemCount: listViewDayRecordList.length,
                       itemBuilder: (context, listViewIndex) {
                         final listViewDayRecord =
-                            listViewDayRecordList[listViewIndex];
+                            listViewDayRecordList[listViewIndex]!;
                         return Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -198,7 +196,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             ),
                             Text(
-                              'День ' + listViewDayRecord.progressDay.toString(),
+                              'День ' +
+                                  listViewDayRecord.progressDay.toString(),
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(

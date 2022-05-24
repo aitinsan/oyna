@@ -6,7 +6,7 @@ class FFLocalizations {
 
   final Locale locale;
 
-  static FFLocalizations of(BuildContext context) =>
+  static FFLocalizations? of(BuildContext context) =>
       Localizations.of<FFLocalizations>(context, FFLocalizations);
 
   static List<String> languages() => ['ru', 'kk'];
@@ -23,7 +23,7 @@ class FFLocalizations {
     String ruText = '',
     String kkText = '',
   }) =>
-      [ruText, kkText][languageIndex] ?? '';
+      [ruText, kkText][languageIndex];
 }
 
 class FFLocalizationsDelegate extends LocalizationsDelegate<FFLocalizations> {

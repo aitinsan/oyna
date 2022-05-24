@@ -59,12 +59,12 @@ enum DecimalType {
 
 String formatNumber(
   num value, {
-  FormatType formatType,
-  DecimalType decimalType,
-  String currency,
+  FormatType? formatType,
+  DecimalType? decimalType,
+  String? currency,
   bool toLowerCase = false,
-  String format,
-  String locale,
+  String? format,
+  String? locale,
 }) {
   var formattedValue = '';
   switch (formatType) {
@@ -78,6 +78,9 @@ String formatNumber(
           break;
         case DecimalType.commaDecimal:
           formattedValue = NumberFormat.decimalPattern('es_PA').format(value);
+          break;
+        default:
+          formattedValue = NumberFormat.percentPattern().format(value);
           break;
       }
       break;
@@ -100,6 +103,10 @@ String formatNumber(
       final hasLocale = locale != null && locale.isNotEmpty;
       formattedValue =
           NumberFormat(format, hasLocale ? locale : null).format(value);
+      break;
+    default:
+      formattedValue = NumberFormat.percentPattern().format(value);
+      break;
   }
 
   if (formattedValue.isEmpty) {
@@ -138,7 +145,7 @@ bool get isAndroid => !kIsWeb && Platform.isAndroid;
 bool get isiOS => !kIsWeb && Platform.isIOS;
 bool get isWeb => kIsWeb;
 bool responsiveVisibility({
-  @required BuildContext context,
+  required BuildContext context,
   bool phone = true,
   bool tablet = true,
   bool tabletLandscape = true,
@@ -161,10 +168,10 @@ extension StringDocRef on String {
 }
 
 void setAppLanguage(BuildContext context, String language) =>
-    MyApp.of(context).setLocale(Locale(language, ''));
+    MyApp.of(context)!.setLocale(Locale(language, ''));
 
 void setDarkModeSetting(BuildContext context, ThemeMode themeMode) =>
-    MyApp.of(context).setThemeMode(themeMode);
+    MyApp.of(context)!.setThemeMode(themeMode);
 
 void showSnackbar(
   BuildContext context,
@@ -197,7 +204,7 @@ void showSnackbar(
 }
 
 extension FFStringExt on String {
-  String maybeHandleOverflow({int maxChars, String replacement = ''}) =>
+  String maybeHandleOverflow({int? maxChars, String replacement = ''}) =>
       maxChars != null && length > maxChars
           ? replaceRange(maxChars, null, replacement)
           : this;

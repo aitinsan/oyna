@@ -26,16 +26,16 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 
-  static _MyAppState of(BuildContext context) =>
+  static _MyAppState? of(BuildContext context) =>
       context.findAncestorStateOfType<_MyAppState>();
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _locale;
+  Locale? _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
-  Stream<OynaFirebaseUser> userStream;
-  OynaFirebaseUser initialUser;
+  Stream<OynaFirebaseUser>? userStream;
+  OynaFirebaseUser? initialUser;
   bool displaySplashImage = true;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
@@ -77,10 +77,10 @@ class _MyAppState extends State<MyApp> {
       ],
       locale: _locale,
       supportedLocales: const [
-        Locale('ru', ''),
+        // Locale('ru', ''),
 
         // const Locale.fromSubtags(languageCode: 'kk')
-        // Locale('kk', ''),
+        Locale('kk', 'KZ'),
       ],
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
@@ -96,7 +96,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             )
-          : currentUser.loggedIn
+          : currentUser!.loggedIn
               ? HomePage()
               : IntroPageWidget(),
     );

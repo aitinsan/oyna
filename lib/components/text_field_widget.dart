@@ -3,9 +3,9 @@ import 'package:oyna/flutter_flow/flutter_flow_theme.dart';
 import 'package:oyna/flutter_flow/flutter_flow_util.dart';
 
 class TextFieldWidget extends StatelessWidget {
-  TextFieldWidget({Key key, @required this.controller, this.isNum = false})
+  TextFieldWidget({Key? key, required this.controller, this.isNum = false})
       : super(key: key);
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final bool isNum;
   @override
   Widget build(BuildContext context) {
@@ -29,14 +29,14 @@ class TextFieldWidget extends StatelessWidget {
             ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: FlutterFlowTheme.of(context).primaryColor,
+            color: FlutterFlowTheme.of(context).primaryColor!,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(8),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: FlutterFlowTheme.of(context).primaryColor,
+            color: FlutterFlowTheme.of(context).primaryColor!,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(8),

@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LogoWidget extends StatefulWidget {
-  const LogoWidget({Key key}) : super(key: key);
+  const LogoWidget({Key? key}) : super(key: key);
 
   @override
   _LogoWidgetState createState() => _LogoWidgetState();

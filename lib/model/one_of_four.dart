@@ -6,8 +6,8 @@ class OneOfFour {
   String topic;
   List<TeachingCard> teachingCards;
   OneOfFour({
-    @required this.topic,
-    @required this.type,
-    @required this.teachingCards,
+    required this.topic,
+    required this.type,
+    required this.teachingCards,
   });
 }

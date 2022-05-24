@@ -15,10 +15,10 @@ class _$DayRecordSerializer implements StructuredSerializer<DayRecord> {
   final String wireName = 'DayRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, DayRecord object,
+  Iterable<Object?> serialize(Serializers serializers, DayRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.progressDay;
     if (value != null) {
       result
@@ -46,19 +46,19 @@ class _$DayRecordSerializer implements StructuredSerializer<DayRecord> {
   }
 
   @override
-  DayRecord deserialize(Serializers serializers, Iterable<Object> serialized,
+  DayRecord deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new DayRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'progress_day':
           result.progressDay = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'types':
           result.types.replace(serializers.deserialize(value,
@@ -71,7 +71,7 @@ class _$DayRecordSerializer implements StructuredSerializer<DayRecord> {
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
                       DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              as DocumentReference<Object>?;
           break;
       }
     }
@@ -82,13 +82,13 @@ class _$DayRecordSerializer implements StructuredSerializer<DayRecord> {
 
 class _$DayRecord extends DayRecord {
   @override
-  final int progressDay;
+  final int? progressDay;
   @override
-  final BuiltList<DocumentReference<Object>> types;
+  final BuiltList<DocumentReference<Object>>? types;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object>? reference;
 
-  factory _$DayRecord([void Function(DayRecordBuilder) updates]) =>
+  factory _$DayRecord([void Function(DayRecordBuilder)? updates]) =>
       (new DayRecordBuilder()..update(updates)).build();
 
   _$DayRecord._({this.progressDay, this.types, this.reference}) : super._();
@@ -126,21 +126,21 @@ class _$DayRecord extends DayRecord {
 }
 
 class DayRecordBuilder implements Builder<DayRecord, DayRecordBuilder> {
-  _$DayRecord _$v;
+  _$DayRecord? _$v;
 
-  int _progressDay;
-  int get progressDay => _$this._progressDay;
-  set progressDay(int progressDay) => _$this._progressDay = progressDay;
+  int? _progressDay;
+  int? get progressDay => _$this._progressDay;
+  set progressDay(int? progressDay) => _$this._progressDay = progressDay;
 
-  ListBuilder<DocumentReference<Object>> _types;
+  ListBuilder<DocumentReference<Object>>? _types;
   ListBuilder<DocumentReference<Object>> get types =>
       _$this._types ??= new ListBuilder<DocumentReference<Object>>();
-  set types(ListBuilder<DocumentReference<Object>> types) =>
+  set types(ListBuilder<DocumentReference<Object>>? types) =>
       _$this._types = types;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
+  DocumentReference<Object>? _reference;
+  DocumentReference<Object>? get reference => _$this._reference;
+  set reference(DocumentReference<Object>? reference) =>
       _$this._reference = reference;
 
   DayRecordBuilder() {
@@ -165,7 +165,7 @@ class DayRecordBuilder implements Builder<DayRecord, DayRecordBuilder> {
   }
 
   @override
-  void update(void Function(DayRecordBuilder) updates) {
+  void update(void Function(DayRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -179,7 +179,7 @@ class DayRecordBuilder implements Builder<DayRecord, DayRecordBuilder> {
               types: _types?.build(),
               reference: reference);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'types';
         _types?.build();

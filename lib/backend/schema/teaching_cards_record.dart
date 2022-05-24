@@ -11,21 +11,16 @@ abstract class TeachingCardsRecord
   static Serializer<TeachingCardsRecord> get serializer =>
       _$teachingCardsRecordSerializer;
 
-  @nullable
-  String get type;
+  String? get type;
 
-  @nullable
-  String get topic;
+  String? get topic;
 
-  @nullable
-  String get title;
+  String? get title;
 
-  @nullable
-  String get text;
+  String? get text;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get reference;
 
   static void _initializeBuilder(TeachingCardsRecordBuilder builder) => builder
     ..type = ''
@@ -36,30 +31,30 @@ abstract class TeachingCardsRecord
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('teaching_cards');
 
-  static Stream<TeachingCardsRecord> getDocument(DocumentReference ref) => ref
+  static Stream<TeachingCardsRecord?> getDocument(DocumentReference ref) => ref
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
   static Future<TeachingCardsRecord> getDocumentOnce(DocumentReference ref) =>
       ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s)));
+          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   TeachingCardsRecord._();
   factory TeachingCardsRecord(
           [void Function(TeachingCardsRecordBuilder) updates]) =
       _$TeachingCardsRecord;
 
-  static TeachingCardsRecord getDocumentFromData(
+  static TeachingCardsRecord? getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference});
 }
 
 Map<String, dynamic> createTeachingCardsRecordData({
-  String type,
-  String topic,
-  String title,
-  String text,
+  String? type,
+  String? topic,
+  String? title,
+  String? text,
 }) =>
     serializers.toFirestore(
         TeachingCardsRecord.serializer,

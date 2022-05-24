@@ -11,19 +11,15 @@ abstract class OneOfFourRecord
   static Serializer<OneOfFourRecord> get serializer =>
       _$oneOfFourRecordSerializer;
 
-  @nullable
-  String get type;
+  String? get type;
 
-  @nullable
   @BuiltValueField(wireName: 'teaching_cards')
-  BuiltList<DocumentReference> get teachingCards;
+  BuiltList<DocumentReference>? get teachingCards;
 
-  @nullable
-  int get day;
+  int? get day;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get reference;
 
   static void _initializeBuilder(OneOfFourRecordBuilder builder) => builder
     ..type = ''
@@ -33,27 +29,27 @@ abstract class OneOfFourRecord
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('one_of_four');
 
-  static Stream<OneOfFourRecord> getDocument(DocumentReference ref) => ref
+  static Stream<OneOfFourRecord?> getDocument(DocumentReference ref) => ref
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
   static Future<OneOfFourRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   OneOfFourRecord._();
   factory OneOfFourRecord([void Function(OneOfFourRecordBuilder) updates]) =
       _$OneOfFourRecord;
 
-  static OneOfFourRecord getDocumentFromData(
+  static OneOfFourRecord? getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference});
 }
 
 Map<String, dynamic> createOneOfFourRecordData({
-  String type,
-  int day,
+  String? type,
+  int? day,
 }) =>
     serializers.toFirestore(
         OneOfFourRecord.serializer,

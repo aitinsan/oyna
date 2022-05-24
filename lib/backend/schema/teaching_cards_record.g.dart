@@ -20,11 +20,11 @@ class _$TeachingCardsRecordSerializer
   final String wireName = 'TeachingCardsRecord';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, TeachingCardsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.type;
     if (value != null) {
       result
@@ -66,37 +66,37 @@ class _$TeachingCardsRecordSerializer
 
   @override
   TeachingCardsRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new TeachingCardsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'topic':
           result.topic = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'text':
           result.text = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
                       DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              as DocumentReference<Object>?;
           break;
       }
     }
@@ -107,18 +107,18 @@ class _$TeachingCardsRecordSerializer
 
 class _$TeachingCardsRecord extends TeachingCardsRecord {
   @override
-  final String type;
+  final String? type;
   @override
-  final String topic;
+  final String? topic;
   @override
-  final String title;
+  final String? title;
   @override
-  final String text;
+  final String? text;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object>? reference;
 
   factory _$TeachingCardsRecord(
-          [void Function(TeachingCardsRecordBuilder) updates]) =>
+          [void Function(TeachingCardsRecordBuilder)? updates]) =>
       (new TeachingCardsRecordBuilder()..update(updates)).build();
 
   _$TeachingCardsRecord._(
@@ -167,27 +167,27 @@ class _$TeachingCardsRecord extends TeachingCardsRecord {
 
 class TeachingCardsRecordBuilder
     implements Builder<TeachingCardsRecord, TeachingCardsRecordBuilder> {
-  _$TeachingCardsRecord _$v;
+  _$TeachingCardsRecord? _$v;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _topic;
-  String get topic => _$this._topic;
-  set topic(String topic) => _$this._topic = topic;
+  String? _topic;
+  String? get topic => _$this._topic;
+  set topic(String? topic) => _$this._topic = topic;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _text;
-  String get text => _$this._text;
-  set text(String text) => _$this._text = text;
+  String? _text;
+  String? get text => _$this._text;
+  set text(String? text) => _$this._text = text;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
+  DocumentReference<Object>? _reference;
+  DocumentReference<Object>? get reference => _$this._reference;
+  set reference(DocumentReference<Object>? reference) =>
       _$this._reference = reference;
 
   TeachingCardsRecordBuilder() {
@@ -214,7 +214,7 @@ class TeachingCardsRecordBuilder
   }
 
   @override
-  void update(void Function(TeachingCardsRecordBuilder) updates) {
+  void update(void Function(TeachingCardsRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
