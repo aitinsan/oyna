@@ -1,25 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:mime/mime.dart';
 import 'package:oyna/auth/auth_util.dart';
 import 'package:oyna/backend/schema/user_record.dart';
 import 'package:oyna/components/filled_button_widget.dart';
 import 'package:oyna/components/text_field_widget.dart';
 import 'package:oyna/flutter_flow/flutter_flow_theme.dart';
 import 'package:oyna/home_page/home.page.dart';
-import 'package:oyna/index.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 import 'package:uuid/uuid.dart';
-
-import '../flutter_flow/internationalization.dart';
 
 enum Step {
   empty,

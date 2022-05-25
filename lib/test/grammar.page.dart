@@ -55,7 +55,7 @@ class _GrammarPageState extends State<GrammarPage> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
                           child: Text(
-                            '${index + 1}/${widget.oneOfFour.teachingCards.length} ',
+                            '${index + 1}/${widget.oneOfFour.grammarCards.length} ',
                             style:
                                 FlutterFlowTheme.of(context).bodyText2.override(
                                       fontFamily: 'Outfit',
@@ -71,7 +71,7 @@ class _GrammarPageState extends State<GrammarPage> {
                         padding: EdgeInsetsDirectional.fromSTEB(8, 12, 8, 0),
                         child: LinearPercentIndicator(
                           percent: (index + 1) /
-                              widget.oneOfFour.teachingCards.length,
+                              widget.oneOfFour.grammarCards.length,
                           // width: MediaQuery.of(context).size.width * 0.96,
                           lineHeight: 12,
                           animation: true,
@@ -84,7 +84,7 @@ class _GrammarPageState extends State<GrammarPage> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 100, 0, 0),
                         child: Text(
-                          widget.oneOfFour.teachingCards[index].title,
+                          widget.oneOfFour.grammarCards[index].title,
                           style: FlutterFlowTheme.of(context).title1.override(
                                 fontFamily: 'Outfit',
                                 color: FlutterFlowTheme.of(context)
@@ -97,7 +97,7 @@ class _GrammarPageState extends State<GrammarPage> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
                         child: Text(
-                          widget.oneOfFour.teachingCards[index].text,
+                          widget.oneOfFour.grammarCards[index].text,
                           style:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Outfit',
@@ -112,7 +112,7 @@ class _GrammarPageState extends State<GrammarPage> {
                   ),
                 ),
               ),
-              if (index + 1 <= widget.oneOfFour.teachingCards.length - 1)
+              if (index + 1 <= widget.oneOfFour.grammarCards.length - 1)
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -149,7 +149,7 @@ class _GrammarPageState extends State<GrammarPage> {
                     ),
                   ],
                 ),
-              if (index == widget.oneOfFour.teachingCards.length - 1)
+              if (index == widget.oneOfFour.grammarCards.length - 1)
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,

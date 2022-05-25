@@ -24,17 +24,17 @@ class _FilledButtonWidgetState extends State<FilledButtonWidget> {
         color: FlutterFlowTheme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(14),
       ),
-      child: Align(
-        alignment: AlignmentDirectional(0.05, 0),
+      child:  Center(
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
-          child: Text(
-            widget.text,
-            style: FlutterFlowTheme.of(context).bodyText1.override(
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
-                ),
-          ),
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              widget.text,
+              style: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Colors.white,
+                  ),
+            ),
+          
         ),
       ),
     );

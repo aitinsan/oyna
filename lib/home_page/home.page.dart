@@ -21,26 +21,12 @@ class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void didUpdateWidget(covariant HomePage oldWidget) {
-    setState(() {});
-    super.didUpdateWidget(oldWidget);
-    setState(() {});
-  }
-
-  @override
-  void didChangeDependencies() {
-    setState(() {});
-    super.didChangeDependencies();
-    setState(() {});
-  }
-
-  @override
   Widget build(BuildContext context) {
-    Timer.periodic(new Duration(seconds: 1), (Timer timer) async {
-      setState(() {
-        print('fdsaf');
-      });
-    });
+    // Timer.periodic(new Duration(seconds: 1), (Timer timer) async {
+    //   setState(() {
+    //     print('fdsaf');
+    //   });
+    // });
 
     return Scaffold(
       key: scaffoldKey,

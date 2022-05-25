@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/model/grammar_card.dart';
+import 'package:oyna/model/reading_card.dart';
 
 class Day {
   int day;
@@ -18,7 +19,7 @@ List days = [
       OneOfFour(
         type: 'Грамматика',
         topic: 'Синоним, Антоним, Омоним',
-        teachingCards: [
+        grammarCards: [
           GrammarCard(
             title: 'Антоним',
             text:
@@ -59,18 +60,50 @@ List days = [
       OneOfFour(
         type: 'Практика - Оқылым',
         topic: 'Синоним, Антоним, Омоним',
-        teachingCards: [
-          GrammarCard(
-            title: 'Она ложится спать \nОл ұйықтауға жатты',
-            text:
-                'Она надевает пижаму. Она ложится спать. Она кладёт голову на подушку. Она поправляет подушку. Сейчас подушка становится удобнее. Лампа ещё горит. Она выключает лампу. Сейчас в комнате темно. Она снова кладёт голову на подушку. Она засыпает.\n\n     Қыз пижамасын киеді. Ол ұйықтауға жатады. Жастыққа басын қойды. Ол жастығын дұрыстады. Қазір жастығы жайлы болды. Жарық әлі жанып тұр. Ол жарықты өшірді. Қазір бөлмеде қараңғы. Ол басын тағы да жастыққа салды. Ол ұйықтайды.',
-          ),
-        ],
+        readingCard: ReadingCard(
+          titleRu: 'Она ложится спать',
+          textRu:
+              'Она надевает пижаму. Она ложится спать. Она кладёт голову на подушку. Она поправляет подушку. Сейчас подушка становится удобнее. Лампа ещё горит. Она выключает лампу. Сейчас в комнате темно. Она снова кладёт голову на подушку. Она засыпает.',
+          titleKz: 'Ол ұйықтауға жатты',
+          textKz:
+              ' Қыз пижамасын киеді. Ол ұйықтауға жатады. Жастыққа басын қойды. Ол жастығын дұрыстады. Қазір жастығы жайлы болды. Жарық әлі жанып тұр. Ол жарықты өшірді. Қазір бөлмеде қараңғы. Ол басын тағы да жастыққа салды. Ол ұйықтайды.',
+          question: 'Подберите правильный перевод:',
+          readingQuestions: [
+            ReadingQuestion(
+              question: 'ложится спать',
+              answer: 'ұйықтауға жатады',
+            ),
+            ReadingQuestion(
+              question: 'подушка',
+              answer: 'жастық',
+            ),
+            ReadingQuestion(
+              question: 'выключил(а) свет',
+              answer: 'жарықты өшірді',
+            ),
+            ReadingQuestion(
+              question: 'комната',
+              answer: 'бөлме',
+            ),
+            ReadingQuestion(
+              question: 'темно',
+              answer: 'қараңғы',
+            ),
+            ReadingQuestion(
+              question: '',
+              answer: 'қазір',
+            ),
+            ReadingQuestion(
+              question: '',
+              answer: 'дұрыстады',
+            ),
+          ],
+        ),
       ),
       OneOfFour(
         type: 'Практика - Тыңдалым',
         topic: 'Синоним, Антоним, Омоним',
-        teachingCards: [
+        grammarCards: [
           GrammarCard(
               title: 'Субтитры:',
               text:
@@ -80,7 +113,7 @@ List days = [
       OneOfFour(
         type: 'Практика - Жазылым',
         topic: 'Синоним, Антоним, Омоним',
-        teachingCards: [
+        grammarCards: [
           GrammarCard(
               title: 'Напишите слово во всех правильных падежных окончаниях',
               text: '')

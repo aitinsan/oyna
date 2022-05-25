@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/test/grammar.page.dart';
+import 'package:oyna/test/reading.page.dart';
 import 'package:oyna/test/success.page.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -17,9 +18,22 @@ class TestPage extends StatefulWidget {
 
 class _TestPageState extends State<TestPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  
+
   @override
   Widget build(BuildContext context) {
-    return GrammarPage(oneOfFour: widget.oneOfFour);
+    switch (widget.oneOfFour.type) {
+      case 'Грамматика':
+        return GrammarPage(oneOfFour: widget.oneOfFour);
+
+      case 'Практика - Оқылым':
+        return ReadingPage(oneOfFour: widget.oneOfFour);
+      case 'Практика - Тыңдалым':
+
+      case 'Практика - Жазылым':
+
+      default:
+        Navigator.pop(context);
+        return SizedBox.shrink();
+    }
   }
 }

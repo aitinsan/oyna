@@ -45,7 +45,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
         title: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
           child: Column(
