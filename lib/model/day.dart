@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/model/grammar_card.dart';
+import 'package:oyna/model/listening_card.dart';
+import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/model/reading_card.dart';
+import 'package:oyna/model/writing_card.dart';
 
 class Day {
   int day;
@@ -103,21 +104,34 @@ List days = [
       OneOfFour(
         type: 'Практика - Тыңдалым',
         topic: 'Синоним, Антоним, Омоним',
-        grammarCards: [
-          GrammarCard(
-              title: 'Субтитры:',
-              text:
-                  'Вот мы и добрались до финала Рю, нет необходимости бояться Я не боюсь! Прислушайся и представь. Мы в финале, а наш противник Шираторизава. Что будет если играть перед такой большой толпой? Как думаешь? Говоришь, что будет? Сильные игроки обычно такие привлекательные Нишиноя-кун, Танака-кун. Мы вас любим! Танака-кун...Молодцы Порвём их, Ноя-сан? После этой игры меня будут называеть героем! Я тоже постараюсь')
-        ],
+        listeningCard: ListeningCard(
+          question: 'Предложение 1:  Бері тыңда да, елестетіп көр.',
+          video: 'assets/videos/listening1.mp4',
+          textRu:
+              'Вот мы и добрались до финала Рю, нет необходимости бояться Я не боюсь! Прислушайся и представь. Мы в финале, а наш противник Шираторизава. Что будет если играть перед такой большой толпой? Как думаешь? Говоришь, что будет? Сильные игроки обычно такие привлекательные Нишиноя-кун, Танака-кун. Мы вас любим! Танака-кун...Молодцы Порвём их, Ноя-сан? После этой игры меня будут называеть героем! Я тоже постараюсь',
+          test: [
+            ListeningTest(text: 'представь', isCorrect: true),
+            ListeningTest(text: 'открой глаза', isCorrect: false),
+            ListeningTest(text: 'скажи', isCorrect: false),
+            ListeningTest(text: 'послушай', isCorrect: false),
+          ],
+        ),
       ),
       OneOfFour(
         type: 'Практика - Жазылым',
         topic: 'Синоним, Антоним, Омоним',
-        grammarCards: [
-          GrammarCard(
-              title: 'Напишите слово во всех правильных падежных окончаниях',
-              text: '')
-        ],
+        writingCard: WritingCard(
+            taskDescription:
+                'Напишите слово во всех правильных падежных окончаниях\n  ',
+            tasks: [
+              WritingTask(question: 'Атау септік', answer: 'ойыншы'),
+              WritingTask(question: 'Ілік септік', answer: 'ойыншының'),
+              WritingTask(question: 'Барыс септік', answer: 'ойыншымның'),
+              WritingTask(question: 'Табыс септік', answer: 'ойыншыны'),
+              WritingTask(question: 'Жатыс септік', answer: 'ойыншы'),
+              WritingTask(question: 'Шығыс септік', answer: 'ойыншыдан'),
+              WritingTask(question: 'Көмектес септік', answer: 'ойыншымен'),
+            ]),
       ),
     ],
   ),

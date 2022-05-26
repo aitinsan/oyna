@@ -1,13 +1,15 @@
-import 'package:flutter/widgets.dart';
-
 class WritingCard {
+  String taskDescription;
+  List<WritingTask> tasks;
 
-  String title;
-  String topic;
-  String text;
   WritingCard({
-    required this.title,
-    required this.topic,
-    required this.text,
+    required this.taskDescription,
+    required this.tasks,
   });
+}
+
+class WritingTask {
+  String question;
+  String answer;
+  WritingTask({required this.question, required this.answer});
 }

@@ -1,13 +1,20 @@
 import 'package:flutter/widgets.dart';
 
 class ListeningCard {
-
-  String title;
-  String topic;
-  String text;
+  String video;
+  String textRu;
+  String question;
+  List<ListeningTest> test;
   ListeningCard({
-    required this.title,
-    required this.topic,
-    required this.text,
+    required this.textRu,
+    required this.video,
+    required this.question,
+    required this.test,
   });
+}
+
+class ListeningTest {
+  String text;
+  bool isCorrect;
+  ListeningTest({required this.text, required this.isCorrect});
 }

@@ -28,10 +28,9 @@ class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
           width: 2,
         ),
       ),
-      child: Align(
-        alignment: AlignmentDirectional(0, 0),
+      child: Center(
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
+          padding: const EdgeInsets.all(16),
           child: Text(
             widget.text!,
             style: FlutterFlowTheme.of(context).bodyText1.override(

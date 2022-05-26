@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/test/grammar.page.dart';
+import 'package:oyna/test/listening.page.dart';
 import 'package:oyna/test/reading.page.dart';
 import 'package:oyna/test/success.page.dart';
+import 'package:oyna/test/writing.page.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -28,9 +30,10 @@ class _TestPageState extends State<TestPage> {
       case 'Практика - Оқылым':
         return ReadingPage(oneOfFour: widget.oneOfFour);
       case 'Практика - Тыңдалым':
+        return ListeningPage(oneOfFour: widget.oneOfFour);
 
       case 'Практика - Жазылым':
-
+        return WritingPage(oneOfFour: widget.oneOfFour);
       default:
         Navigator.pop(context);
         return SizedBox.shrink();
