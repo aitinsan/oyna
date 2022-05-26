@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FlutterFlowIconButton extends StatelessWidget {
-  const FlutterFlowIconButton(
+class AppIconButton extends StatelessWidget {
+  const AppIconButton(
       {Key? key,
       this.borderColor,
       this.borderRadius,

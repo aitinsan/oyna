@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:oyna/auth/auth_util.dart';
 import 'package:oyna/backend/schema/user_record.dart';
 import 'package:oyna/components/text_field_widget.dart';
-import 'package:oyna/flutter_flow/flutter_flow_theme.dart';
-import 'package:oyna/flutter_flow/flutter_flow_widgets.dart';
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/app_widgets.dart';
 import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/test/success.page.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -34,13 +34,13 @@ class _WritingPageState extends State<WritingPage> {
     return Scaffold(
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: AppTheme.of(context).primaryBackground,
         automaticallyImplyLeading: true,
         title: Text(
           widget.oneOfFour.type,
-          style: FlutterFlowTheme.of(context).title1.override(
+          style: AppTheme.of(context).title1.override(
                 fontFamily: 'Outfit',
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: AppTheme.of(context).secondaryBackground,
                 fontSize: 32,
                 fontWeight: FontWeight.w500,
               ),
@@ -48,7 +48,7 @@ class _WritingPageState extends State<WritingPage> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -98,7 +98,7 @@ class _WritingPageState extends State<WritingPage> {
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
-                      child: FFButtonWidget(
+                      child: AppButtonWidget(
                         onPressed: () async {
                           await currentUserReference!.update(
                               createUserRecordData(
@@ -117,12 +117,12 @@ class _WritingPageState extends State<WritingPage> {
                                   builder: (context) => SuccessPage()));
                         },
                         text: 'Получить награду',
-                        options: FFButtonOptions(
+                        options: AppButtonOptions(
                           width: 300,
                           height: 50,
                           color: Color(0xFF4B39EF),
                           textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
+                              AppTheme.of(context).subtitle2.override(
                                     fontFamily: 'Outfit',
                                     color: Colors.white,
                                     fontSize: 16,

@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart' show IterableNullableExtension;
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../flutter_flow/flutter_flow_util.dart';
+import '../app/app_util.dart';
 
 import 'schema/user_record.dart';
 import 'schema/day_record.dart';
@@ -36,7 +36,7 @@ Future<List<UserRecord?>> queryUserRecordOnce(
     queryCollectionOnce(UserRecord.collection, UserRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<FFFirestorePage<UserRecord?>> queryUserRecordPage({
+Future<AppFirestorePage<UserRecord?>> queryUserRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
@@ -66,7 +66,7 @@ Future<List<DayRecord?>> queryDayRecordOnce(
     queryCollectionOnce(DayRecord.collection, DayRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<FFFirestorePage<DayRecord?>> queryDayRecordPage({
+Future<AppFirestorePage<DayRecord?>> queryDayRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
@@ -98,7 +98,7 @@ Future<List<TeachingCardsRecord?>> queryTeachingCardsRecordOnce(
         TeachingCardsRecord.collection, TeachingCardsRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<FFFirestorePage<TeachingCardsRecord?>> queryTeachingCardsRecordPage({
+Future<AppFirestorePage<TeachingCardsRecord?>> queryTeachingCardsRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
@@ -128,7 +128,7 @@ Future<List<OneOfFourRecord?>> queryOneOfFourRecordOnce(
     queryCollectionOnce(OneOfFourRecord.collection, OneOfFourRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
-Future<FFFirestorePage<OneOfFourRecord?>> queryOneOfFourRecordPage({
+Future<AppFirestorePage<OneOfFourRecord?>> queryOneOfFourRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
@@ -185,15 +185,15 @@ Future<List<T?>> queryCollectionOnce<T>(
       .toList());
 }
 
-class FFFirestorePage<T> {
+class AppFirestorePage<T> {
   final List<T> data;
   final Stream<List<T>>? dataStream;
   final QueryDocumentSnapshot? nextPageMarker;
 
-  FFFirestorePage(this.data, this.dataStream, this.nextPageMarker);
+  AppFirestorePage(this.data, this.dataStream, this.nextPageMarker);
 }
 
-Future<FFFirestorePage<T?>> queryCollectionPage<T>(
+Future<AppFirestorePage<T?>> queryCollectionPage<T>(
   CollectionReference collection,
   Serializer<T> serializer, {
   Query Function(Query)? queryBuilder,
@@ -226,7 +226,7 @@ Future<FFFirestorePage<T?>> queryCollectionPage<T>(
   final data = getDocs(docSnapshot);
   final dataStream = docSnapshotStream?.map(getDocs);
   final nextPageToken = docSnapshot.docs.isEmpty ? null : docSnapshot.docs.last;
-  return FFFirestorePage(data, dataStream, nextPageToken);
+  return AppFirestorePage(data, dataStream, nextPageToken);
 }
 
 // Creates a Firestore record representing the logged in user if it doesn't yet exist

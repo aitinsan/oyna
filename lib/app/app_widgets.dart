@@ -2,8 +2,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-class FFButtonOptions {
-  const FFButtonOptions({
+class AppButtonOptions {
+  const AppButtonOptions({
     this.textStyle,
     this.elevation,
     this.height,
@@ -36,8 +36,8 @@ class FFButtonOptions {
   final BorderSide? borderSide;
 }
 
-class FFButtonWidget extends StatefulWidget {
-  const FFButtonWidget({
+class AppButtonWidget extends StatefulWidget {
+  const AppButtonWidget({
     Key? key,
     required this.text,
     required this.onPressed,
@@ -51,14 +51,14 @@ class FFButtonWidget extends StatefulWidget {
   final Widget? icon;
   final IconData? iconData;
   final Function() onPressed;
-  final FFButtonOptions options;
+  final AppButtonOptions options;
   final bool showLoadingIndicator;
 
   @override
-  State<FFButtonWidget> createState() => _FFButtonWidgetState();
+  State<AppButtonWidget> createState() => _AppButtonWidgetState();
 }
 
-class _FFButtonWidgetState extends State<FFButtonWidget> {
+class _AppButtonWidgetState extends State<AppButtonWidget> {
   bool loading = false;
 
   @override

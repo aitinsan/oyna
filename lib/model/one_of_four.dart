@@ -9,14 +9,14 @@ class OneOfFour {
   String topic;
   List<GrammarCard> grammarCards;
   ReadingCard? readingCard;
-  ListeningCard? listeningCard;
+  List<ListeningCard>? listeningCards;
   WritingCard? writingCard;
   OneOfFour({
     required this.topic,
     required this.type,
     this.grammarCards = const [],
     this.readingCard,
-    this.listeningCard,
+    this.listeningCards = const [],
     this.writingCard,
   });
 }

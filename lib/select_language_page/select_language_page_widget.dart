@@ -1,6 +1,6 @@
 import '../components/outlined_button_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '../app/app_theme.dart';
+import '../app/app_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,7 +20,7 @@ class _SelectLanguagePageWidgetState extends State<SelectLanguagePageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -42,7 +42,7 @@ class _SelectLanguagePageWidgetState extends State<SelectLanguagePageWidget> {
                     width: double.infinity,
                     height: 28,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      color: AppTheme.of(context).primaryBackground,
                     ),
                   ),
                   Row(
@@ -69,10 +69,10 @@ class _SelectLanguagePageWidgetState extends State<SelectLanguagePageWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 16),
                       child: Text(
-                        FFLocalizations.of(context)!.getText(
+                        AppLocalizations.of(context)!.getText(
                           'bjnx61x9' /* Выберите язык */,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: AppTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               fontSize: 24,
                             ),

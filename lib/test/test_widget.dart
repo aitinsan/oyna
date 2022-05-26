@@ -1,7 +1,7 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '../app/app_icon_button.dart';
+import '../app/app_theme.dart';
+import '../app/app_util.dart';
+import '../app/app_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -21,15 +21,15 @@ class _TestWidgetState extends State<TestWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: AppTheme.of(context).primaryBackground,
         automaticallyImplyLeading: true,
         title: Text(
-          FFLocalizations.of(context)!.getText(
+          AppLocalizations.of(context)!.getText(
             'bquww988' /* Грамматика */,
           ),
-          style: FlutterFlowTheme.of(context).title1.override(
+          style: AppTheme.of(context).title1.override(
                 fontFamily: 'Outfit',
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: AppTheme.of(context).secondaryBackground,
                 fontSize: 32,
                 fontWeight: FontWeight.w500,
               ),
@@ -37,7 +37,7 @@ class _TestWidgetState extends State<TestWidget> {
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-            child: FlutterFlowIconButton(
+            child: AppIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30,
               borderWidth: 1,
@@ -57,7 +57,7 @@ class _TestWidgetState extends State<TestWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -76,13 +76,13 @@ class _TestWidgetState extends State<TestWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
                           child: Text(
-                            FFLocalizations.of(context)!.getText(
+                            AppLocalizations.of(context)!.getText(
                               'rdjvydeh' /* 1/3 */,
                             ),
                             style:
-                                FlutterFlowTheme.of(context).bodyText2.override(
+                                AppTheme.of(context).bodyText2.override(
                                       fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context)
+                                      color: AppTheme.of(context)
                                           .secondaryBackground,
                                       fontSize: 14,
                                       fontWeight: FontWeight.normal,
@@ -106,12 +106,12 @@ class _TestWidgetState extends State<TestWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 100, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context)!.getText(
+                          AppLocalizations.of(context)!.getText(
                             'kiwe27yi' /* Антоним */,
                           ),
-                          style: FlutterFlowTheme.of(context).title1.override(
+                          style: AppTheme.of(context).title1.override(
                                 fontFamily: 'Outfit',
-                                color: FlutterFlowTheme.of(context)
+                                color: AppTheme.of(context)
                                     .secondaryBackground,
                                 fontSize: 32,
                                 fontWeight: FontWeight.w500,
@@ -121,13 +121,13 @@ class _TestWidgetState extends State<TestWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context)!.getText(
+                          AppLocalizations.of(context)!.getText(
                             'irma189e' /* Мағыналары бір-біріне қарама-қ... */,
                           ),
                           style:
-                              FlutterFlowTheme.of(context).subtitle2.override(
+                              AppTheme.of(context).subtitle2.override(
                                     fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
+                                    color: AppTheme.of(context)
                                         .secondaryBackground,
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal,
@@ -145,19 +145,19 @@ class _TestWidgetState extends State<TestWidget> {
                 children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
-                    child: FFButtonWidget(
+                    child: AppButtonWidget(
                       onPressed: () {
                         print('Button pressed ...');
                       },
-                      text: FFLocalizations.of(context)!.getText(
+                      text: AppLocalizations.of(context)!.getText(
                         'hv500nfb' /* Дальше */,
                       ),
-                      options: FFButtonOptions(
+                      options: AppButtonOptions(
                         width: 300,
                         height: 50,
                         color: Color(0xFF4B39EF),
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
+                            AppTheme.of(context).subtitle2.override(
                                   fontFamily: 'Outfit',
                                   color: Colors.white,
                                   fontSize: 16,

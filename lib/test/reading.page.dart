@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:oyna/auth/auth_util.dart';
 import 'package:oyna/backend/schema/user_record.dart';
 import 'package:oyna/components/filled_button_widget.dart';
-import 'package:oyna/flutter_flow/flutter_flow_theme.dart';
-import 'package:oyna/flutter_flow/flutter_flow_widgets.dart';
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/app_widgets.dart';
 import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/model/reading_card.dart';
 import 'package:oyna/test/success.page.dart';
@@ -43,7 +43,7 @@ class _ReadingPageState extends State<ReadingPage> {
           width: 160,
           height: 60,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).primaryColor,
+            color: AppTheme.of(context).primaryColor,
             borderRadius: BorderRadius.circular(14),
           ),
           child: Center(
@@ -51,7 +51,7 @@ class _ReadingPageState extends State<ReadingPage> {
               padding: const EdgeInsets.all(16),
               child: Text(
                 element,
-                style: FlutterFlowTheme.of(context).bodyText1.override(
+                style: AppTheme.of(context).bodyText1.override(
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
@@ -64,7 +64,7 @@ class _ReadingPageState extends State<ReadingPage> {
           width: 160,
           height: 60,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).primaryColor,
+            color: AppTheme.of(context).primaryColor,
             borderRadius: BorderRadius.circular(14),
           ),
           child: Center(
@@ -72,7 +72,7 @@ class _ReadingPageState extends State<ReadingPage> {
               padding: const EdgeInsets.all(16),
               child: Text(
                 element,
-                style: FlutterFlowTheme.of(context).bodyText1.override(
+                style: AppTheme.of(context).bodyText1.override(
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
@@ -89,13 +89,13 @@ class _ReadingPageState extends State<ReadingPage> {
     print(currentAnswers);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: AppTheme.of(context).primaryBackground,
         automaticallyImplyLeading: true,
         title: Text(
           widget.oneOfFour.type,
-          style: FlutterFlowTheme.of(context).title1.override(
+          style: AppTheme.of(context).title1.override(
                 fontFamily: 'Outfit',
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: AppTheme.of(context).secondaryBackground,
                 fontSize: 26,
                 fontWeight: FontWeight.w500,
               ),
@@ -103,7 +103,7 @@ class _ReadingPageState extends State<ReadingPage> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       body: isRead
           ? _buildIsRead(widget.oneOfFour)
           : _buildTask(widget.oneOfFour),
@@ -119,7 +119,7 @@ class _ReadingPageState extends State<ReadingPage> {
           Container(
             decoration: BoxDecoration(
               border:
-                  Border.all(color: FlutterFlowTheme.of(context).primaryColor!),
+                  Border.all(color: AppTheme.of(context).primaryColor!),
               borderRadius: BorderRadius.all(Radius.circular(8)),
             ),
             padding: const EdgeInsets.all(16),
@@ -138,7 +138,7 @@ class _ReadingPageState extends State<ReadingPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: Divider(
-                    color: FlutterFlowTheme.of(context).primaryColor!,
+                    color: AppTheme.of(context).primaryColor!,
                   ),
                 ),
                 Text(
@@ -216,7 +216,7 @@ class _ReadingPageState extends State<ReadingPage> {
                               return Container(
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: FlutterFlowTheme.of(context)
+                                      color: AppTheme.of(context)
                                           .primaryColor!,
                                     ),
                                     borderRadius: BorderRadius.all(
@@ -233,7 +233,7 @@ class _ReadingPageState extends State<ReadingPage> {
                                 height: 60,
                                 decoration: BoxDecoration(
                                   color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                      AppTheme.of(context).primaryColor,
                                   borderRadius: BorderRadius.circular(14),
                                 ),
                                 child: Center(
@@ -241,7 +241,7 @@ class _ReadingPageState extends State<ReadingPage> {
                                     padding: const EdgeInsets.all(16),
                                     child: Text(
                                       currentAnswers[index],
-                                      style: FlutterFlowTheme.of(context)
+                                      style: AppTheme.of(context)
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Poppins',
@@ -278,7 +278,7 @@ class _ReadingPageState extends State<ReadingPage> {
                 children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
-                    child: FFButtonWidget(
+                    child: AppButtonWidget(
                       onPressed: () async {
                         await currentUserReference!.update(createUserRecordData(
                             description: currentUserDocument?.description,
@@ -296,12 +296,12 @@ class _ReadingPageState extends State<ReadingPage> {
                                 builder: (context) => SuccessPage()));
                       },
                       text: 'Получить награду',
-                      options: FFButtonOptions(
+                      options: AppButtonOptions(
                         width: 300,
                         height: 50,
                         color: Color(0xFF4B39EF),
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
+                            AppTheme.of(context).subtitle2.override(
                                   fontFamily: 'Outfit',
                                   color: Colors.white,
                                   fontSize: 16,

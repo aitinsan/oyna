@@ -3,8 +3,8 @@ import 'package:oyna/edit_profile/edit_profile_widget.dart';
 import '../auth/auth_util.dart';
 import '../components/filled_button_widget.dart';
 import '../components/logo_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '../app/app_theme.dart';
+import '../app/app_util.dart';
 import '../intro_page/intro_page_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: AppTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
         title: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
@@ -67,12 +67,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         );
                       },
                       child: Text(
-                        FFLocalizations.of(context)!.getText(
+                        AppLocalizations.of(context)!.getText(
                           'v9nk140r' /* Выйти */,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: AppTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
-                              color: FlutterFlowTheme.of(context).alternate,
+                              color: AppTheme.of(context).alternate,
                             ),
                       ),
                     ),
@@ -86,7 +86,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
         centerTitle: true,
         elevation: 0,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -128,9 +128,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   currentUserDisplayName,
                   'Имя',
                 ),
-                style: FlutterFlowTheme.of(context).bodyText1.override(
+                style: AppTheme.of(context).bodyText1.override(
                       fontFamily: 'Poppins',
-                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                      color: AppTheme.of(context).primaryBtnText,
                     ),
               ),
             ),
@@ -142,16 +142,16 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context)!.getText(
+                    labelText: AppLocalizations.of(context)!.getText(
                       '2bw0tn6z' /* Пол */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: AppTheme.of(context).primaryColor,
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    hintStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF95A1AC),
                           fontSize: 14,
@@ -159,26 +159,26 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor!,
+                        color: AppTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor!,
+                        color: AppTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     filled: true,
-                    fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                    fillColor: AppTheme.of(context).primaryBackground,
                     contentPadding:
                         EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: AppTheme.of(context).bodyText1.override(
                         fontFamily: 'Lexend Deca',
-                        color: FlutterFlowTheme.of(context).primaryBtnText,
+                        color: AppTheme.of(context).primaryBtnText,
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
@@ -193,16 +193,16 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context)!.getText(
+                    labelText: AppLocalizations.of(context)!.getText(
                       '117oddez' /* Возраст */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: AppTheme.of(context).primaryColor,
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    hintStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF95A1AC),
                           fontSize: 14,
@@ -210,26 +210,26 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor!,
+                        color: AppTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor!,
+                        color: AppTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     filled: true,
-                    fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                    fillColor: AppTheme.of(context).primaryBackground,
                     contentPadding:
                         EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: AppTheme.of(context).bodyText1.override(
                         fontFamily: 'Lexend Deca',
-                        color: FlutterFlowTheme.of(context).primaryBtnText,
+                        color: AppTheme.of(context).primaryBtnText,
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
@@ -244,19 +244,19 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context)!.getText(
+                    labelText: AppLocalizations.of(context)!.getText(
                       '16vwx9lf' /* Цель */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: AppTheme.of(context).primaryColor,
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context)!.getText(
+                    hintText: AppLocalizations.of(context)!.getText(
                       'cr6woey8' /* Your bio */,
                     ),
-                    hintStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    hintStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF95A1AC),
                           fontSize: 14,
@@ -264,26 +264,26 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor!,
+                        color: AppTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryColor!,
+                        color: AppTheme.of(context).primaryColor!,
                         width: 2,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     filled: true,
-                    fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                    fillColor: AppTheme.of(context).primaryBackground,
                     contentPadding:
                         EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: AppTheme.of(context).bodyText1.override(
                         fontFamily: 'Lexend Deca',
-                        color: FlutterFlowTheme.of(context).primaryBtnText,
+                        color: AppTheme.of(context).primaryBtnText,
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),

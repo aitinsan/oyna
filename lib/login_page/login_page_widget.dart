@@ -3,9 +3,9 @@ import 'package:oyna/home_page/home.page.dart';
 
 import '../auth/auth_util.dart';
 import '../components/filled_button_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '../app/app_icon_button.dart';
+import '../app/app_theme.dart';
+import '../app/app_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -53,7 +53,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                      child: FlutterFlowIconButton(
+                      child: AppIconButton(
                         borderColor: Colors.transparent,
                         borderWidth: 1,
                         buttonSize: 50,
@@ -71,11 +71,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 50, 0),
                         child: Text(
-                          FFLocalizations.of(context)!.getText(
+                          AppLocalizations.of(context)!.getText(
                             'vcngz8mw' /* Вход */,
                           ),
                           textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context).title1.override(
+                          style: AppTheme.of(context).title1.override(
                                 fontFamily: 'Outfit',
                                 color: Color(0xFF0F1113),
                                 fontSize: 17,
@@ -118,19 +118,19 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   controller: emailAddressController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context)!.getText(
+                    labelText: AppLocalizations.of(context)!.getText(
                       'gu73g6ec' /* Ваша почта */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Outfit',
                           color: Color(0xFF57636C),
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context)!.getText(
+                    hintText: AppLocalizations.of(context)!.getText(
                       'mh6q6z43' /* Введите вашу почту */,
                     ),
-                    hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                    hintStyle: AppTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF57636C),
                           fontSize: 14,
@@ -155,7 +155,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     contentPadding:
                         EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: AppTheme.of(context).bodyText1.override(
                         fontFamily: 'Outfit',
                         color: Color(0xFF0F1113),
                         fontSize: 14,
@@ -184,19 +184,19 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   controller: passwordController,
                   obscureText: !passwordVisibility,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context)!.getText(
+                    labelText: AppLocalizations.of(context)!.getText(
                       '9w2wzr7f' /* Пароль */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Outfit',
                           color: Color(0xFF57636C),
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context)!.getText(
+                    hintText: AppLocalizations.of(context)!.getText(
                       '4sfdfpnk' /* Введите ваш пароль */,
                     ),
-                    hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                    hintStyle: AppTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF57636C),
                           fontSize: 14,
@@ -233,7 +233,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       ),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: AppTheme.of(context).bodyText1.override(
                         fontFamily: 'Outfit',
                         color: Color(0xFF0F1113),
                         fontSize: 14,

@@ -1,5 +1,5 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '../app/app_theme.dart';
+import '../app/app_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -21,7 +21,7 @@ class _FilledButtonWidgetState extends State<FilledButtonWidget> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: AppTheme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(14),
       ),
       child:  Center(
@@ -29,7 +29,7 @@ class _FilledButtonWidgetState extends State<FilledButtonWidget> {
             padding: const EdgeInsets.all(16),
             child: Text(
               widget.text,
-              style: FlutterFlowTheme.of(context).bodyText1.override(
+              style: AppTheme.of(context).bodyText1.override(
                     fontFamily: 'Poppins',
                     color: Colors.white,
                   ),

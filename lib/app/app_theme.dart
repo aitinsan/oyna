@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 const kThemeModeKey = '__theme_mode__';
 SharedPreferences? _prefs;
 
-abstract class FlutterFlowTheme {
+abstract class AppTheme {
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
   static ThemeMode get themeMode {
@@ -23,7 +23,7 @@ abstract class FlutterFlowTheme {
       ? _prefs?.remove(kThemeModeKey)
       : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
 
-  static FlutterFlowTheme of(BuildContext context) =>
+  static AppTheme of(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
           ? DarkModeTheme()
           : LightModeTheme();
@@ -82,7 +82,7 @@ abstract class FlutterFlowTheme {
       );
 }
 
-class LightModeTheme extends FlutterFlowTheme {
+class LightModeTheme extends AppTheme {
   Color? primaryColor = const Color(0xFF7262FF);
   Color? secondaryColor = const Color(0xFF39D2C0);
   Color? tertiaryColor = const Color(0xFFEE8B60);
@@ -96,7 +96,7 @@ class LightModeTheme extends FlutterFlowTheme {
   Color? lineColor = Color(0xFFE0E3E7);
 }
 
-class DarkModeTheme extends FlutterFlowTheme {
+class DarkModeTheme extends AppTheme {
   Color? primaryColor = const Color(0x00000000);
   Color? secondaryColor = const Color(0xFF39D2C0);
   Color? tertiaryColor = const Color(0xFFEE8B60);

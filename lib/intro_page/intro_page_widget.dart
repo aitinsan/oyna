@@ -1,7 +1,7 @@
 import '../components/filled_button_widget.dart';
 import '../components/outlined_button_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '../app/app_theme.dart';
+import '../app/app_util.dart';
 import '../login_page/login_page_widget.dart';
 import '../registration_page/registration_page_widget.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class _IntroPageWidgetState extends State<IntroPageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -53,12 +53,12 @@ class _IntroPageWidgetState extends State<IntroPageWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 8),
                     child: Text(
-                      FFLocalizations.of(context)!.getText(
+                      AppLocalizations.of(context)!.getText(
                         'hlwzpjnh' /* Привет и добро пожаловать! */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: AppTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context)
+                            color: AppTheme.of(context)
                                 .secondaryBackground,
                             fontSize: 32,
                             fontWeight: FontWeight.w500,
@@ -69,12 +69,12 @@ class _IntroPageWidgetState extends State<IntroPageWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 24),
                     child: Text(
-                      FFLocalizations.of(context)!.getText(
+                      AppLocalizations.of(context)!.getText(
                         'xnxtdv14' /* Научись говорить, писать и пон... */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: AppTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondaryText,
+                            color: AppTheme.of(context).secondaryText,
                           ),
                     ),
                   ),
@@ -98,7 +98,7 @@ class _IntroPageWidgetState extends State<IntroPageWidget> {
                     width: double.infinity,
                     height: 8,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      color: AppTheme.of(context).primaryBackground,
                     ),
                   ),
                   Padding(

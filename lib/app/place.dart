@@ -1,7 +1,7 @@
 import 'lat_lng.dart';
 
-class FFPlace {
-  const FFPlace({
+class AppPlace {
+  const AppPlace({
     this.latLng = const LatLng(0.0, 0.0),
     this.name = '',
     this.address = '',
@@ -35,7 +35,7 @@ class FFPlace {
 
   @override
   bool operator ==(other) =>
-      other is FFPlace &&
+      other is AppPlace &&
       latLng == other.latLng &&
       name == name &&
       address == address &&

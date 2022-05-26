@@ -8,15 +8,15 @@ import 'package:oyna/intro_page/intro_page_widget.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
-import 'flutter_flow/flutter_flow_theme.dart';
-import 'flutter_flow/flutter_flow_util.dart';
-import 'flutter_flow/internationalization.dart';
+import 'app/app_theme.dart';
+import 'app/app_util.dart';
+import 'app/internationalization.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await FlutterFlowTheme.initialize();
+  await AppTheme.initialize();
 
   runApp(MyApp());
 }
@@ -32,7 +32,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
-  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+  ThemeMode _themeMode = AppTheme.themeMode;
 
   Stream<OynaFirebaseUser>? userStream;
   OynaFirebaseUser? initialUser;
@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
   void setLocale(Locale value) => setState(() => _locale = value);
   void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
-        FlutterFlowTheme.saveThemeMode(mode);
+        AppTheme.saveThemeMode(mode);
       });
 
   @override
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Oyna',
       localizationsDelegates: [
-        FFLocalizationsDelegate(),
+        AppLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
                 width: 50,
                 height: 50,
                 child: SpinKitCircle(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: AppTheme.of(context).primaryColor,
                   size: 50,
                 ),
               ),

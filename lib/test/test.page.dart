@@ -7,8 +7,8 @@ import 'package:oyna/test/success.page.dart';
 import 'package:oyna/test/writing.page.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '../app/app_theme.dart';
+import '../app/app_widgets.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({Key? key, required this.oneOfFour}) : super(key: key);

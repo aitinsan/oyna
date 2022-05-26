@@ -3,8 +3,8 @@ import 'package:oyna/model/day.dart';
 import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/test/test.page.dart';
 
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '../app/app_theme.dart';
+import '../app/app_util.dart';
 
 class DayPage extends StatefulWidget {
   const DayPage({
@@ -26,14 +26,14 @@ class _DayPageState extends State<DayPage> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: AppTheme.of(context).primaryBackground,
         automaticallyImplyLeading: true,
         title: Text(
           valueOrDefault<String>(
             widget.day.day.toString() + ' день',
             '0',
           ),
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: AppTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
                 fontSize: 22,
@@ -43,7 +43,7 @@ class _DayPageState extends State<DayPage> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -80,14 +80,14 @@ class _DayPageState extends State<DayPage> {
                             width: 100,
                             height: 100,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: AppTheme.of(context).primaryColor,
                               shape: BoxShape.circle,
                             ),
                             child: Align(
                               alignment: AlignmentDirectional(0, 0),
                               child: Text(
                                 (index + 1).toString(),
-                                style: FlutterFlowTheme.of(context)
+                                style: AppTheme.of(context)
                                     .bodyText1
                                     .copyWith(color: Colors.white),
                               ),
@@ -97,11 +97,11 @@ class _DayPageState extends State<DayPage> {
                             padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                             child: Text(
                               listViewOneOfFourRecord.type,
-                              style: FlutterFlowTheme.of(context)
+                              style: AppTheme.of(context)
                                   .bodyText1
                                   .override(
                                     fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
+                                    color: AppTheme.of(context)
                                         .secondaryBackground,
                                   ),
                             ),

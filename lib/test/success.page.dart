@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oyna/components/filled_button_widget.dart';
-import 'package:oyna/flutter_flow/flutter_flow_theme.dart';
+import 'package:oyna/app/app_theme.dart';
 
 class SuccessPage extends StatelessWidget {
   const SuccessPage({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class SuccessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: AppTheme.of(context).primaryBackground,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,

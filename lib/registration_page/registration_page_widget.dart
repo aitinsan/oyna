@@ -4,9 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../auth/auth_util.dart';
 import '../components/filled_button_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '../app/app_icon_button.dart';
+import '../app/app_theme.dart';
+import '../app/app_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -58,7 +58,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                      child: FlutterFlowIconButton(
+                      child: AppIconButton(
                         borderColor: Colors.transparent,
                         borderWidth: 1,
                         buttonSize: 50,
@@ -76,11 +76,11 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 50, 0),
                         child: Text(
-                          FFLocalizations.of(context)!.getText(
+                          AppLocalizations.of(context)!.getText(
                             'i5mgwizw' /* Регистрация */,
                           ),
                           textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context).title1.override(
+                          style: AppTheme.of(context).title1.override(
                                 fontFamily: 'Outfit',
                                 color: Color(0xFF0F1113),
                                 fontSize: 17,
@@ -123,19 +123,19 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                   controller: emailAddressController,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context)!.getText(
+                    labelText: AppLocalizations.of(context)!.getText(
                       'gt8pmd7n' /* Ваша почта */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Outfit',
                           color: Color(0xFF57636C),
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context)!.getText(
+                    hintText: AppLocalizations.of(context)!.getText(
                       'v147iidg' /* Введите вашу почту */,
                     ),
-                    hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                    hintStyle: AppTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF57636C),
                           fontSize: 14,
@@ -160,7 +160,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                     contentPadding:
                         EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: AppTheme.of(context).bodyText1.override(
                         fontFamily: 'Outfit',
                         color: Color(0xFF0F1113),
                         fontSize: 14,
@@ -189,19 +189,19 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                   controller: passwordController,
                   obscureText: !passwordVisibility,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context)!.getText(
+                    labelText: AppLocalizations.of(context)!.getText(
                       '9pvf096r' /* Пароль */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Outfit',
                           color: Color(0xFF57636C),
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context)!.getText(
+                    hintText: AppLocalizations.of(context)!.getText(
                       'cbrq3hsv' /* Введите ваш пароль */,
                     ),
-                    hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                    hintStyle: AppTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF57636C),
                           fontSize: 14,
@@ -238,7 +238,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                       ),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: AppTheme.of(context).bodyText1.override(
                         fontFamily: 'Outfit',
                         color: Color(0xFF0F1113),
                         fontSize: 14,
@@ -267,19 +267,19 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                   controller: confirmPasswordController,
                   obscureText: !confirmPasswordVisibility,
                   decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context)!.getText(
+                    labelText: AppLocalizations.of(context)!.getText(
                       'nwawtkhp' /* Повторите пароль */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
+                    labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Outfit',
                           color: Color(0xFF57636C),
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
                         ),
-                    hintText: FFLocalizations.of(context)!.getText(
+                    hintText: AppLocalizations.of(context)!.getText(
                       'd5gv4hn2' /* Повторите ваш пароль */,
                     ),
-                    hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                    hintStyle: AppTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF57636C),
                           fontSize: 14,
@@ -317,7 +317,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                       ),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: AppTheme.of(context).bodyText1.override(
                         fontFamily: 'Outfit',
                         color: Color(0xFF0F1113),
                         fontSize: 14,
@@ -429,10 +429,10 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                 child: Text(
-                  FFLocalizations.of(context)!.getText(
+                  AppLocalizations.of(context)!.getText(
                     'bytcmwo3' /* Продолжая регистрацию, вы согл... */,
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: AppTheme.of(context).bodyText1.override(
                         fontFamily: 'Poppins',
                         color: Color(0xFFAFAFAB),
                       ),

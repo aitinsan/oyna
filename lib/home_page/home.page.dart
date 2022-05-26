@@ -7,8 +7,8 @@ import 'package:oyna/model/day.dart';
 import 'package:oyna/profile_page/profile_page_widget.dart';
 
 import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '../app/app_theme.dart';
+import '../app/app_util.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -81,11 +81,11 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   currentUserDocument?.displayName ??
                                       'Нет имени',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: AppTheme.of(context)
                                       .bodyText1
                                       .override(
                                         fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
+                                        color: AppTheme.of(context)
                                             .secondaryBackground,
                                       ),
                                 ),
@@ -97,23 +97,23 @@ class _HomePageState extends State<HomePage> {
                                           0, 0, 4, 0),
                                       child: Text(
                                         'Очки:',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: AppTheme.of(context)
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Poppins',
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  AppTheme.of(context)
                                                       .secondaryBackground,
                                             ),
                                       ),
                                     ),
                                     Text(
                                       '${currentUserDocument?.points ?? 0}',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: AppTheme.of(context)
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Poppins',
-                                            color: FlutterFlowTheme.of(context)
+                                            color: AppTheme.of(context)
                                                 .secondaryBackground,
                                           ),
                                     ),
@@ -178,12 +178,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Text(
                           'День ' + listViewDayRecord.day.toString(),
-                          style: FlutterFlowTheme.of(context)
+                          style: AppTheme.of(context)
                               .bodyText1
                               .override(
                                 fontFamily: 'Poppins',
                                 color:
-                                    FlutterFlowTheme.of(context).primaryColor,
+                                    AppTheme.of(context).primaryColor,
                               ),
                         ),
                       ],

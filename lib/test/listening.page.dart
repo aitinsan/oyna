@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:oyna/auth/auth_util.dart';
 import 'package:oyna/backend/schema/user_record.dart';
 import 'package:oyna/components/filled_button_widget.dart';
-import 'package:oyna/flutter_flow/flutter_flow_theme.dart';
-import 'package:oyna/flutter_flow/flutter_flow_widgets.dart';
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/app_widgets.dart';
 import 'package:oyna/model/listening_card.dart';
 import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/test/success.page.dart';
@@ -26,8 +26,8 @@ class _ListeningPageState extends State<ListeningPage> {
   bool isRead = true;
   late VideoPlayerController _controller;
   bool isPlaying = false;
-  ListeningTest? _listeningTest;
-
+  List<ListeningTest> _listeningTestSelected = [];
+  int count = 0;
   @override
   void initState() {
     _controller = VideoPlayerController.asset('assets/videos/listening1.mp4')
@@ -38,7 +38,8 @@ class _ListeningPageState extends State<ListeningPage> {
   }
 
   bool isSelected(ListeningTest t) {
-    if (_listeningTest == t) return true;
+    if (_listeningTestSelected.length == count + 1 &&
+        _listeningTestSelected[count] == t) return true;
     return false;
   }
 
@@ -46,13 +47,13 @@ class _ListeningPageState extends State<ListeningPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: AppTheme.of(context).primaryBackground,
         automaticallyImplyLeading: true,
         title: Text(
           'Тыңдалым',
-          style: FlutterFlowTheme.of(context).title1.override(
+          style: AppTheme.of(context).title1.override(
                 fontFamily: 'Outfit',
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: AppTheme.of(context).secondaryBackground,
                 fontSize: 26,
                 fontWeight: FontWeight.w500,
               ),
@@ -60,7 +61,7 @@ class _ListeningPageState extends State<ListeningPage> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       body: isRead
           ? _buildIsRead(widget.oneOfFour)
           : _buildTask(widget.oneOfFour),
@@ -95,7 +96,7 @@ class _ListeningPageState extends State<ListeningPage> {
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                    color: FlutterFlowTheme.of(context).primaryColor!),
+                    color: AppTheme.of(context).primaryColor!),
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
               padding: const EdgeInsets.all(16),
@@ -110,7 +111,7 @@ class _ListeningPageState extends State<ListeningPage> {
                     height: 8,
                   ),
                   Text(
-                    oneOfFour.listeningCard!.textRu,
+                    oneOfFour.listeningCards![count].textRu,
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ],
@@ -148,14 +149,14 @@ class _ListeningPageState extends State<ListeningPage> {
             ),
             SizedBox(height: 8),
             Text(
-              oneOfFour.listeningCard!.question,
+              oneOfFour.listeningCards![count].question,
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
             SizedBox(height: 16),
             GridView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: widget.oneOfFour.listeningCard?.test.length,
+              itemCount: widget.oneOfFour.listeningCards?[count].test.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, childAspectRatio: 3),
               itemBuilder: (context, index) {
@@ -164,20 +165,25 @@ class _ListeningPageState extends State<ListeningPage> {
                   child: InkWell(
                     onTap: () {
                       setState(() {
-                        _listeningTest =
-                            widget.oneOfFour.listeningCard?.test[index];
+                        if (_listeningTestSelected.length < count + 1) {
+                          _listeningTestSelected.add(widget
+                              .oneOfFour.listeningCards![count].test[index]);
+                        } else {
+                          _listeningTestSelected[count] = widget
+                              .oneOfFour.listeningCards![count].test[index];
+                        }
                       });
                     },
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: isSelected(
-                                widget.oneOfFour.listeningCard!.test[index])
-                            ? FlutterFlowTheme.of(context).primaryColor!
+                        color: isSelected(widget
+                                .oneOfFour.listeningCards![count].test[index])
+                            ? AppTheme.of(context).primaryColor!
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(
-                          color: FlutterFlowTheme.of(context).primaryColor!,
+                          color: AppTheme.of(context).primaryColor!,
                           width: 2,
                         ),
                       ),
@@ -185,16 +191,19 @@ class _ListeningPageState extends State<ListeningPage> {
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text(
-                            widget.oneOfFour.listeningCard?.test[index].text ??
+                            widget.oneOfFour.listeningCards?[count].test[index]
+                                    .text ??
                                 '',
                             style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
+                                AppTheme.of(context).bodyText1.override(
                                       fontFamily: 'Poppins',
-                                      color: isSelected(widget.oneOfFour
-                                              .listeningCard!.test[index])
-                                          ? FlutterFlowTheme.of(context)
+                                      color: isSelected(widget
+                                              .oneOfFour
+                                              .listeningCards![count]
+                                              .test[index])
+                                          ? AppTheme.of(context)
                                               .secondaryBackground
-                                          : FlutterFlowTheme.of(context)
+                                          : AppTheme.of(context)
                                               .primaryColor,
                                     ),
                           ),
@@ -205,7 +214,7 @@ class _ListeningPageState extends State<ListeningPage> {
                 );
               },
             ),
-            if (_listeningTest != null)
+            if (_listeningTestSelected != [])
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -213,30 +222,39 @@ class _ListeningPageState extends State<ListeningPage> {
                 children: [
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
-                    child: FFButtonWidget(
+                    child: AppButtonWidget(
                       onPressed: () async {
-                        await currentUserReference!.update(createUserRecordData(
-                            description: currentUserDocument?.description,
-                            age: currentUserDocument?.age,
-                            displayName: currentUserDocument?.displayName,
-                            gender: currentUserDocument?.gender,
-                            photoUrl: currentUserDocument?.photoUrl,
-                            points: currentUserDocument?.points != null
-                                ? currentUserDocument!.points! + 1
-                                : 1));
-                        Navigator.pop(context);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SuccessPage()));
+                        if (count + 1 == oneOfFour.listeningCards!.length) {
+                          await currentUserReference!.update(
+                              createUserRecordData(
+                                  description: currentUserDocument?.description,
+                                  age: currentUserDocument?.age,
+                                  displayName: currentUserDocument?.displayName,
+                                  gender: currentUserDocument?.gender,
+                                  photoUrl: currentUserDocument?.photoUrl,
+                                  points: currentUserDocument?.points != null
+                                      ? currentUserDocument!.points! + 1
+                                      : 1));
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SuccessPage()));
+                        } else {
+                          setState(() {
+                            count++;
+                          });
+                        }
                       },
-                      text: 'Получить награду',
-                      options: FFButtonOptions(
+                      text: count + 1 == oneOfFour.listeningCards!.length
+                          ? 'Получить награду'
+                          : 'Следующий вопрос',
+                      options: AppButtonOptions(
                         width: 300,
                         height: 50,
                         color: Color(0xFF4B39EF),
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
+                            AppTheme.of(context).subtitle2.override(
                                   fontFamily: 'Outfit',
                                   color: Colors.white,
                                   fontSize: 16,

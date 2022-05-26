@@ -9,7 +9,7 @@ import 'package:oyna/auth/auth_util.dart';
 import 'package:oyna/backend/schema/user_record.dart';
 import 'package:oyna/components/filled_button_widget.dart';
 import 'package:oyna/components/text_field_widget.dart';
-import 'package:oyna/flutter_flow/flutter_flow_theme.dart';
+import 'package:oyna/app/app_theme.dart';
 import 'package:oyna/home_page/home.page.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 import 'package:uuid/uuid.dart';
@@ -145,7 +145,7 @@ class _ChatPageState extends State<ChatPage> {
                     child: Icon(
                       Icons.send,
                       size: 30,
-                      color: FlutterFlowTheme.of(context).primaryColor,
+                      color: AppTheme.of(context).primaryColor,
                     ),
                   ),
                 ),
@@ -246,7 +246,7 @@ class _ChatPageState extends State<ChatPage> {
                     child: Icon(
                       Icons.send,
                       size: 30,
-                      color: FlutterFlowTheme.of(context).primaryColor,
+                      color: AppTheme.of(context).primaryColor,
                     ),
                   ),
                 ),
@@ -336,9 +336,9 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: AppTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: AppTheme.of(context).secondaryBackground,
         title: Row(
           children: [
             CircleAvatar(
