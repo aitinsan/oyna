@@ -7,6 +7,7 @@ class TextFieldWidget extends StatelessWidget {
       : super(key: key);
   final TextEditingController? controller;
   final bool isNum;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -14,6 +15,7 @@ class TextFieldWidget extends StatelessWidget {
       obscureText: false,
       keyboardType: isNum ? TextInputType.number : TextInputType.text,
       decoration: InputDecoration(
+        hintText: '-------',
         // labelText: 'Имя',
         labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
               fontFamily: 'Lexend Deca',

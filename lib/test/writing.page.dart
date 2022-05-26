@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oyna/auth/auth_util.dart';
 import 'package:oyna/backend/schema/user_record.dart';
+import 'package:oyna/components/text_field_widget.dart';
 import 'package:oyna/flutter_flow/flutter_flow_theme.dart';
 import 'package:oyna/flutter_flow/flutter_flow_widgets.dart';
 import 'package:oyna/model/one_of_four.dart';
@@ -16,6 +17,16 @@ class WritingPage extends StatefulWidget {
 }
 
 class _WritingPageState extends State<WritingPage> {
+  List<TextEditingController> controllers = [];
+
+  @override
+  void initState() {
+    for (var task in oneOfFour.writingCard!.tasks) {
+      controllers.add(TextEditingController());
+    }
+    super.initState();
+  }
+
   int index = 0;
   OneOfFour get oneOfFour => widget.oneOfFour;
   @override
@@ -70,21 +81,11 @@ class _WritingPageState extends State<WritingPage> {
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryColor!,
-                                ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(8),
-                                ),
-                              ),
-                              child: SizedBox(
-                                height: 50,
-                                width: 200,
-                              ),
-                            ),
+                            SizedBox(
+                              width: 200,
+                              child: TextFieldWidget(
+                                  controller: controllers[index]),
+                            )
                           ],
                         ),
                       );
