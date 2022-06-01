@@ -273,7 +273,7 @@ class _ChatPageState extends State<ChatPage> {
                   setState(() {
                     _addMessage('Я хочу полностью овладеть казахским языком.');
                    _step= Step.empty;
-                    Timer(Duration(milliseconds: 2000), () {
+                    Timer(Duration(milliseconds: 1500), () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                     });
@@ -302,7 +302,7 @@ class _ChatPageState extends State<ChatPage> {
                     _addMessage(
                         'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.');
                     _step= Step.empty;
-                    Timer(Duration(milliseconds: 2000), () {
+                    Timer(Duration(milliseconds: 1500), () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                     });
@@ -334,7 +334,7 @@ class _ChatPageState extends State<ChatPage> {
                     _addMessage(
                         'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше');
                     _step= Step.empty;
-                    Timer(Duration(milliseconds: 2000), () {
+                    Timer(Duration(milliseconds: 1500), () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                     });

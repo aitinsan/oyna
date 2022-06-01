@@ -54,6 +54,7 @@ dependencies:
   percent_indicator: ^4.2.2
   rxdart: ^0.27.3
   shared_preferences: ^2.0.15
+  
   video_player:
   sign_in_with_apple:
     git:

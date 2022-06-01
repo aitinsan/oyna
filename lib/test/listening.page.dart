@@ -10,6 +10,7 @@ import 'package:oyna/app/app_theme.dart';
 import 'package:oyna/app/app_widgets.dart';
 import 'package:oyna/model/listening_card.dart';
 import 'package:oyna/model/one_of_four.dart';
+import 'package:oyna/test/audio.widget.dart';
 import 'package:oyna/test/success.page.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:video_player/video_player.dart';
@@ -46,6 +47,18 @@ class _ListeningPageState extends State<ListeningPage> {
   }
 
   @override
+  void didUpdateWidget(covariant ListeningPage oldWidget) {
+    _controller.pause();
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    _controller.pause();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -77,7 +90,8 @@ class _ListeningPageState extends State<ListeningPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _controller.value.isInitialized
+            widget.oneOfFour.listeningCards!.first.audio == null &&
+                    _controller.value.isInitialized
                 ? InkWell(
                     onTap: () {
                       print('fdsaf');
@@ -94,7 +108,8 @@ class _ListeningPageState extends State<ListeningPage> {
                       child: VideoPlayer(_controller),
                     ),
                   )
-                : CircularPercentIndicator(radius: 10),
+                : AudioWidget(
+                    audio: widget.oneOfFour.listeningCards!.first.audio!),
             oneOfFour.listeningCards![count].textRu != ''
                 ? Container(
                     decoration: BoxDecoration(
@@ -124,7 +139,8 @@ class _ListeningPageState extends State<ListeningPage> {
             SizedBox(height: 16),
             InkWell(
               onTap: () {
-                _controller.pause();
+                if (widget.oneOfFour.listeningCards!.first.audio == null)
+                  _controller.pause();
                 setState(() {
                   isRead = false;
                 });

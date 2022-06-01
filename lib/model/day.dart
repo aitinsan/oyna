@@ -447,7 +447,7 @@ List days = [
             ListeningCard(
               question:
                   'Cөйлем 1: Бұқар жыраумен өлер алдында қоштасып,іштегіарманын сыртқа шығарып, ___ айтып қалайын дегендей асыға тіл қатты       ',
-              video: 'assets/videos/listening1.mp4',
+              audio: 'assets/audios/Abylai_khan.mp3',
               textRu: '',
               test: [
                 ListeningTest(text: 'өңіндегісін', isCorrect: true),
