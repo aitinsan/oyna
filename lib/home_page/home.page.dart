@@ -19,15 +19,25 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
+  void didChangeDependencies() {
+    setState(() {});
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant HomePage oldWidget) {
+    setState(() {});
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Timer.periodic(new Duration(seconds: 1), (Timer timer) async {
-    //   setState(() {
-    //     print('fdsaf');
-    //   });
-    // });
-
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        print('fdsfa');
+      });
+    });
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: AppTheme.of(context).primaryBackground,
@@ -81,13 +91,12 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   currentUserDocument?.displayName ??
                                       'Нет имени',
-                                  style: AppTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: AppTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
+                                  style:
+                                      AppTheme.of(context).bodyText1.override(
+                                            fontFamily: 'Poppins',
+                                            color: AppTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -101,9 +110,8 @@ class _HomePageState extends State<HomePage> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Poppins',
-                                              color:
-                                                  AppTheme.of(context)
-                                                      .secondaryBackground,
+                                              color: AppTheme.of(context)
+                                                  .secondaryBackground,
                                             ),
                                       ),
                                     ),
@@ -171,19 +179,16 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: Image.asset(
                             'assets/images/IMG_0024_11.png',
-                            width: 80,
-                            height: 120,
+                            width: 130,
+                            height: 130,
                             fit: BoxFit.contain,
                           ),
                         ),
                         Text(
                           'День ' + listViewDayRecord.day.toString(),
-                          style: AppTheme.of(context)
-                              .bodyText1
-                              .override(
+                          style: AppTheme.of(context).bodyText1.override(
                                 fontFamily: 'Poppins',
-                                color:
-                                    AppTheme.of(context).primaryColor,
+                                color: AppTheme.of(context).primaryColor,
                               ),
                         ),
                       ],

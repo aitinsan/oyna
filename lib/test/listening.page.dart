@@ -95,8 +95,7 @@ class _ListeningPageState extends State<ListeningPage> {
                 : CircularPercentIndicator(radius: 10),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(
-                    color: AppTheme.of(context).primaryColor!),
+                border: Border.all(color: AppTheme.of(context).primaryColor!),
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
               padding: const EdgeInsets.all(16),
@@ -144,7 +143,7 @@ class _ListeningPageState extends State<ListeningPage> {
             ),
             SizedBox(height: 8),
             Text(
-              'Сопоставьте слово в жирном шрифте с подходящим по значению словом ',
+              oneOfFour.topic,
               style: TextStyle(color: Colors.white, fontSize: 14),
             ),
             SizedBox(height: 8),
@@ -194,18 +193,13 @@ class _ListeningPageState extends State<ListeningPage> {
                             widget.oneOfFour.listeningCards?[count].test[index]
                                     .text ??
                                 '',
-                            style:
-                                AppTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: isSelected(widget
-                                              .oneOfFour
-                                              .listeningCards![count]
-                                              .test[index])
-                                          ? AppTheme.of(context)
-                                              .secondaryBackground
-                                          : AppTheme.of(context)
-                                              .primaryColor,
-                                    ),
+                            style: AppTheme.of(context).bodyText1.override(
+                                  fontFamily: 'Poppins',
+                                  color: isSelected(widget.oneOfFour
+                                          .listeningCards![count].test[index])
+                                      ? AppTheme.of(context).secondaryBackground
+                                      : AppTheme.of(context).primaryColor,
+                                ),
                           ),
                         ),
                       ),
@@ -224,7 +218,15 @@ class _ListeningPageState extends State<ListeningPage> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
                     child: AppButtonWidget(
                       onPressed: () async {
+                        int points = 0;
                         if (count + 1 == oneOfFour.listeningCards!.length) {
+                          for (var element in _listeningTestSelected) {
+                            if (element.isCorrect) {
+                              points++;
+                            } else {
+                              points--;
+                            }
+                          }
                           await currentUserReference!.update(
                               createUserRecordData(
                                   description: currentUserDocument?.description,
@@ -239,7 +241,9 @@ class _ListeningPageState extends State<ListeningPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SuccessPage()));
+                                  builder: (context) => SuccessPage(
+                                        points: points,
+                                      )));
                         } else {
                           setState(() {
                             count++;
@@ -253,13 +257,12 @@ class _ListeningPageState extends State<ListeningPage> {
                         width: 300,
                         height: 50,
                         color: Color(0xFF4B39EF),
-                        textStyle:
-                            AppTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Outfit',
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                        textStyle: AppTheme.of(context).subtitle2.override(
+                              fontFamily: 'Outfit',
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                            ),
                         elevation: 3,
                         borderSide: BorderSide(
                           color: Colors.transparent,

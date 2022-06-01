@@ -1,21 +1,25 @@
 import 'package:flutter/widgets.dart';
 
+/// [ReadingCard] used to represent reading tasks
 class ReadingCard {
   String titleRu;
   String textRu;
   String titleKz;
   String textKz;
   String question;
-  List<ReadingQuestion> readingQuestions;
+  List<ReadingTest> readingTests;
+  List<ReadingQuestion>? readingQuestions;
   ReadingCard(
       {required this.titleRu,
       required this.textRu,
       required this.titleKz,
       required this.textKz,
       required this.question,
-      required this.readingQuestions});
+      this.readingQuestions,
+      this.readingTests = const []});
 }
 
+/// [ReadingQuestion] this is match test type
 class ReadingQuestion {
   String question;
   String answer;
@@ -38,4 +42,18 @@ class ReadingQuestion {
     }
     return answersList;
   }
+}
+
+/// [ReadingTest] this is one choose test type
+class ReadingTest {
+  String question;
+  List<ReadingTestOption> list;
+  ReadingTest({required this.list, required this.question});
+}
+
+/// [ReadingTest] this is one choose test type
+class ReadingTestOption {
+  String text;
+  bool isCorrect;
+  ReadingTestOption({required this.text, required this.isCorrect});
 }

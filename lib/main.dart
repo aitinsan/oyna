@@ -66,21 +66,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {});
+    /// Create application
     return MaterialApp(
       title: 'Oyna',
       localizationsDelegates: [
-        AppLocalizationsDelegate(),
+        AppLocalizationsDelegate(), /// Used for translating text to kazakh or russian 
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
       supportedLocales: const [
-        // Locale('ru', ''),
-
-        // const Locale.fromSubtags(languageCode: 'kk')
-        Locale('kk', 'KZ'),
+        Locale('ru', ''),
+        Locale('kk', ''), 
       ],
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
@@ -96,7 +94,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             )
-          : currentUser!.loggedIn
+          : currentUser!.loggedIn//check if user logged in
               ? HomePage()
               : IntroPageWidget(),
     );

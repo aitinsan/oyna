@@ -32,7 +32,6 @@ class _WritingPageState extends State<WritingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: AppTheme.of(context).primaryBackground,
         automaticallyImplyLeading: true,
@@ -100,6 +99,17 @@ class _WritingPageState extends State<WritingPage> {
                       padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
                       child: AppButtonWidget(
                         onPressed: () async {
+                          int points = 0;
+                          for (var i = 0;
+                              i < oneOfFour.writingCard!.tasks.length;
+                              i++) {
+                            if (oneOfFour.writingCard!.tasks[i].answer ==
+                                controllers[i].text) {
+                              points++;
+                            } else {
+                              points--;
+                            }
+                          }
                           await currentUserReference!.update(
                               createUserRecordData(
                                   description: currentUserDocument?.description,
@@ -108,26 +118,27 @@ class _WritingPageState extends State<WritingPage> {
                                   gender: currentUserDocument?.gender,
                                   photoUrl: currentUserDocument?.photoUrl,
                                   points: currentUserDocument?.points != null
-                                      ? currentUserDocument!.points! + 1
-                                      : 1));
+                                      ? currentUserDocument!.points! + points
+                                      : points));
                           Navigator.pop(context);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SuccessPage()));
+                                  builder: (context) => SuccessPage(
+                                        points: points,
+                                      )));
                         },
                         text: 'Получить награду',
                         options: AppButtonOptions(
                           width: 300,
                           height: 50,
                           color: Color(0xFF4B39EF),
-                          textStyle:
-                              AppTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Outfit',
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                          textStyle: AppTheme.of(context).subtitle2.override(
+                                fontFamily: 'Outfit',
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
                           elevation: 3,
                           borderSide: BorderSide(
                             color: Colors.transparent,
