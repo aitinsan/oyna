@@ -1,13 +1,15 @@
 import 'package:flutter/widgets.dart';
 
 class ListeningCard {
-  String video;
+  String? video;
+  String? audio;
   String textRu;
   String question;
   List<ListeningTest> test;
   ListeningCard({
     required this.textRu,
-    required this.video,
+    this.video,
+    this.audio,
     required this.question,
     required this.test,
   });

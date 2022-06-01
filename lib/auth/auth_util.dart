@@ -176,7 +176,7 @@ final authenticatedUserStream = FirebaseAuth.instance
     .map<String>((user) {
       // Store jwt token on user update.
       () async {
-        _currentJwtToken = (await user?.getIdToken())!;
+        _currentJwtToken = (await user?.getIdToken())??'';
       }();
       return user?.uid ?? '';
     })

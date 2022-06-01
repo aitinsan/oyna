@@ -50,19 +50,17 @@ class _ChatPageState extends State<ChatPage> {
     nameController = TextEditingController(text: currentUserDisplayName);
     ageController =
         TextEditingController(text: currentUserDocument?.age.toString());
+    _addBotMessage('Здравствуй, уважаемый путешественник!');
+    _addBotMessage('Сегодня не часто встретишь путешественников');
+    _addBotMessage('Возможно, ты один из тех храбрецов?');
     _addBotMessage(
-        'Добро пожаловать,Иван. Данный бот поможет вам со всеми вопросами');
-    _addBotMessage(
-        'Сегодня не часто встретишь путешественников. Возможно, ты один из тех храбрецов?');
-    _addBotMessage(
-        'Прошу прощения! Считаю невоспитанностью с моей стороны постоянно называть вас Путешественником.  Как вас зовут?');
-    setState(() {
-      _step = Step.nickname;
-    });
+        'Прошу прощения! Считаю невоспитанностью с моей стороны постоянно называть вас Путешественником. Как вас зовут?',
+        afterStep: Step.nickname);
+
     _loadMessages();
   }
 
-  void _addBotMessage(String message) {
+  void _addBotMessage(String message, {Step? afterStep}) {
     setState(() {
       _step = Step.texting;
     });
@@ -78,6 +76,7 @@ class _ChatPageState extends State<ChatPage> {
             createdAt: DateTime.now().millisecondsSinceEpoch,
           ),
         );
+        if (afterStep != null) _step = afterStep;
       });
     });
   }
@@ -135,8 +134,9 @@ class _ChatPageState extends State<ChatPage> {
                   setState(() {
                     _addMessage(nameController!.text);
                     _addBotMessage(
-                        'Ваше имя звучит красиво. Вы Господин или Госпожа? Введите ваш пол');
-                    _step = Step.gender;
+                      'Ваше имя звучит красиво. Вы Господин или Госпожа? Введите ваш пол',
+                      afterStep: Step.gender,
+                    );
                   });
                 },
                 child: Padding(
@@ -171,8 +171,8 @@ class _ChatPageState extends State<ChatPage> {
                     ));
                     setState(() {
                       _addMessage('Господин');
-                      _addBotMessage('Как прекрасно! Сколько вам лет ?');
-                      _step = Step.age;
+                      _addBotMessage('Как прекрасно! Сколько вам лет ?',
+                          afterStep: Step.age);
                     });
                   },
                   child: Padding(
@@ -196,8 +196,8 @@ class _ChatPageState extends State<ChatPage> {
                     ));
                     setState(() {
                       _addMessage('Госпожа');
-                      _addBotMessage('Как прекрасно! Сколько вам лет ?');
-                      _step = Step.age;
+                      _addBotMessage('Как прекрасно! Сколько вам лет ?',
+                          afterStep: Step.age);
                     });
                   },
                   child: Padding(
@@ -234,10 +234,11 @@ class _ChatPageState extends State<ChatPage> {
                     photoUrl: currentUserDocument!.photoUrl,
                   ));
                   setState(() {
+                    _addBotMessage('И возраст у вас красивый!');
                     _addMessage(ageController!.text);
                     _addBotMessage(
-                        'Прежде чем отправиться в путешествие я хочу узнать о цели вашего путешествия.');
-                    _step = Step.goal;
+                        'Прежде чем отправиться в путешествие я хочу узнать о цели вашего путешествия.',
+                        afterStep: Step.goal);
                   });
                 },
                 child: Padding(
@@ -271,8 +272,11 @@ class _ChatPageState extends State<ChatPage> {
                   ));
                   setState(() {
                     _addMessage('Я хочу полностью овладеть казахским языком.');
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                   _step= Step.empty;
+                    Timer(Duration(milliseconds: 2000), () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    });
                   });
                 },
                 child: Padding(
@@ -297,8 +301,11 @@ class _ChatPageState extends State<ChatPage> {
                   setState(() {
                     _addMessage(
                         'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.');
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                    _step= Step.empty;
+                    Timer(Duration(milliseconds: 2000), () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    });
                   });
                 },
                 child: Padding(
@@ -307,6 +314,38 @@ class _ChatPageState extends State<ChatPage> {
                     child: FilledButtonWidget(
                         text:
                             'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.'),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              InkWell(
+                onTap: () async {
+                  await currentUserReference!.update(createUserRecordData(
+                    description:
+                        'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше',
+                    age: currentUserDocument!.age,
+                    displayName: currentUserDocument!.displayName,
+                    gender: currentUserDocument!.gender,
+                    photoUrl: currentUserDocument!.photoUrl,
+                  ));
+                  setState(() {
+                    _addMessage(
+                        'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше');
+                    _step= Step.empty;
+                    Timer(Duration(milliseconds: 2000), () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    });
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Center(
+                    child: FilledButtonWidget(
+                        text:
+                            'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше'),
                   ),
                 ),
               ),
@@ -335,6 +374,7 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(_step);
     return Scaffold(
       backgroundColor: AppTheme.of(context).primaryBackground,
       appBar: AppBar(

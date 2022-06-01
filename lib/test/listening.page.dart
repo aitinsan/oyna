@@ -30,10 +30,12 @@ class _ListeningPageState extends State<ListeningPage> {
   int count = 0;
   @override
   void initState() {
-    _controller = VideoPlayerController.asset('assets/videos/listening1.mp4')
-      ..initialize().then((_) {
-        setState(() {});
-      });
+    if (widget.oneOfFour.listeningCards!.first.video != null)
+      _controller = VideoPlayerController.asset(
+          widget.oneOfFour.listeningCards!.first.video!)
+        ..initialize().then((_) {
+          setState(() {});
+        });
     super.initState();
   }
 
