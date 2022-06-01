@@ -80,6 +80,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
         actions: [],
         centerTitle: true,
         elevation: 0,
+        automaticallyImplyLeading: false,
       ),
       backgroundColor: AppTheme.of(context).primaryBackground,
       body: SingleChildScrollView(
@@ -169,8 +170,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Icon(
                                   Icons.add_circle,
-                                  color:
-                                      AppTheme.of(context).primaryColor,
+                                  color: AppTheme.of(context).primaryColor,
                                   size: 24,
                                 ),
                               ),

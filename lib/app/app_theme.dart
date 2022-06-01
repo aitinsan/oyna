@@ -117,7 +117,7 @@ extension TextStyleHelper on TextStyle {
     double? fontSize,
     FontWeight? fontWeight,
     FontStyle? fontStyle,
-    bool useGoogleFonts = true,
+    bool useGoogleFonts = false,
     TextDecoration? decoration,
     double? lineHeight,
   }) =>

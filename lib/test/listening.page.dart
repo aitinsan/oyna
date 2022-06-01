@@ -93,31 +93,36 @@ class _ListeningPageState extends State<ListeningPage> {
                     ),
                   )
                 : CircularPercentIndicator(radius: 10),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: AppTheme.of(context).primaryColor!),
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-              ),
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Субтитры',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    oneOfFour.listeningCards![count].textRu,
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ],
-              ),
-            ),
+            oneOfFour.listeningCards![count].textRu != ''
+                ? Container(
+                    decoration: BoxDecoration(
+                      border:
+                          Border.all(color: AppTheme.of(context).primaryColor!),
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                    ),
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Субтитры',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          oneOfFour.listeningCards![count].textRu,
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ],
+                    ),
+                  )
+                : SizedBox.shrink(),
+            SizedBox(height: 16),
             InkWell(
               onTap: () {
+                _controller.pause();
                 setState(() {
                   isRead = false;
                 });
@@ -157,7 +162,7 @@ class _ListeningPageState extends State<ListeningPage> {
               physics: NeverScrollableScrollPhysics(),
               itemCount: widget.oneOfFour.listeningCards?[count].test.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 3),
+                  crossAxisCount: 2, childAspectRatio: 2),
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(4),

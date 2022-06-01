@@ -40,7 +40,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: AppTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
         title: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
           child: Column(
@@ -106,17 +105,18 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: AuthUserStreamWidget(
                       child: Container(
-                        width: 90,
-                        height: 90,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: currentUserPhoto!=''? CachedNetworkImage(
-                          imageUrl: currentUserPhoto,
-                          fit: BoxFit.fitWidth,
-                        ): Image.asset('assets/images/altynsaryn.png')
-                      ),
+                          width: 90,
+                          height: 90,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: currentUserPhoto != ''
+                              ? CachedNetworkImage(
+                                  imageUrl: currentUserPhoto,
+                                  fit: BoxFit.fitWidth,
+                                )
+                              : Image.asset('assets/images/altynsaryn.png')),
                     ),
                   ),
                 ),
@@ -300,15 +300,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     InkWell(
-                      onTap:() async {
+                      onTap: () async {
                         await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => EditProfileWidget(
-                                      
-                                    ),
-                                  ),
-                                );
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditProfileWidget(),
+                          ),
+                        );
                       },
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),

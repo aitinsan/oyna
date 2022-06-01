@@ -72,8 +72,9 @@ class _WritingPageState extends State<WritingPage> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Wrap(
+                          alignment: WrapAlignment.spaceBetween,
+                          runAlignment: WrapAlignment.spaceBetween,
                           children: [
                             Text(
                               oneOfFour.writingCard!.tasks[index].question,
@@ -89,7 +90,6 @@ class _WritingPageState extends State<WritingPage> {
                         ),
                       );
                     }),
-                // if (index == widget.oneOfFour.grammarCards.length - 1)
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
