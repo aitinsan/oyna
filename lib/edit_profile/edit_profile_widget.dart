@@ -24,6 +24,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   TextEditingController? genderController;
   TextEditingController? ageController;
   TextEditingController? descriptionController;
+  bool hide = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   SelectedMedia? selectedPhoto;
 
@@ -68,6 +69,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         size: 30,
                       ),
                       onPressed: () async {
+                        Navigator.pop(context);
                         Navigator.pop(context);
                       },
                     ),
@@ -388,34 +390,40 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        final userUpdateData = createUserRecordData(
-                          description: descriptionController!.text,
-                          age: int.parse(ageController!.text),
-                          displayName: nameController!.text,
-                          gender: genderController!.text,
-                          photoUrl: uploadedFileUrl,
-                        );
-                        await currentUserReference!.update(userUpdateData);
-                        Navigator.pop(context);
-                      },
-                      child: FilledButtonWidget(
-                        text: 'Изменить',
+            if (hide == false)
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                      child: InkWell(
+                        onTap: () async {
+                          setState(() {
+                            hide = true;
+                          });
+                          final userUpdateData = createUserRecordData(
+                            description: descriptionController!.text,
+                            age: int.parse(ageController!.text),
+                            displayName: nameController!.text,
+                            gender: genderController!.text,
+                            photoUrl: uploadedFileUrl,
+                          );
+                          await currentUserReference!.update(userUpdateData);
+
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: FilledButtonWidget(
+                          text: 'Изменить',
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
           ],
         ),
       ),

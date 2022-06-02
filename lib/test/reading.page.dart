@@ -29,9 +29,9 @@ class _ReadingPageState extends State<ReadingPage> {
   void initState() {
     super.initState();
     answers = ReadingQuestion.getAnswerList(
-        widget.oneOfFour.readingCard!.readingQuestions??[]);
+        widget.oneOfFour.readingCard!.readingQuestions ?? []);
     for (var element in ReadingQuestion.getQuestionList(
-        widget.oneOfFour.readingCard!.readingQuestions??[])) {
+        widget.oneOfFour.readingCard!.readingQuestions ?? [])) {
       currentAnswers.add('');
     }
   }
@@ -45,50 +45,55 @@ class _ReadingPageState extends State<ReadingPage> {
   void _createDragWigets() {
     answersDrages = [];
     for (var element in answers) {
-      answersDrages.add(Draggable<String>(
-        data: element,
-        feedback: Container(
-          width: 160,
-          height: 60,
-          decoration: BoxDecoration(
-            color: AppTheme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(14),
-          ),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(
-                element,
-                style: AppTheme.of(context).bodyText1.override(
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
-                    ),
+      answersDrages.add(
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Draggable<String>(
+            data: element,
+            feedback: Container(
+              width: 160,
+              height: 60,
+              decoration: BoxDecoration(
+                color: AppTheme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    element,
+                    style: AppTheme.of(context).bodyText1.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                  ),
+                ),
+              ),
+            ),
+            childWhenDragging: Container(),
+            child: Container(
+              width: 160,
+              height: 60,
+              decoration: BoxDecoration(
+                color: AppTheme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    element,
+                    style: AppTheme.of(context).bodyText1.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                  ),
+                ),
               ),
             ),
           ),
         ),
-        childWhenDragging: Container(),
-        child: Container(
-          width: 160,
-          height: 60,
-          decoration: BoxDecoration(
-            color: AppTheme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(14),
-          ),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(
-                element,
-                style: AppTheme.of(context).bodyText1.override(
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
-                    ),
-              ),
-            ),
-          ),
-        ),
-      ));
+      );
     }
   }
 
@@ -115,9 +120,10 @@ class _ReadingPageState extends State<ReadingPage> {
       backgroundColor: AppTheme.of(context).primaryBackground,
       body: isRead
           ? _buildIsRead(widget.oneOfFour)
-          : widget.oneOfFour.readingCard!.readingQuestions ==null || widget.oneOfFour.readingCard!.readingQuestions == const []
+          : widget.oneOfFour.readingCard!.readingQuestions == null ||
+                  widget.oneOfFour.readingCard!.readingQuestions == const []
               ? _buildTest(widget.oneOfFour)
-              :  _buildTask(widget.oneOfFour),
+              : _buildTask(widget.oneOfFour),
     );
   }
 
@@ -294,8 +300,8 @@ class _ReadingPageState extends State<ReadingPage> {
                     child: AppButtonWidget(
                       onPressed: () async {
                         List<String> realAnswers =
-                            ReadingQuestion.getAnswerList(
-                                widget.oneOfFour.readingCard!.readingQuestions!);
+                            ReadingQuestion.getAnswerList(widget
+                                .oneOfFour.readingCard!.readingQuestions!);
                         print('answers $realAnswers');
                         print('user answers $currentAnswers');
                         int points = 0;
@@ -413,8 +419,8 @@ class _ReadingPageState extends State<ReadingPage> {
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text(
-                            widget.oneOfFour.readingCard?.readingTests[count].list[index]
-                                    .text ??
+                            widget.oneOfFour.readingCard?.readingTests[count]
+                                    .list[index].text ??
                                 '',
                             style: AppTheme.of(context).bodyText1.override(
                                   fontFamily: 'Poppins',

@@ -19,19 +19,31 @@ class ProfilePageWidget extends StatefulWidget {
 
 class _ProfilePageWidgetState extends State<ProfilePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController? emailAddressController;
-  TextEditingController? yourNameController;
-  TextEditingController? myBioController;
+  TextEditingController? ageAddressController;
+  TextEditingController? genderController;
+  TextEditingController? descriptionController;
 
   @override
   void initState() {
     super.initState();
-    emailAddressController =
-        TextEditingController(text: currentUserDocument?.age.toString());
-    yourNameController =
-        TextEditingController(text: currentUserDocument?.gender);
-    myBioController =
-        TextEditingController(text: currentUserDocument?.description);
+
+    ageAddressController = TextEditingController();
+    genderController = TextEditingController();
+    descriptionController = TextEditingController();
+  }
+
+  @override
+  void didChangeDependencies() {
+    setState(() {
+      // currentUserDocument.
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant ProfilePageWidget oldWidget) {
+    setState(() {});
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -138,13 +150,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
               child: AuthUserStreamWidget(
                 child: TextFormField(
-                  controller: yourNameController,
+                  controller: genderController,
                   readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context)!.getText(
-                      '2bw0tn6z' /* Пол */,
-                    ),
+                    labelText: currentUserDocument?.gender,
                     labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
                           color: AppTheme.of(context).primaryColor,
@@ -189,13 +199,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 12),
               child: AuthUserStreamWidget(
                 child: TextFormField(
-                  controller: emailAddressController,
+                  controller: ageAddressController,
                   readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context)!.getText(
-                      '117oddez' /* Возраст */,
-                    ),
+                    labelText: currentUserDocument?.age.toString(),
                     labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
                           color: AppTheme.of(context).primaryColor,
@@ -240,13 +248,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 12),
               child: AuthUserStreamWidget(
                 child: TextFormField(
-                  controller: myBioController,
+                  controller: descriptionController,
                   readOnly: true,
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context)!.getText(
-                      '16vwx9lf' /* Цель */,
-                    ),
+                    labelText: currentUserDocument?.description,
                     labelStyle: AppTheme.of(context).bodyText2.override(
                           fontFamily: 'Lexend Deca',
                           color: AppTheme.of(context).primaryColor,

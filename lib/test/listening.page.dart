@@ -104,7 +104,7 @@ class _ListeningPageState extends State<ListeningPage> {
                       }
                     },
                     child: AspectRatio(
-                      aspectRatio: _controller.value.aspectRatio * 2,
+                      aspectRatio: _controller.value.aspectRatio * 1,
                       child: VideoPlayer(_controller),
                     ),
                   )

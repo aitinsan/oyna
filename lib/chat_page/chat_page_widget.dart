@@ -292,7 +292,7 @@ class _ChatPageState extends State<ChatPage> {
                 onTap: () async {
                   await currentUserReference!.update(createUserRecordData(
                     description:
-                        'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.',
+                        'Я понимаю казахский и хочу дополнить свои знания',
                     age: currentUserDocument!.age,
                     displayName: currentUserDocument!.displayName,
                     gender: currentUserDocument!.gender,
@@ -300,7 +300,7 @@ class _ChatPageState extends State<ChatPage> {
                   ));
                   setState(() {
                     _addMessage(
-                        'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.');
+                        'Я понимаю казахский и хочу дополнить свои знания');
                     _step= Step.empty;
                     Timer(Duration(milliseconds: 1500), () {
                       Navigator.pushReplacement(context,
@@ -313,7 +313,7 @@ class _ChatPageState extends State<ChatPage> {
                   child: Center(
                     child: FilledButtonWidget(
                         text:
-                            'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше.'),
+                            'Я понимаю казахский и хочу дополнить свои знания'),
                   ),
                 ),
               ),
