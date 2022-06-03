@@ -4,6 +4,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/background_audio.controller.dart';
+import 'package:provider/provider.dart';
 
 class AudioWidget extends StatefulWidget {
   final String audio;
@@ -26,6 +28,7 @@ class _AudioWidgetState extends State<AudioWidget> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () async {
+      Provider.of<BackgroundAudio>(context, listen: false).stop();
       ByteData bytes =
           await rootBundle.load(widget.audio); //load audio from assets
       audiobytes =

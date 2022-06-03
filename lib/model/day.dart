@@ -244,7 +244,7 @@ List days = [
               list: [
                 ReadingTestOption(text: 'Саяхатшы ', isCorrect: true),
                 ReadingTestOption(text: 'Жазушы', isCorrect: false),
-                ReadingTestOption(text: 'Аудармашы. ', isCorrect: false),
+                ReadingTestOption(text: 'Аудармашы', isCorrect: false),
                 ReadingTestOption(text: 'Әнші. ', isCorrect: false),
                 ReadingTestOption(text: 'Әртіс', isCorrect: false),
               ],

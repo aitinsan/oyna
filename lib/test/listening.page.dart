@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:oyna/app/background_audio.controller.dart';
 import 'package:oyna/auth/auth_util.dart';
 import 'package:oyna/backend/schema/user_record.dart';
 import 'package:oyna/components/filled_button_widget.dart';
@@ -13,6 +14,7 @@ import 'package:oyna/model/one_of_four.dart';
 import 'package:oyna/test/audio.widget.dart';
 import 'package:oyna/test/success.page.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 
 class ListeningPage extends StatefulWidget {
@@ -48,38 +50,53 @@ class _ListeningPageState extends State<ListeningPage> {
 
   @override
   void didUpdateWidget(covariant ListeningPage oldWidget) {
+    // var provider = Provider.of<BackgroundAudio>(context, listen: false);
+
+    // provider.start();
     _controller.pause();
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   void dispose() {
+    var provider = Provider.of<BackgroundAudio>(context, listen: false);
+
+    provider.start();
     _controller.pause();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: true,
-        title: Text(
-          'Тыңдалым',
-          style: AppTheme.of(context).title1.override(
-                fontFamily: 'Outfit',
-                color: AppTheme.of(context).secondaryBackground,
-                fontSize: 26,
-                fontWeight: FontWeight.w500,
-              ),
+    return WillPopScope(
+      onWillPop: () async {
+        if (widget.oneOfFour.listeningCards!.first.video != null)
+          _controller.pause();
+        Provider.of<BackgroundAudio>(context, listen: false).start();
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: true,
+          title: Text(
+            'Тыңдалым',
+            style: AppTheme.of(context).title1.override(
+                  fontFamily: 'Outfit',
+                  color: AppTheme.of(context).secondaryBackground,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
+          centerTitle: false,
+          elevation: 0,
         ),
-        centerTitle: false,
-        elevation: 0,
+        backgroundColor: AppTheme.of(context).primaryBackground,
+        body: isRead
+            ? _buildIsRead(widget.oneOfFour)
+            : _buildTask(widget.oneOfFour),
       ),
-      backgroundColor: AppTheme.of(context).primaryBackground,
-      body: isRead
-          ? _buildIsRead(widget.oneOfFour)
-          : _buildTask(widget.oneOfFour),
     );
   }
 
@@ -97,9 +114,15 @@ class _ListeningPageState extends State<ListeningPage> {
                       print('fdsaf');
                       if (!isPlaying) {
                         _controller.play();
+
+                        Provider.of<BackgroundAudio>(context, listen: false)
+                            .stop();
+
                         isPlaying = true;
                       } else {
                         _controller.pause();
+                        Provider.of<BackgroundAudio>(context, listen: false)
+                            .start();
                         isPlaying = false;
                       }
                     },
@@ -141,6 +164,7 @@ class _ListeningPageState extends State<ListeningPage> {
               onTap: () {
                 if (widget.oneOfFour.listeningCards!.first.audio == null)
                   _controller.pause();
+                Provider.of<BackgroundAudio>(context, listen: false).start();
                 setState(() {
                   isRead = false;
                 });

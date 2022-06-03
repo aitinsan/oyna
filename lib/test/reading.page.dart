@@ -52,7 +52,7 @@ class _ReadingPageState extends State<ReadingPage> {
             data: element,
             feedback: Container(
               width: 160,
-              height: 60,
+              height: 100,
               decoration: BoxDecoration(
                 color: AppTheme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(14),
@@ -284,7 +284,7 @@ class _ReadingPageState extends State<ReadingPage> {
               physics: NeverScrollableScrollPhysics(),
               itemCount: answers.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 3),
+                  crossAxisCount: 2, childAspectRatio: 2),
               itemBuilder: (context, index) {
                 return answersDrages[index];
               },
@@ -386,7 +386,7 @@ class _ReadingPageState extends State<ReadingPage> {
               itemCount:
                   widget.oneOfFour.readingCard!.readingTests[count].list.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 3),
+                  crossAxisCount: 2, childAspectRatio: 2),
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(4),

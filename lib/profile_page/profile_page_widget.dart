@@ -1,4 +1,6 @@
+import 'package:oyna/app/background_audio.controller.dart';
 import 'package:oyna/edit_profile/edit_profile_widget.dart';
+import 'package:provider/provider.dart';
 
 import '../auth/auth_util.dart';
 import '../components/filled_button_widget.dart';
@@ -298,6 +300,18 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                 ),
               ),
             ),
+            IconButton(
+                onPressed: () {
+                  var provider = Provider.of<BackgroundAudio>(context,listen: false);
+                  if (provider.playing)
+                    provider.stop();
+                  else
+                    provider.start();
+                },
+                icon: Icon(
+                  Icons.music_note_outlined,
+                  color: AppTheme.of(context).primaryColor,
+                )),
             Expanded(
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),

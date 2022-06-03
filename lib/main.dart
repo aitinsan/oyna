@@ -2,9 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:oyna/app/background_audio.controller.dart';
 import 'package:oyna/chat_page/chat_page_widget.dart';
 import 'package:oyna/home_page/home.page.dart';
 import 'package:oyna/intro_page/intro_page_widget.dart';
+import 'package:provider/provider.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
@@ -18,7 +20,14 @@ void main() async {
   await Firebase.initializeApp();
   await AppTheme.initialize();
 
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => BackgroundAudio()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -47,7 +56,9 @@ class _MyAppState extends State<MyApp> {
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
     Future.delayed(
       Duration(seconds: 1),
-      () => setState(() => displaySplashImage = false),
+      () {
+        setState(() => displaySplashImage = false);
+      },
     );
   }
 
@@ -66,11 +77,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<BackgroundAudio>(context).start();
+
     /// Create application
     return MaterialApp(
       title: 'Oyna',
       localizationsDelegates: [
-        AppLocalizationsDelegate(), /// Used for translating text to kazakh or russian 
+        AppLocalizationsDelegate(),
+
+        /// Used for translating text to kazakh or russian
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -78,7 +93,7 @@ class _MyAppState extends State<MyApp> {
       locale: _locale,
       supportedLocales: const [
         Locale('ru', ''),
-        Locale('kk', ''), 
+        Locale('kk', ''),
       ],
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
@@ -94,7 +109,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             )
-          : currentUser!.loggedIn//check if user logged in
+          : currentUser!.loggedIn //check if user logged in
               ? HomePage()
               : IntroPageWidget(),
     );

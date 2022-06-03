@@ -13,7 +13,7 @@ abstract class AppTheme {
   static ThemeMode get themeMode {
     final darkMode = _prefs?.getBool(kThemeModeKey);
     return darkMode == null
-        ? ThemeMode.system
+        ? ThemeMode.light
         : darkMode
             ? ThemeMode.dark
             : ThemeMode.light;
@@ -40,42 +40,37 @@ abstract class AppTheme {
   Color? primaryBtnText;
   Color? lineColor;
 
-  TextStyle get title1 => TextStyle(        color: primaryText,
+  TextStyle get title1 => TextStyle(
+        color: primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 24,
       );
-  TextStyle get title2 => TextStyle(  
-        
+  TextStyle get title2 => TextStyle(
         color: secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22,
       );
-  TextStyle get title3 => TextStyle(  
-        
+  TextStyle get title3 => TextStyle(
         color: primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 20,
       );
-  TextStyle get subtitle1 => TextStyle(  
-       
+  TextStyle get subtitle1 => TextStyle(
         color: primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 18,
       );
-  TextStyle get subtitle2 => TextStyle(  
-       
+  TextStyle get subtitle2 => TextStyle(
         color: secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16,
       );
-  TextStyle get bodyText1 => TextStyle(  
-        
+  TextStyle get bodyText1 => TextStyle(
         color: primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14,
       );
-  TextStyle get bodyText2 => TextStyle(  
-        
+  TextStyle get bodyText2 => TextStyle(
         color: secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14,
@@ -122,8 +117,7 @@ extension TextStyleHelper on TextStyle {
     double? lineHeight,
   }) =>
       useGoogleFonts
-          ? TextStyle(  
-              
+          ? TextStyle(
               color: color ?? this.color,
               fontSize: fontSize ?? this.fontSize,
               fontWeight: fontWeight ?? this.fontWeight,
@@ -132,7 +126,6 @@ extension TextStyleHelper on TextStyle {
               height: lineHeight,
             )
           : copyWith(
-             
               color: color,
               fontSize: fontSize,
               fontWeight: fontWeight,
