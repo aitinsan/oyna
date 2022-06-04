@@ -28,17 +28,15 @@ class _ReadingPageState extends State<ReadingPage> {
   @override
   void initState() {
     super.initState();
-    answers = ReadingQuestion.getAnswerList(
-        widget.oneOfFour.readingCard!.readingQuestions ?? []);
-    for (var element in ReadingQuestion.getQuestionList(
-        widget.oneOfFour.readingCard!.readingQuestions ?? [])) {
+    answers = ReadingQuestion.getAnswerList(widget.oneOfFour.readingCard!.readingQuestions ?? []);
+    for (var element
+        in ReadingQuestion.getQuestionList(widget.oneOfFour.readingCard!.readingQuestions ?? [])) {
       currentAnswers.add('');
     }
   }
 
   bool isSelected(ReadingTestOption t) {
-    if (_readingTestSelected.length == count + 1 &&
-        _readingTestSelected[count] == t) return true;
+    if (_readingTestSelected.length == count + 1 && _readingTestSelected[count] == t) return true;
     return false;
   }
 
@@ -209,8 +207,7 @@ class _ReadingPageState extends State<ReadingPage> {
             ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: ReadingQuestion.getQuestionList(
-                        oneOfFour.readingCard!.readingQuestions!)
+                itemCount: ReadingQuestion.getQuestionList(oneOfFour.readingCard!.readingQuestions!)
                     .length,
                 itemBuilder: (context, index) {
                   return Padding(
@@ -219,15 +216,13 @@ class _ReadingPageState extends State<ReadingPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          oneOfFour
-                              .readingCard!.readingQuestions![index].question,
+                          oneOfFour.readingCard!.readingQuestions![index].question,
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                         DragTarget<String>(
                           onAccept: (data) {
                             setState(() {
-                              if (currentAnswers[index] != '')
-                                answers.add(currentAnswers[index]);
+                              if (currentAnswers[index] != '') answers.add(currentAnswers[index]);
                               currentAnswers[index] = data;
                               answers.removeWhere((element) => element == data);
                             });
@@ -260,9 +255,7 @@ class _ReadingPageState extends State<ReadingPage> {
                                     padding: const EdgeInsets.all(16),
                                     child: Text(
                                       currentAnswers[index],
-                                      style: AppTheme.of(context)
-                                          .bodyText1
-                                          .override(
+                                      style: AppTheme.of(context).bodyText1.override(
                                             fontFamily: 'Poppins',
                                             color: Colors.white,
                                           ),
@@ -283,8 +276,8 @@ class _ReadingPageState extends State<ReadingPage> {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemCount: answers.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 2),
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 2),
               itemBuilder: (context, index) {
                 return answersDrages[index];
               },
@@ -299,9 +292,8 @@ class _ReadingPageState extends State<ReadingPage> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
                     child: AppButtonWidget(
                       onPressed: () async {
-                        List<String> realAnswers =
-                            ReadingQuestion.getAnswerList(widget
-                                .oneOfFour.readingCard!.readingQuestions!);
+                        List<String> realAnswers = ReadingQuestion.getAnswerList(
+                            widget.oneOfFour.readingCard!.readingQuestions!);
                         print('answers $realAnswers');
                         print('user answers $currentAnswers');
                         int points = 0;
@@ -383,10 +375,9 @@ class _ReadingPageState extends State<ReadingPage> {
             GridView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount:
-                  widget.oneOfFour.readingCard!.readingTests[count].list.length,
+              itemCount: widget.oneOfFour.readingCard!.readingTests[count].list.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 2),
+                  crossAxisCount: 2, childAspectRatio: 1.5),
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(4),
@@ -394,19 +385,19 @@ class _ReadingPageState extends State<ReadingPage> {
                     onTap: () {
                       setState(() {
                         if (_readingTestSelected.length < count + 1) {
-                          _readingTestSelected.add(widget.oneOfFour.readingCard!
-                              .readingTests[count].list[index]);
+                          _readingTestSelected
+                              .add(widget.oneOfFour.readingCard!.readingTests[count].list[index]);
                         } else {
-                          _readingTestSelected[count] = widget.oneOfFour
-                              .readingCard!.readingTests[count].list[index];
+                          _readingTestSelected[count] =
+                              widget.oneOfFour.readingCard!.readingTests[count].list[index];
                         }
                       });
                     },
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: isSelected(widget.oneOfFour.readingCard!
-                                .readingTests[count].list[index])
+                        color: isSelected(
+                                widget.oneOfFour.readingCard!.readingTests[count].list[index])
                             ? AppTheme.of(context).primaryColor!
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(14),
@@ -419,14 +410,12 @@ class _ReadingPageState extends State<ReadingPage> {
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text(
-                            widget.oneOfFour.readingCard?.readingTests[count]
-                                    .list[index].text ??
+                            widget.oneOfFour.readingCard?.readingTests[count].list[index].text ??
                                 '',
                             style: AppTheme.of(context).bodyText1.override(
                                   fontFamily: 'Poppins',
                                   color: isSelected(
-                                    widget.oneOfFour.readingCard!
-                                        .readingTests[count].list[index],
+                                    widget.oneOfFour.readingCard!.readingTests[count].list[index],
                                   )
                                       ? AppTheme.of(context).secondaryBackground
                                       : AppTheme.of(context).primaryColor,
@@ -450,8 +439,7 @@ class _ReadingPageState extends State<ReadingPage> {
                     child: AppButtonWidget(
                       onPressed: () async {
                         int points = 0;
-                        if (count + 1 ==
-                            oneOfFour.readingCard!.readingTests.length) {
+                        if (count + 1 == oneOfFour.readingCard!.readingTests.length) {
                           for (var element in _readingTestSelected) {
                             if (element.isCorrect) {
                               points++;
@@ -459,16 +447,15 @@ class _ReadingPageState extends State<ReadingPage> {
                               points--;
                             }
                           }
-                          await currentUserReference!.update(
-                              createUserRecordData(
-                                  description: currentUserDocument?.description,
-                                  age: currentUserDocument?.age,
-                                  displayName: currentUserDocument?.displayName,
-                                  gender: currentUserDocument?.gender,
-                                  photoUrl: currentUserDocument?.photoUrl,
-                                  points: currentUserDocument?.points != null
-                                      ? currentUserDocument!.points! + 1
-                                      : 1));
+                          await currentUserReference!.update(createUserRecordData(
+                              description: currentUserDocument?.description,
+                              age: currentUserDocument?.age,
+                              displayName: currentUserDocument?.displayName,
+                              gender: currentUserDocument?.gender,
+                              photoUrl: currentUserDocument?.photoUrl,
+                              points: currentUserDocument?.points != null
+                                  ? currentUserDocument!.points! + 1
+                                  : 1));
                           Navigator.pop(context);
                           Navigator.push(
                               context,
@@ -482,8 +469,7 @@ class _ReadingPageState extends State<ReadingPage> {
                           });
                         }
                       },
-                      text: count + 1 ==
-                              oneOfFour.readingCard!.readingTests.length
+                      text: count + 1 == oneOfFour.readingCard!.readingTests.length
                           ? 'Получить награду'
                           : 'Следующий вопрос',
                       options: AppButtonOptions(
