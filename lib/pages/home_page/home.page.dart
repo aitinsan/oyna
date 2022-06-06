@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
-        print('fdsfa');
+        // print('fdsfa');
       });
     });
     return Scaffold(
@@ -63,8 +63,7 @@ class _HomePageState extends State<HomePage> {
                                   ? Image.network(
                                       currentUserPhoto,
                                     )
-                                  : Image.asset(
-                                      'assets/images/altynsaryn.png')),
+                                  : Image.asset('assets/images/altynsaryn.png')),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
@@ -77,47 +76,36 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  currentUserDocument?.displayName ??
-                                      'Нет имени',
-                                  style:
-                                      AppTheme.of(context).bodyText1.override(
-                                            fontFamily: 'Poppins',
-                                            color: AppTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
+                                  currentUserDocument?.displayName ?? 'Нет имени',
+                                  style: AppTheme.of(context).bodyText1.override(
+                                        fontFamily: 'Poppins',
+                                        color: AppTheme.of(context).secondaryBackground,
+                                      ),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 4, 0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
                                       child: Text(
                                         'Очки:',
-                                        style: AppTheme.of(context)
-                                            .bodyText1
-                                            .override(
+                                        style: AppTheme.of(context).bodyText1.override(
                                               fontFamily: 'Poppins',
-                                              color: AppTheme.of(context)
-                                                  .secondaryBackground,
+                                              color: AppTheme.of(context).secondaryBackground,
                                             ),
                                       ),
                                     ),
                                     Text(
                                       '${currentUserDocument?.points ?? 0}',
-                                      style: AppTheme.of(context)
-                                          .bodyText1
-                                          .override(
+                                      style: AppTheme.of(context).bodyText1.override(
                                             fontFamily: 'Poppins',
-                                            color: AppTheme.of(context)
-                                                .secondaryBackground,
+                                            color: AppTheme.of(context).secondaryBackground,
                                           ),
                                     ),
                                   ],
