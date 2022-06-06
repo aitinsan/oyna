@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:oyna/model/one_of_four.dart';
-import 'package:oyna/test/grammar.page.dart';
-import 'package:oyna/test/listening.page.dart';
-import 'package:oyna/test/reading.page.dart';
-import 'package:oyna/test/success.page.dart';
-import 'package:oyna/test/writing.page.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+import 'package:oyna/pages/test/grammar.page.dart';
+import 'package:oyna/pages/test/listening.page.dart';
+import 'package:oyna/pages/test/reading.page.dart';
+import 'package:oyna/pages/test/writing.page.dart';
 
-import '../app/app_theme.dart';
-import '../app/app_widgets.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({Key? key, required this.oneOfFour}) : super(key: key);

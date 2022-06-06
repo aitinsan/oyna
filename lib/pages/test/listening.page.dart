@@ -1,8 +1,4 @@
-import 'dart:typed_data';
-
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:oyna/app/background_audio.controller.dart';
 import 'package:oyna/auth/auth_util.dart';
 import 'package:oyna/backend/schema/user_record.dart';
@@ -11,9 +7,8 @@ import 'package:oyna/app/app_theme.dart';
 import 'package:oyna/app/app_widgets.dart';
 import 'package:oyna/model/listening_card.dart';
 import 'package:oyna/model/one_of_four.dart';
-import 'package:oyna/test/audio.widget.dart';
-import 'package:oyna/test/success.page.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+import 'package:oyna/pages/test/audio.widget.dart';
+import 'package:oyna/pages/test/success.page.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 
@@ -50,9 +45,6 @@ class _ListeningPageState extends State<ListeningPage> {
 
   @override
   void didUpdateWidget(covariant ListeningPage oldWidget) {
-    // var provider = Provider.of<BackgroundAudio>(context, listen: false);
-
-    // provider.start();
     _controller.pause();
     super.didUpdateWidget(oldWidget);
   }

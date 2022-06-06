@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/app_util.dart';
 import 'package:oyna/model/day.dart';
 import 'package:oyna/model/one_of_four.dart';
-import 'package:oyna/test/test.page.dart';
-
-import '../app/app_theme.dart';
-import '../app/app_util.dart';
+import 'package:oyna/pages/test/test.page.dart';
 
 class DayPage extends StatefulWidget {
   const DayPage({

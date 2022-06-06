@@ -5,8 +5,7 @@ import 'package:oyna/components/text_field_widget.dart';
 import 'package:oyna/app/app_theme.dart';
 import 'package:oyna/app/app_widgets.dart';
 import 'package:oyna/model/one_of_four.dart';
-import 'package:oyna/test/success.page.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:oyna/pages/test/success.page.dart';
 
 class WritingPage extends StatefulWidget {
   const WritingPage({Key? key, required this.oneOfFour}) : super(key: key);

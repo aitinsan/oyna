@@ -1,16 +1,15 @@
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/app_util.dart';
 import 'package:oyna/app/background_audio.controller.dart';
-import 'package:oyna/edit_profile/edit_profile_widget.dart';
+import 'package:oyna/app/internationalization.dart';
+import 'package:oyna/auth/auth_util.dart';
+import 'package:oyna/components/filled_button_widget.dart';
+import 'package:oyna/components/logo_widget.dart';
+import 'package:oyna/pages/edit_profile/edit_profile_widget.dart';
 import 'package:provider/provider.dart';
-
-import '../auth/auth_util.dart';
-import '../components/filled_button_widget.dart';
-import '../components/logo_widget.dart';
-import '../app/app_theme.dart';
-import '../app/app_util.dart';
 import '../intro_page/intro_page_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ProfilePageWidget extends StatefulWidget {
   const ProfilePageWidget({Key? key}) : super(key: key);

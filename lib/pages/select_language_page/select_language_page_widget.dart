@@ -1,9 +1,9 @@
-import '../components/outlined_button_widget.dart';
-import '../app/app_theme.dart';
-import '../app/app_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/app_util.dart';
+import 'package:oyna/app/internationalization.dart';
+import 'package:oyna/components/outlined_button_widget.dart';
 
 class SelectLanguagePageWidget extends StatefulWidget {
   const SelectLanguagePageWidget({Key? key}) : super(key: key);

@@ -1,15 +1,10 @@
-import 'package:oyna/chat_page/chat_page_widget.dart';
-import 'package:oyna/home_page/home.page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../auth/auth_util.dart';
-import '../components/filled_button_widget.dart';
-import '../app/app_icon_button.dart';
-import '../app/app_theme.dart';
-import '../app/app_util.dart';
+import 'package:oyna/app/app_icon_button.dart';
+import 'package:oyna/app/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:oyna/app/internationalization.dart';
+import 'package:oyna/auth/email_auth.dart';
+import 'package:oyna/components/filled_button_widget.dart';
+import 'package:oyna/pages/chat_page/chat_page_widget.dart';
 
 class RegistrationPageWidget extends StatefulWidget {
   const RegistrationPageWidget({Key? key}) : super(key: key);
@@ -326,105 +321,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                 ),
               ),
             ),
-            // Padding(
-            //   padding: EdgeInsetsDirectional.fromSTEB(0, 36, 0, 0),
-            //   child: Text(
-            //     FFLocalizations.of(context).getText(
-            //       '94y9kxrr' /* ИЛИ ВОЙДИТЕ ЧЕРЕЗ */,
-            //     ),
-            //     style: FlutterFlowTheme.of(context).bodyText1.override(
-            //           fontFamily: 'Poppins',
-            //           fontSize: 12,
-            //         ),
-            //   ),
-            // ),
-            // Padding(
-            //   padding: EdgeInsetsDirectional.fromSTEB(8, 24, 8, 32),
-            //   child: Row(
-            //     mainAxisSize: MainAxisSize.max,
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Padding(
-            //         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
-            //         child: InkWell(
-            //           onTap: () async {
-            //             final user = await signInWithGoogle(context);
-            //             if (user == null) {
-            //               return;
-            //             }
-            //             await Navigator.pushAndRemoveUntil(
-            //               context,
-            //               MaterialPageRoute(
-            //                 builder: (context) => HomePage(),
-            //               ),
-            //               (r) => false,
-            //             );
-            //           },
-            //           child: Container(
-            //             width: 50,
-            //             height: 50,
-            //             decoration: BoxDecoration(
-            //               color: Color(0xFFF6F6F5),
-            //               boxShadow: [
-            //                 BoxShadow(
-            //                   blurRadius: 5,
-            //                   color: Color(0x3314181B),
-            //                   offset: Offset(0, 2),
-            //                 )
-            //               ],
-            //               shape: BoxShape.circle,
-            //             ),
-            //             alignment: AlignmentDirectional(0, 0),
-            //             child: FaIcon(
-            //               FontAwesomeIcons.google,
-            //               color: FlutterFlowTheme.of(context).primaryText,
-            //               size: 24,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //       Padding(
-            //         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
-            //         child: InkWell(
-            //           onTap: () async {
-            //             final user = await signInWithApple(context);
-            //             if (user == null) {
-            //               return;
-            //             }
-            //             await Navigator.pushAndRemoveUntil(
-            //               context,
-            //               MaterialPageRoute(
-            //                 builder: (context) => HomePage(),
-            //               ),
-            //               (r) => false,
-            //             );
-            //           },
-            //           child: Container(
-            //             width: 50,
-            //             height: 50,
-            //             decoration: BoxDecoration(
-            //               color: Color(0xFFF6F6F5),
-            //               boxShadow: [
-            //                 BoxShadow(
-            //                   blurRadius: 5,
-            //                   color: Color(0x3314181B),
-            //                   offset: Offset(0, 2),
-            //                 )
-            //               ],
-            //               shape: BoxShape.circle,
-            //             ),
-            //             alignment: AlignmentDirectional(0, 0),
-            //             child: FaIcon(
-            //               FontAwesomeIcons.apple,
-            //               color: FlutterFlowTheme.of(context).primaryText,
-            //               size: 24,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
+        
             Expanded(
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),

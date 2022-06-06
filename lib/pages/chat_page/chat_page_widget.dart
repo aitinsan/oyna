@@ -10,7 +10,7 @@ import 'package:oyna/backend/schema/user_record.dart';
 import 'package:oyna/components/filled_button_widget.dart';
 import 'package:oyna/components/text_field_widget.dart';
 import 'package:oyna/app/app_theme.dart';
-import 'package:oyna/home_page/home.page.dart';
+import 'package:oyna/pages/home_page/home.page.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 import 'package:uuid/uuid.dart';
 

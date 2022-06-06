@@ -1,9 +1,9 @@
-import '../app/app_icon_button.dart';
-import '../app/app_theme.dart';
-import '../app/app_util.dart';
-import '../app/app_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:oyna/app/app_icon_button.dart';
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/app_widgets.dart';
+import 'package:oyna/app/internationalization.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class TestWidget extends StatefulWidget {

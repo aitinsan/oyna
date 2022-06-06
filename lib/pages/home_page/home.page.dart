@@ -1,14 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:oyna/auth/firebase_user_provider.dart';
-import 'package:oyna/day_page/day.page.dart';
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/auth/auth_util.dart';
 import 'package:oyna/model/day.dart';
-import 'package:oyna/profile_page/profile_page_widget.dart';
-
-import '../auth/auth_util.dart';
-import '../app/app_theme.dart';
-import '../app/app_util.dart';
+import 'package:oyna/pages/day_page/day.page.dart';
+import 'package:oyna/pages/profile_page/profile_page_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

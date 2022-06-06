@@ -1,7 +1,9 @@
-import '../components/filled_button_widget.dart';
-import '../components/outlined_button_widget.dart';
-import '../app/app_theme.dart';
-import '../app/app_util.dart';
+
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/internationalization.dart';
+import 'package:oyna/components/filled_button_widget.dart';
+import 'package:oyna/components/outlined_button_widget.dart';
+
 import '../login_page/login_page_widget.dart';
 import '../registration_page/registration_page_widget.dart';
 import 'package:flutter/material.dart';

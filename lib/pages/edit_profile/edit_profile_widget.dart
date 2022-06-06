@@ -1,15 +1,15 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
-import '../components/filled_button_widget.dart';
-import '../app/app_icon_button.dart';
-import '../app/app_theme.dart';
-import '../app/app_util.dart';
-import '../app/upload_media.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart' show IterableNullableExtension;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:oyna/app/app_icon_button.dart';
+import 'package:oyna/app/app_theme.dart';
+import 'package:oyna/app/internationalization.dart';
+import 'package:oyna/app/upload_media.dart';
+import 'package:oyna/auth/auth_util.dart';
+import 'package:oyna/backend/firebase_storage/storage.dart';
+import 'package:oyna/backend/schema/user_record.dart';
+import 'package:oyna/components/filled_button_widget.dart';
 
 class EditProfileWidget extends StatefulWidget {
   const EditProfileWidget({Key? key}) : super(key: key);
