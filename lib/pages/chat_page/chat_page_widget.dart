@@ -41,7 +41,7 @@ class _ChatPageState extends State<ChatPage> {
     id: 'bot',
     firstName: 'Ыбырай А.',
     imageUrl:
-        'https://adebiportal.kz/images/w350-cct-si/upload/iblock/212/212544514e836a345e141cbbe7ffd70a.jpg',
+        'https://api.edu.kz/media/k2/items/cache/9805c3e04d4b70b00e160df77a41ae5b_XL.jpg',
   );
 
   @override
@@ -272,7 +272,7 @@ class _ChatPageState extends State<ChatPage> {
                   ));
                   setState(() {
                     _addMessage('Я хочу полностью овладеть казахским языком.');
-                   _step= Step.empty;
+                    _step = Step.empty;
                     Timer(Duration(milliseconds: 1500), () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
@@ -301,7 +301,7 @@ class _ChatPageState extends State<ChatPage> {
                   setState(() {
                     _addMessage(
                         'Я понимаю казахский и хочу дополнить свои знания');
-                    _step= Step.empty;
+                    _step = Step.empty;
                     Timer(Duration(milliseconds: 1500), () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
@@ -333,7 +333,7 @@ class _ChatPageState extends State<ChatPage> {
                   setState(() {
                     _addMessage(
                         'Я уверен что знаю казахский в совершенстве, но хочу обогатить свой язык ещё больше');
-                    _step= Step.empty;
+                    _step = Step.empty;
                     Timer(Duration(milliseconds: 1500), () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
@@ -383,7 +383,7 @@ class _ChatPageState extends State<ChatPage> {
           children: [
             CircleAvatar(
               backgroundImage: NetworkImage(
-                'https://adebiportal.kz/images/w350-cct-si/upload/iblock/212/212544514e836a345e141cbbe7ffd70a.jpg',
+                'https://api.edu.kz/media/k2/items/cache/9805c3e04d4b70b00e160df77a41ae5b_XL.jpg',
               ),
             ),
             SizedBox(
