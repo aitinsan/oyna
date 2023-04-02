@@ -103,7 +103,7 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
       return Container(
         height: widget.options.height,
         width: widget.options.width,
-        child: RaisedButton.icon(
+        child: ElevatedButton.icon(
           icon: Padding(
             padding: widget.options.iconPadding ?? EdgeInsets.zero,
             child: widget.icon ??
@@ -116,18 +116,20 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
           ),
           label: textWidget,
           onPressed: onPressed,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(widget.options.borderRadius!),
-            side: widget.options.borderSide ?? BorderSide.none,
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(widget.options.borderRadius!),
+              side: widget.options.borderSide ?? BorderSide.none,
+            ),
+            backgroundColor: widget.options.color,
+            // colorBrightness:
+            //     ThemeData.estimateBrightnessForColor(widget.options.color!),
+            // textColor: widget.options.textStyle!.color,
+            disabledBackgroundColor: widget.options.disabledColor,
+            // disabledTextColor: widget.options.disabledTextColor,
+            elevation: widget.options.elevation,
+            // splashColor: widget.options.splashColor,
           ),
-          color: widget.options.color,
-          colorBrightness:
-              ThemeData.estimateBrightnessForColor(widget.options.color!),
-          textColor: widget.options.textStyle!.color,
-          disabledColor: widget.options.disabledColor,
-          disabledTextColor: widget.options.disabledTextColor,
-          elevation: widget.options.elevation,
-          splashColor: widget.options.splashColor,
         ),
       );
     }
@@ -135,21 +137,23 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
     return Container(
       height: widget.options.height,
       width: widget.options.width,
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: onPressed,
-        shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.circular(widget.options.borderRadius ?? 28),
-          side: widget.options.borderSide ?? BorderSide.none,
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.circular(widget.options.borderRadius ?? 28),
+            side: widget.options.borderSide ?? BorderSide.none,
+          ),
+          // textColor: widget.options.textStyle!.color,
+          backgroundColor: widget.options.color,
+          // colorBrightness:
+          // ThemeData.estimateBrightnessForColor(widget.options.color!),
+          disabledBackgroundColor: widget.options.disabledColor,
+          // disabledTextColor: widget.options.disabledTextColor,
+          padding: widget.options.padding,
+          elevation: widget.options.elevation,
         ),
-        textColor: widget.options.textStyle!.color,
-        color: widget.options.color,
-        colorBrightness:
-            ThemeData.estimateBrightnessForColor(widget.options.color!),
-        disabledColor: widget.options.disabledColor,
-        disabledTextColor: widget.options.disabledTextColor,
-        padding: widget.options.padding,
-        elevation: widget.options.elevation,
         child: textWidget,
       ),
     );
